@@ -1,0 +1,361 @@
+This is where I will initially write my articles.
+
+****
+
+TODO: Each build looks to be creating a new copy in dist and not overwiting
+
+****
+
+
+TODO: Is it worth exploring grammerly or spell check extension for VS Code
+or is it better to write content outside in word documents?
+
+
+**** 
+
+
+TODO: I want to create some cool text effect that has a gradient? 
+colours.
+
+- Used modern-normalize.css in lieu of normalize.css
+- Added font from google fonts <link>
+- Created style.css
+
+
+****
+
+
+TODO: Add dark mode/themes (potentially just switch root css vars with JS)
+
+
+****
+
+
+TODO: Create a simple node server and run it, I may want to use this in
+my portfolio project later
+
+- use the require directive and store as http var
+- call createServer on http and bind it to port 8081
+- Pass function with request and response params
+- Return a message in the body
+- Use _ to get the last result
+
+- Node is a JavaScript runtime. It runs JavaScript files outside of a
+  browser. There are two ways of running JS code. You either have it as
+  part of a website and run the entire website in a browser, or you run 
+  only the JavaScript with Node.
+- For instance, you can run scripts on your machine that generates a 
+  *project skeleton* for you. You can run checks on your files and
+  automatically correct the mistakes. Or you can run your test files.
+- For node, there is no surrounding HTML file that JavaScript can access, 
+  JavaScript runs on it's own. However, Node can access your file system
+  and read/write your files. Investigate.
+
+
+****
+
+
+TODO: Explore do/while loop vs for loops etc
+
+
+
+****
+
+
+
+TODO: List all achievements page
+
+
+
+
+TODO: An unbiased article about npm vs yarn vs pnpm
+
+- In the past we used CDN to add libraries and imported by having
+a <script> tag pointing to a url src. 
+- People tend to associate node with backend dev bc if the backend
+code is written in JS, the server needs a way to run them without
+a browser. Yet, node is much more than that.
+- You can use npm ls command to list down all the locally installed 
+modules (npm ls -g for globally installed)
+- Node automatically installs all the dependencies mentioned in the 
+pckg.json of the node module.
+- Search a package name with npm search <pckg name>
+- Creating and publishing a node pckg with npm init and npm publish
+- <npx> runs executables inside your downloaded dependencies
+  The pnpm equivilent is pnpm exec `jest`
+  Or run executable commands in packages you want to download
+  transiently <npx create-react-appp my-app> OR
+  <pnpm dlx create-react-app my-app>
+
+****
+
+TODO: Create and publish a node package
+
+****
+
+
+TODO: Write an article webpack vs parcel
+
+- Parcel reckognises JSX, SCSS, PUG and many things out of the box. 
+Therefore, there is little setup involved, unlike webpack
+- https://www.freecodecamp.org/news/how-to-set-up-a-front-end-development-project/
+- Are you using React? No problem. Parcel recognises that and interprets JSX.
+  Are you using SCSS? No problem. Parcel knows what to do.
+- To build <pnpm parcel build index.html -public-url>
+  This will create a bundle in the <dist> folder
+
+^ TODO: See about changing app root to app.js and not app.html
+
+
+****
+
+
+TODO: Typescript stuff
+
+- I'm sure I initialised the project to use Typescript or maybe no?
+  I think I set esLint to TS but not anything else 
+- To install the latest version of react types it's
+  npm i @types/react @types/react-dom
+- Added typescript which went well:
+   - Had to adjust eslint '@typescript-eslint/no-explicit-any': 'off', bc I still have jsx files
+   - Also had to add "noImplicitAny": false so that typescript can fall back to any any type
+     if no types are present
+   - Is there a better way to do this like telling it not to look at jsx files?
+   - It seems like the workaround I've applied is to allow any whereas it would be better to ignor jsx
+- Also need to ensure we exclude any build/dist from checks
+   - See top answer https://stackoverflow.com/questions/52938648/ignore-js-and-jsx-files-with-tsconfig-json
+
+
+****
+
+TODO: Font stuff/chosing Type
+
+- https://fonts.google.com/knowledge/choosing_type
+- Change from link tag now react?
+
+
+****
+
+TODO: Changing to SCSS, how to link in bundle vs dev?
+
+- How do we do it in webpack
+
+
+****
+
+TODO: Add Storybook
+
+- Alternatively, consider another approach like web components
+- This will make it easier to make a 'playground' of componets
+
+
+****
+
+TODO: Using imports to create a module system.
+
+- Running a project with module syntax can be a bit tricky,
+  but as we are using Parcel to run our project, it works
+  seamlessly without any questions. That's one of the reasons
+  we use Parcel.
+
+
+****
+
+TODO: EsLint
+- Prettier for formatting code, ESLint can give you coding tips
+- Generate the ESLint config with the command <npx eslint --init>
+- Options:
+  Check syntax
+  Check syntax and find problems
+  Check syntax, find problems and enforce code style
+  If selecting the last option and using prettier, they will
+  likely end up conflicting.
+- Configure ESLint for browser and node somehow?
+- Dev dep because it should not be part of website's src code
+- Should at least ignore <.eslint.js> and *.html
+
+
+****
+
+TODO: Extensions
+
+- ES7 + React/Redux Snippets by dsznajder <tsrfce>
+
+
+
+****
+
+TODO: Initiliasing state with React hooks
+
+- see https://blog.logrocket.com/initialize-state-react-hooks/
+
+
+****
+
+TODO: Investigate React frameworks
+
+- Next.js
+- Remix
+- Gatsby
+- Expo
+
+
+****
+
+TODO: Testing and test driven development
+
+
+**** 
+
+TODO: Separation of Concerns
+
+
+####
+
+TODO: Spotify web playback
+
+- Which OAuth flow to use.
+  For long-running applications (web app running on a server) in which the user grants 
+  permission only once, and the client secret can
+
+####
+
+
+
+####
+
+****** Random Stuf ******
+
+In JavaScript there's always a global object defined. In a web browser, when scripts create
+global variables defined with the var keyword, they're created as members of the global
+object. 
+In Node.js this is not the case, the global object's interface depends on the execution
+context in which the script is running.
+
+- In web browser, any script that isn't a background task has a <Window> global object.
+- Code running in a <Worker> has a WorkerGlobalScope object as its global object.
+- Scripts running under Node.js have an object called <global> as their global object.
+
+There is also globalThis allows one to access the global object regardless of the current
+environment.
+
+<var> statements and function declarations at the top level create properties of the global
+object. <let> and <const> declarations never create properties of the global object.
+
+console.log(globalThis === globalThis.globalThis); // true (everywhere)
+console.log(window === window.window); // true (in a browser)
+console.log(self === self.self); // true (in a browser or a Web Worker)
+console.log(frames === frames.frames); // true (in a browser)
+console.log(global === global.global); // true (in Node.js)
+
+*****
+
+
+TODO: Web Security
+***** SSL certificates *****
+
+Authenticates businesses online identity and creates a unique and encrypted connection.
+Sort of an online id card.
+Purchased from web services company.
+Check who they are who they claim to be.
+Encrypts and data flow between client/web.
+Offered by website hosting company or a third party web security service.
+When security is in place, an icon such as a lock, thumbs up or green bar will show in the browser 
+address bar.
+
+Browser uses SSL certificate public key to scramble data and the hosting server descrambles
+
+Installing a Secure Socker Layer (SSL) certificate on your site enables it to use HTTPS to ensure
+secure connections. Unfortunately, there are a variety of things that can go wrong in the process
+of confirming a valid SSL certificate and making a connection between your site's server and a 
+visitor's browser.
+
+If you've encountered an "SSL Handshake Failed" error message and are confused as to what it means,
+you're not alone. It's a common error that doesn't tell you much on its own. While this can be a 
+frustrating experience, the good news is that there are simple steps you can take to resolve the
+issue.
+
+What is a TLS/SSL?
+
+The Secure Sockets Layer (SSL) and Transport Layer Security (TLS) are protocols used to authenticate
+data transfers between servers and external systems such as browsers.
+
+SSL certificates are needed in order to secure your website using HTTPS. The differences between Secure
+Socket Layer and Transport Layer Security are minor. TODO: What are they?
+
+An SSL handshake is the first step in the process of establishing an HTTPS connection. To authenticate 
+and establish the connection, the user's browser and the website's server must go through a series of checks
+(this is the handshake),which establish the HTTPS connection parameters.
+
+A client (such as the browser) sends a request for a secure connection to the server. After the request is sent,
+the server sends a public key to your computer and checks that key against a list of certificates. The
+computer then genereates a key and encrupts it, using the public key sent from the server. 
+
+The computer then generates the key and encrypts it, using the public key sent from the server.
+
+Long story snort, without the SSL handshake, a secure connetion won't be made. This can pose a significant
+securit risk. Plus, there are a lot of moving parts involved in the process and many things can go wrong to
+cause a handshake failure, or even lead to the "your connection is not private" error, causing visitors to leave.
+
+SSL Handshake Failure or Error 525 means that the SSL handshake between a domain using Cloudflare and the origin
+web server failed.
+
+It is also possible that SSL errors can be caused by the client side or the server side.
+
+Common causes of SSL errors on the client side:
+
+  - The wrong date or time on the client device.
+  - An error with the browser configuration
+  - A connection that is being intercepted by a third party
+
+Some server side causes:
+
+ - A cipher suite mismatch
+ - A protocol used by the client that isn't supported by the server
+ - A certificate that is incomplete, invalid or expired
+
+Typically, a handshake failis usually attributed to something wrong with the website orsever and the SSL configs.
+
+Some fixes 
+
+  - Update your system data and time 
+  - Check to see if your SSL certificate is valid
+      - Expiration dates placed on SSL certificates to make sure their validation info remains accurate.
+      - Generally, the validity of these certificates lasts for anywhere between six months a two years.
+
+      - If revoked or expired, the browser will detect this and will be unable to complete the SSL handshake.
+      - If it's momre than a year since you installed an SSL certificate on your website, it might be time to
+        reissue it.
+      - Qualys is an SSL cert checker tool. You just need to input your domain name into the hostname field. 
+      - Update SSL cert if revoked.
+  - Configure your browser for the latest SSL/TSL protocol support
+  - Make sure the cipher suites match
+
+
+
+  **** CORS ****
+
+
+
+  **** Notifications ****
+
+  Integrating a notifications system into a web app can be complicated especially if there are user preferences
+  for said notifications.
+
+  Suprsend could be a good third party library suprsend using their react SDK. The in-app notification
+  center was one of the best on the market. There are a lot of changes pushing in frequently which 
+  occasionally caused some app features to break.
+
+  So the point is, when integrating a any library into your project, you need to see if it's at a relatively
+  stable point and not just pushing the initial possibly error-prone versions. If a library is updated
+  frequently then great, however, if it's reached a point of stability then it's even greater.
+
+  For notifications, others have used MagicBell or Courier.
+  If building it themselves they would consider the following:
+  - Service worker to accept the notifications in the background.
+  - Websocket connection or polling for updates on notifications.
+  - Notifications API for the browser
+  - Potentially notifications services like APN/Firebase for push functionality
+
+
+  TODO: Investigate service worker

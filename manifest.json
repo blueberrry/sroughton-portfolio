@@ -1,0 +1,11 @@
+{
+  "short_name": "NMI Portfolio",
+  "name": "NorthernMostIguana's Portfolio",
+  "id": "/index.html",
+  "start_url": "/index.html",
+  "background_color": "red",
+  "display": "browser",
+  "scope": "/",
+  "theme_color": "red",
+  "description": "Sean Roughton AKA Northermost Iguana's front end software engineer portfolio."
+}

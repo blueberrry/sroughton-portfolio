@@ -1,0 +1,17 @@
+@import '../../styles/style.scss';
+.grid-container {
+  width: 100%;
+  display: grid;
+  grid-gap: 1rem;
+
+  @include media('>phone') {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include media('>tablet') {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+
+  .grid-item-auto {
+  }
+}

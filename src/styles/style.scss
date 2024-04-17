@@ -2,6 +2,7 @@
 /* TODO: Create root spacing vars */
 
 @import '../../node_modules/include-media/dist/include-media.scss';
+@import './theme/default.scss';
 
 $breakpoints: (
   phone: 640px,
@@ -31,5 +32,25 @@ p {
   padding: 0.75rem 1rem;
 }
 
+$spcr-sm: 0.6rem;
+$spcr-md: 1.25rem;
+$spcr-lg: 3rem;
+
 @include media('>tablet', '<950px') {
+}
+
+.theme-primary {
+  background-color: $primary-hex;
+}
+
+.theme-secondary {
+  background-color: $secondary-hex;
+}
+
+.theme-tertiary {
+  background-color: $tertiary-hex;
+}
+
+.theme-info {
+  background-color: $shade-1-hex;
 }

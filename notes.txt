@@ -359,3 +359,70 @@ Some fixes
 
 
   TODO: Investigate service worker
+
+
+
+  The trials and tribulations of service worker.
+
+  There was an issue where it didn't seem to activate and it was down to how I was 
+  including the script and possibly because my localhost was nsted in up/up.
+  Had to do things the parcel way so to speak.
+  Caching initially didn't work because we needed to intercept fetches (to get the assets).
+
+
+
+  TODO: Infinite list/Search
+
+  Create an infinite list (products/items). Filtering logic. Caching resources/items.
+  Recycler List. 
+
+
+
+  Dead files - npx unimported
+   with type - npx unimported --flow
+
+
+   TODO: Public and private components
+
+   Public Components:
+
+Public components are elements of a class or module that are intended to be accessible from outside the class or module.
+They define the interface through which other parts of the program can interact with the class or module.
+Public components are typically methods, properties, or variables that are meant to be used by external code.
+Private Components:
+
+Private components, on the other hand, are elements that are intended to be used only within the class or module where they are defined.
+They are not meant to be accessed or modified directly from outside the class or module.
+Private components are often used for internal implementation details or helper functions that are not part of the public interface.
+Access to private components is restricted to the class or module in which they are defined.
+By marking certain variables or methods with a prepending underscore (e.g., _variable, _method()), developers signal that these elements are intended for private use within the class or module. It's a way of indicating to other developers that they should not rely on or modify these components directly, as they are subject to change and are not part of the public API (Application Programming Interface).
+
+
+
+
+/**
+ * `useEffect and `useLayoutEffect` are both hooks provided by React
+ * for managing effecst in functional components. They are quite similar
+ * but differ in terms of when they are executed during the component lifecycle.
+ *
+ * - useEffect
+ *     - `useEffect` is used for handling side effects after the render
+ *        is _committed_ to the screen.
+ *        It runs asyncronously and does not block painting, layout,
+ *        and other updates.
+ *
+ *      - It's typically used for data-fetching, subscriptions, or manually changing
+ *        the DOM in ways that don't affect the layout.
+ *      - It's less critical about the timing of when the effect runs in relation to
+ *        the actual rendering of the component.
+ *
+ *  - useLayoutEffect
+ *       - Very similar, but it runs synchronously after all DOM mutations but before
+ *         the browser has painted those changes.
+ *       - Useful if you need to perform measurements or mutations on the DOM before they
+ *         are visually reflected to the user.
+ *       - More crritical about timingof when the effect runs in relation to the rendering
+ *         of the component.
+ *       - It can potentially cause performance issues if it's doing a lot of work, as it
+ *         can block painting and layout process.
+ */

@@ -33,6 +33,6 @@
 
     "jsx": "react"
   },
-  "include": ["./**/*.ts", "./**/*.tsx", "src/index.js"],
+  "include": ["./**/*.ts", "./**/*.tsx", "src/root.tsx"],
   "exclude": ["node_modules/**/*", "./**/*.js", "./**/*.jsx"] // goinf forward might want to include build/dist
 }

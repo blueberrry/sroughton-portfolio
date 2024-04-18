@@ -1,6 +1,22 @@
 @import '../../styles/style.scss';
 
-nav.grid-nav {
+$animation-duration: 600ms;
+
+// Define an array of transition durations
+$animation-delays: 250ms, 500ms, 750ms, 1000ms, 1250ms, 1500ms;
+
+// todo: scss?
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+nav.nav-container {
   width: 100%;
   height: 100%;
   margin: 0;
@@ -26,15 +42,37 @@ nav.grid-nav {
     @extend .theme-info;
   }
 
-  .item-auto {
-    .nav-item-content {
-      display: block;
-      width: 100%;
-      height: 100%;
-      background: transparent;
+  ul.grid-container {
+    li.item-auto {
+      &.show {
+        opacity: 1;
+      }
 
-      &.active {
-        border: 2px solid red;
+      // Loop through the transition durations
+      @each $delay in $animation-delays {
+        &.transitioning-#{$delay} {
+          animation: fadeOut $animation-duration ease-in $delay;
+          animation-fill-mode: forwards;
+        }
+      }
+
+      // &.hide {
+      //   opacity: 0.1;
+      // }
+
+      .grid-link-content {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+
+        // &.active {
+        //   border: 2px solid red;
+        // }
+
+        // &.inactive {
+        //   opacity: 0.2;
+        // }
       }
     }
   }

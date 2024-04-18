@@ -14,7 +14,7 @@ export function GridContainer({ presetName = 'button', extraClasses = [''], chil
     extraClasses,
   });
 
-  return <div className={gridClasses}>{children}</div>;
+  return <ul className={gridClasses}>{children}</ul>;
 }
 
 type GridContainerProps = {

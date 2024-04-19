@@ -4,6 +4,7 @@ import { ItemAuto } from 'src/components/Grid';
 import { ThemeNames } from 'src/types/types';
 
 import './index.scss';
+import { Mode } from './NavGrid';
 
 const areaTransitionDelays = {
   a: '250ms',
@@ -14,38 +15,48 @@ const areaTransitionDelays = {
   f: '1500ms',
 };
 
-function GridLink({ linkTo, type, presetArea, setHoveredItem, onClick, isActive, isTransitioning }: Props) {
+function GridLink({ linkTo, type, presetArea, setHoveredItem, onClick, isActive, mode }: Props) {
   const [containerClasses, setContainerClasses] = useState('');
 
   useEffect(() => {
-    if (isTransitioning) {
+    if (!mode) {
+      setContainerClasses('');
+    }
+
+    if (mode === 'header') {
       if (isActive) {
         // containerClasses = isActive ? 'show' : '';
         // todo: add transitioning classes to active
-        setContainerClasses('active-link-transition');
+        setContainerClasses('active-transition-out');
       }
-      // c
       if (!isActive) {
-        // todo: add transitioning classes to inActive
         // todo: reverse
         // const areas = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-        const classes = `transitioning-${areaTransitionDelays[presetArea]}`;
+        const classes = `header transitioning-out-${areaTransitionDelays[presetArea]}`;
         setContainerClasses(classes);
       }
-    } else {
-      setContainerClasses('');
+    }
+
+    if (mode === 'full') {
+      if (isActive) {
+        setContainerClasses('active-transition-in');
+      }
+      if (!isActive) {
+        const classes = `full transitioning-in-${areaTransitionDelays[presetArea]}`;
+        setContainerClasses(classes);
+      }
     }
 
     return () => {
       // clean up logic here if needed
     };
-  }, [isTransitioning, isActive, setContainerClasses]);
+  }, [mode, isActive, setContainerClasses]);
 
   return (
     <ItemAuto
       type={type}
-      extraClasses={[`area-${presetArea} ${containerClasses}`]}
+      extraClasses={[`area-${presetArea} ${isActive ? 'active' : ''} ${containerClasses}`]}
       onHover={(name) => name && setHoveredItem(name)}>
       <NavLink
         to={linkTo}
@@ -63,7 +74,7 @@ function GridLink({ linkTo, type, presetArea, setHoveredItem, onClick, isActive,
             // isTransitioning ? 'transitioning' : '',
           ].join(' ');
         }}>
-        Home
+        {linkTo}
       </NavLink>
     </ItemAuto>
   );
@@ -77,7 +88,6 @@ export type Props = {
   presetArea: 'a' | 'b' | 'c' | 'd' | 'e' | 'f'; // preset areas defined in GridContainer
   setHoveredItem: React.Dispatch<React.SetStateAction<Props['type']>>;
   onClick: (e: MouseEvent<HTMLAnchorElement>, aArea: Props['presetArea']) => void;
-  //setActiveItem: React.Dispatch<React.SetStateAction<Props['presetArea']>>;
   isActive: boolean;
-  isTransitioning: boolean;
+  mode: Mode;
 };

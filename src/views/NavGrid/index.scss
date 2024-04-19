@@ -1,17 +1,18 @@
 @import '../../styles/style.scss';
 
-$animation-duration: 600ms;
+$animation-duration: 600;
 
-// Define an array of transition durations (ms)
+// transition delays (ms)
 $animation-delays: 250, 500, 750, 1000, 1250, 1500;
+
 $last-animation-delay: nth($animation-delays, length($animation-delays));
-$next-animation-delay: $last-animation-delay + 250;
 
 // todo: scss?
 
 @keyframes fadeOut {
   from {
     opacity: 1;
+    display: block;
   }
   to {
     opacity: 0;
@@ -19,11 +20,65 @@ $next-animation-delay: $last-animation-delay + 250;
   }
 }
 
-@keyframes spanActive {
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    display: none;
+  }
+  1% {
+    display: block;
+  }
   to {
-    grid-column: 1 / -1;
+    opacity: 1;
+    display: block;
   }
 }
+
+@keyframes spanItem {
+  0% {
+    opacity: 1;
+  }
+
+  25% {
+    opacity: 0;
+  }
+
+  75% {
+    grid-column: 1 / -1; // span entire grid
+    grid-row: 1 / -1; // span
+    width: 100%;
+  }
+  100% {
+    opacity: 1;
+    grid-column: 1 / -1;
+    grid-row: 1 / -1;
+    width: 100%;
+  }
+}
+
+// todo: reverse collapse item:
+// @keyframes collapseItem {
+//   0% {
+//     opacity: 1;
+//     grid-column: 1 / -1; // span entire grid
+//     grid-row: 1 / -1; // span
+//     width: 100%;
+//   }
+
+//   25% {
+//     opacity: 0;
+//   }
+
+//   75% {
+//     grid-column: unset; // span entire grid
+//     grid-row: unset; // span
+//   }
+//   100% {
+//     opacity: 1;
+//     grid-column: unset;
+//     grid-row: unset;
+//   }
+// }
 
 nav.nav-container {
   width: 100%;
@@ -53,22 +108,43 @@ nav.nav-container {
 
   ul.grid-container {
     li.item-auto {
-      // &.show {
-      //   opacity: 1;
-      // }
+      &.full {
+        opacity: 0; // final opacity when transitioning/initial for reverse
+      }
+
+      &.header {
+        opacity: 1; // final opacity when transitioning/initial for reverse
+      }
+
+      &.active {
+        border: 2px solid red;
+      }
+
+      &.active-transition-out {
+        animation: spanItem #{$animation-duration}ms ease-in #{$last-animation-delay}ms;
+        animation-fill-mode: forwards;
+      }
+
+      &.active-transition-in {
+        animation: spanItem #{$animation-duration}ms ease-in #{$last-animation-delay}ms;
+        // todo: backwards doesn't work as desired
+        animation-fill-mode: backwards;
+      }
 
       // Loop through the transition durations
       @each $delay in $animation-delays {
-        &.transitioning-#{$delay}ms {
-          animation: fadeOut $animation-duration ease-in #{$delay}ms;
+        &.transitioning-out-#{$delay}ms {
+          // opacity: 0;
+          animation: fadeOut #{$animation-duration}ms ease-out #{$delay}ms;
           animation-fill-mode: forwards;
         }
       }
 
-      &.active-link-transition {
-        //grid-column: 1 / -1;
-        animation: spanActive $animation-duration ease-in #{$next-animation-delay}ms;
-        animation-fill-mode: forwards;
+      @each $delay in $animation-delays {
+        &.transitioning-in-#{$delay}ms {
+          animation: fadeIn #{$animation-duration}ms ease-out #{$delay}ms;
+          animation-fill-mode: forwards;
+        }
       }
 
       // react-router-dom NavLink
@@ -77,14 +153,6 @@ nav.nav-container {
         width: 100%;
         height: 100%;
         background: transparent; // todo: should always have colour
-
-        // &.active {
-        //   border: 2px solid red;
-        // }
-
-        // &.inactive {
-        //   opacity: 0.2;
-        // }
       }
     }
   }

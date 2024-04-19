@@ -22,6 +22,7 @@ import GridLink, { Props as GridLinkProps } from './GridLink';
 
 function NavGrid({ goToContent }: any) {
   const [mode, setMode] = useState<Mode>('full');
+  console.log('🚀 ~ NavGrid ~ mode:', mode);
 
   const [hovered, setHovered] = useState<GridLinkProps['type'] | null>(null);
   const [active, setActive] = useState<GridLinkProps['presetArea'] | null>(null);
@@ -30,22 +31,35 @@ function NavGrid({ goToContent }: any) {
 
   const resetDefaultState = () => {
     setHovered(null);
-    // setActive(null); -- only do this if initial page
     setMode('full');
   };
 
+  // todo: wire up to usr scroll top
+  const reverse = (e: any) => {
+    e.preventDefault();
+    if (mode === 'header') {
+      setMode('full');
+    }
+  };
+
+  // on link click:
+  // animates out inactive items
+  // expands selected item
+  // + reverse
+  // todo: go to route & start parralax
   const handleClick: GridLinkProps['onClick'] = (e, aArea) => {
+    setActive(aArea); // set the active area
     if (mode === 'full') {
-      setMode('transitioning');
-      setActive(aArea);
-    } else {
-      return;
+      setMode('header'); // set header mode (link changes to header)
     }
   };
 
   return (
     <>
       <button onClick={resetDefaultState}>Default state</button>
+
+      <button onClick={reverse}>Reverse</button>
+
       <nav className={classNames('nav-container', containerBgClass)}>
         <GridContainer presetName={'button'}>
           <GridLink
@@ -55,7 +69,7 @@ function NavGrid({ goToContent }: any) {
             setHoveredItem={setHovered}
             onClick={handleClick}
             isActive={active === 'a'}
-            isTransitioning={mode === 'transitioning'}
+            mode={mode}
           />
           <GridLink
             linkTo='projects'
@@ -64,7 +78,7 @@ function NavGrid({ goToContent }: any) {
             setHoveredItem={setHovered}
             onClick={handleClick}
             isActive={active === 'b'}
-            isTransitioning={mode === 'transitioning'}
+            mode={mode}
           />
           <GridLink
             linkTo='page-3'
@@ -73,7 +87,7 @@ function NavGrid({ goToContent }: any) {
             setHoveredItem={setHovered}
             onClick={handleClick}
             isActive={active === 'c'}
-            isTransitioning={mode === 'transitioning'}
+            mode={mode}
           />
           <GridLink
             linkTo='page-4'
@@ -82,7 +96,7 @@ function NavGrid({ goToContent }: any) {
             setHoveredItem={setHovered}
             onClick={handleClick}
             isActive={active === 'd'}
-            isTransitioning={mode === 'transitioning'}
+            mode={mode}
           />
           <GridLink
             linkTo='page-5'
@@ -91,7 +105,7 @@ function NavGrid({ goToContent }: any) {
             setHoveredItem={setHovered}
             onClick={handleClick}
             isActive={active === 'e'}
-            isTransitioning={mode === 'transitioning'}
+            mode={mode}
           />
           <GridLink
             linkTo='page-6'
@@ -100,7 +114,7 @@ function NavGrid({ goToContent }: any) {
             setHoveredItem={setHovered}
             onClick={handleClick}
             isActive={active === 'f'}
-            isTransitioning={mode === 'transitioning'}
+            mode={mode}
           />
         </GridContainer>
       </nav>
@@ -112,4 +126,4 @@ function NavGrid({ goToContent }: any) {
 
 export default NavGrid;
 
-type Mode = 'full' | 'transitioning' | 'header';
+export type Mode = 'full' | 'header' | null;

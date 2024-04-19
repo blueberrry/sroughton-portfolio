@@ -18,6 +18,8 @@ import GridLink, { Props as GridLinkProps } from './GridLink';
 // todo: go to route on click
 // todo: fade animations
 // todo: nested route links   home > projects   home > gpt etc
+// todo: replace NavGrid with header onClick?
+
 function NavGrid({ goToContent }: any) {
   const [mode, setMode] = useState<Mode>('full');
 
@@ -28,7 +30,7 @@ function NavGrid({ goToContent }: any) {
 
   const resetDefaultState = () => {
     setHovered(null);
-    // setActive(null); -- only do this if intial page
+    // setActive(null); -- only do this if initial page
     setMode('full');
   };
 
@@ -41,68 +43,68 @@ function NavGrid({ goToContent }: any) {
     }
   };
 
-  // hide inactive sequentially
-
   return (
-    <nav className={classNames('nav-container', containerBgClass)}>
+    <>
       <button onClick={resetDefaultState}>Default state</button>
-      <GridContainer presetName={'button'}>
-        <GridLink
-          linkTo='home'
-          type='primary'
-          presetArea='a'
-          setHoveredItem={setHovered}
-          onClick={handleClick}
-          isActive={active === 'a'}
-          isTransitioning={mode === 'transitioning'}
-        />
-        <GridLink
-          linkTo='projects'
-          type='secondary'
-          presetArea='b'
-          setHoveredItem={setHovered}
-          onClick={handleClick}
-          isActive={active === 'b'}
-          isTransitioning={mode === 'transitioning'}
-        />
-        <GridLink
-          linkTo='page-3'
-          type='tertiary'
-          presetArea='c'
-          setHoveredItem={setHovered}
-          onClick={handleClick}
-          isActive={active === 'c'}
-          isTransitioning={mode === 'transitioning'}
-        />
-        <GridLink
-          linkTo='page-4'
-          type='primary'
-          presetArea='d'
-          setHoveredItem={setHovered}
-          onClick={handleClick}
-          isActive={active === 'd'}
-          isTransitioning={mode === 'transitioning'}
-        />
-        <GridLink
-          linkTo='page-5'
-          type='secondary'
-          presetArea='e'
-          setHoveredItem={setHovered}
-          onClick={handleClick}
-          isActive={active === 'e'}
-          isTransitioning={mode === 'transitioning'}
-        />
-        <GridLink
-          linkTo='page-6'
-          type='tertiary'
-          presetArea='f'
-          setHoveredItem={setHovered}
-          onClick={handleClick}
-          isActive={active === 'f'}
-          isTransitioning={mode === 'transitioning'}
-        />
-      </GridContainer>
-    </nav>
+      <nav className={classNames('nav-container', containerBgClass)}>
+        <GridContainer presetName={'button'}>
+          <GridLink
+            linkTo='home'
+            type='primary'
+            presetArea='a'
+            setHoveredItem={setHovered}
+            onClick={handleClick}
+            isActive={active === 'a'}
+            isTransitioning={mode === 'transitioning'}
+          />
+          <GridLink
+            linkTo='projects'
+            type='secondary'
+            presetArea='b'
+            setHoveredItem={setHovered}
+            onClick={handleClick}
+            isActive={active === 'b'}
+            isTransitioning={mode === 'transitioning'}
+          />
+          <GridLink
+            linkTo='page-3'
+            type='tertiary'
+            presetArea='c'
+            setHoveredItem={setHovered}
+            onClick={handleClick}
+            isActive={active === 'c'}
+            isTransitioning={mode === 'transitioning'}
+          />
+          <GridLink
+            linkTo='page-4'
+            type='primary'
+            presetArea='d'
+            setHoveredItem={setHovered}
+            onClick={handleClick}
+            isActive={active === 'd'}
+            isTransitioning={mode === 'transitioning'}
+          />
+          <GridLink
+            linkTo='page-5'
+            type='secondary'
+            presetArea='e'
+            setHoveredItem={setHovered}
+            onClick={handleClick}
+            isActive={active === 'e'}
+            isTransitioning={mode === 'transitioning'}
+          />
+          <GridLink
+            linkTo='page-6'
+            type='tertiary'
+            presetArea='f'
+            setHoveredItem={setHovered}
+            onClick={handleClick}
+            isActive={active === 'f'}
+            isTransitioning={mode === 'transitioning'}
+          />
+        </GridContainer>
+      </nav>
+    </>
   );
 }
 

@@ -21,32 +21,25 @@ function GridLink({ linkTo, type, presetArea, setHoveredItem, onClick, isActive,
     if (isTransitioning) {
       if (isActive) {
         // containerClasses = isActive ? 'show' : '';
+        // todo: add transitioning classes to active
+        setContainerClasses('active-link-transition');
       }
       // c
       if (!isActive) {
-        // containerClasses = 'transitioning';
-        // add class depending on order in array of remaining items
+        // todo: add transitioning classes to inActive
+        // todo: reverse
+        // const areas = ['a', 'b', 'c', 'd', 'e', 'f'];
 
         const classes = `transitioning-${areaTransitionDelays[presetArea]}`;
         setContainerClasses(classes);
-        console.log('🚀 ~ useEffect ~ classes:', classes);
-        // const areas = ['a', 'b', 'c', 'd', 'e', 'f'];
-        // const inActiveAreas = areas.filter((a) => presetArea !== a); //rmv this area
-        // inActiveAreas.forEach((area) => {
-        //   if (inActiveAreas.indexOf(presetArea) > -1) {
-        //     setTimeout(() => {
-        //       containerClasses = 'transitioning';
-        //     }, [areaTransitionDelays]);
-        //   }
-        // });
       }
     } else {
       setContainerClasses('');
     }
 
-    // return () => {
-    //   second;
-    // };
+    return () => {
+      // clean up logic here if needed
+    };
   }, [isTransitioning, isActive, setContainerClasses]);
 
   return (

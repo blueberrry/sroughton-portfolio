@@ -55,11 +55,12 @@ $rows-12: repeat(12, 1fr) !default;
 /* default grid-container set up */
 ul.grid-container {
   margin: 0;
-  display: grid;
   min-width: 300px;
   max-width: 100vw;
-  @include default-grid;
+  display: grid;
+  padding-inline-start: 0; // rmv default u styles
   list-style-type: none;
+  @include default-grid;
 
   li.item-auto {
     background: grey;
@@ -93,7 +94,7 @@ ul.grid-container {
     }
     &.item-hovered-primary {
       background-color: $primary-hex;
-      background-color: transparent;
+      background-color: transparent; // todo: should always have colour
     }
     &.item-hovered-secondary {
       background-color: $secondary-hex;
@@ -113,7 +114,7 @@ ul.button-grid {
   height: 600px;
   max-width: 47rem;
   margin: 0 auto;
-  background-color: transparent;
+  background-color: transparent; // todo: should always have colour
   &.theme-primary {
     @extend .theme-primary;
   }

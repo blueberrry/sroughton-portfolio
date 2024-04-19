@@ -1,27 +1,5 @@
 @import '../../styles/style.scss';
 
-.area-a {
-  grid-area: tile_01;
-  background-color: red;
-}
-.area-b {
-  grid-area: tile_02;
-}
-.area-c {
-  grid-area: tile_03;
-}
-.area-d {
-  grid-area: tile_04;
-}
-
-.area-e {
-  grid-area: tile_05;
-}
-
-.area-f {
-  grid-area: tile_06;
-}
-
 $cols-3: repeat(3, 1fr) !default;
 $cols-6: repeat(6, 1fr) !default;
 $cols-9: repeat(9, 1fr) !default;
@@ -40,7 +18,7 @@ $rows-12: repeat(12, 1fr) !default;
   grid-template-rows: $rows-3;
 }
 
-// link grid high res
+// link grid high res - higher res grid for more granular control of grid-areas
 @mixin btn-grid-hr {
   grid-gap: $spcr-md;
   margin: $spcr-md;
@@ -51,8 +29,8 @@ $rows-12: repeat(12, 1fr) !default;
     'tile_01 tile_01 tile_01 tile_01 tile_02 tile_02 tile_02 tile_02 tile_02 tile_02 tile_02 tile_02'
     'tile_01 tile_01 tile_01 tile_01 tile_03 tile_03 tile_03 tile_03 tile_04 tile_04 tile_04 tile_04'
     'tile_01 tile_01 tile_01 tile_01 tile_03 tile_03 tile_03 tile_03 tile_04 tile_04 tile_04 tile_04'
-    'tile_05 tile_05 tile_05 tile_05 tile_03 tile_03 tile_03 tile_03 tile_06 tile_06 tile_06 tile_06'
-    'tile_05 tile_05 tile_05 tile_05 tile_03 tile_03 tile_03 tile_03 tile_06 tile_06 tile_06 tile_06';
+    'tile_05 tile_05 tile_05 tile_05 tile_05 tile_05 tile_05 tile_05 tile_06 tile_06 tile_06 tile_06'
+    'tile_05 tile_05 tile_05 tile_05 tile_05 tile_05 tile_05 tile_05  tile_06 tile_06 tile_06 tile_06';
   justify-items: stretch;
 }
 
@@ -70,29 +48,53 @@ $rows-12: repeat(12, 1fr) !default;
   grid-template-areas:
     'tile_01 tile_01 tile_02 tile_02 tile_02 tile_02'
     'tile_01 tile_01 tile_03 tile_03 tile_04 tile_04'
-    'tile_05 tile_05 tile_03 tile_03 tile_06 tile_06';
+    'tile_05 tile_05 tile_05 tile_05 tile_06 tile_06';
   justify-items: stretch;
 }
 
 /* default grid-container set up */
-.grid-container {
+ul.grid-container {
   margin: 0;
-  display: grid;
   min-width: 300px;
   max-width: 100vw;
+  display: grid;
+  padding-inline-start: 0; // rmv default u styles
+  list-style-type: none;
   @include default-grid;
 
-  .item-auto {
+  li.item-auto {
     background: grey;
     min-height: 100px;
     // height: 100%;
     transition: all 0.6s ease-in;
+    //list-style-type: none;
+    // preset areas
+    &.area-a {
+      grid-area: tile_01;
+    }
+    &.area-b {
+      grid-area: tile_02;
+    }
+    &.area-c {
+      grid-area: tile_03;
+    }
+    &.area-d {
+      grid-area: tile_04;
+    }
+
+    &.area-e {
+      grid-area: tile_05;
+    }
+
+    &.area-f {
+      grid-area: tile_06;
+    }
 
     &.item-hovered {
     }
     &.item-hovered-primary {
       background-color: $primary-hex;
-      background-color: transparent;
+      background-color: transparent; // todo: should always have colour
     }
     &.item-hovered-secondary {
       background-color: $secondary-hex;
@@ -106,13 +108,13 @@ $rows-12: repeat(12, 1fr) !default;
   }
 }
 
-.button-grid {
+ul.button-grid {
   @include btn-grid-lr;
   width: 800px;
   height: 600px;
   max-width: 47rem;
   margin: 0 auto;
-  background-color: transparent;
+  background-color: transparent; // todo: should always have colour
   &.theme-primary {
     @extend .theme-primary;
   }

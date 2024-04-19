@@ -1,5 +1,5 @@
 import { createRoot } from 'react-dom/client';
-import { createApp } from './src/root';
+import { createApp } from './src/App';
 
 function renderApp(appId) {
   if (appId) {

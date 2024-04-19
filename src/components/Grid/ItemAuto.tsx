@@ -16,7 +16,7 @@ export function ItemAuto({ type = 'primary', onClick, onHover, extraClasses, chi
    *
    */
 
-  const { isHovered, bind } = useHover<HTMLDivElement>();
+  const { isHovered, bind } = useHover<HTMLLIElement>();
 
   const isHoveredClass = isHovered ? `item-hovered-${type}` : ``;
 
@@ -27,9 +27,9 @@ export function ItemAuto({ type = 'primary', onClick, onHover, extraClasses, chi
   }, [isHovered]);
 
   return (
-    <div className={`item-auto ${classNames(isHoveredClass, extraClasses)} `} {...bind} onClick={onClick}>
+    <li className={`item-auto ${classNames(isHoveredClass, extraClasses)} `} {...bind} onClick={onClick}>
       {children}
-    </div>
+    </li>
   );
 }
 

@@ -6,6 +6,7 @@ import Projects from 'src/views/Projects';
 
 import './styles/theme/default.scss';
 import NavGrid from './views/NavGrid/NavGrid';
+import ParallaxScroller from './components/ParallaxScroller';
 
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
@@ -29,22 +30,46 @@ export function App() {
   /**
    * * Pseudo
    * * Outer div overflow hidden ParallaxContainer? or just <section>
-   * * Inner div overflow-y scroll 
+   * * Inner div overflow-y scroll
    * * section container id="nav || nested-routes" styles + ::before styles
    * * Optionally add background images later
    */
+  // todo: keep this:
+  // return (
+  //   <div>
+  //     <div id='nav'>
+  //       {/*
+  //       <Link to='projects'>Projects</Link> */}
+  //       <button onClick={scrollToContent}>Scroll</button>
+  //       <NavGrid goToContent={scrollToContent} />
+  //     </div>
+  //     <div id='nested-routes' ref={scrollRef}>
+  //       <Outlet />
+  //     </div>
+  //   </div>
+  // );
+
+  // todo: only makes sense to apply parallax when in header mode not full
+  // todo: once ink animations complete:
+  //       add parallax bg
+  //       make child elements inherit bg
+  //       make top section small and add title
+  //       nav to then scroll to
   return (
-    <div>
-      <div id='nav'>
-        {/* 
-        <Link to='projects'>Projects</Link> */}
-        <button onClick={scrollToContent}>Scroll</button>
-        <NavGrid goToContent={scrollToContent} />
-      </div>
-      <div id='nested-routes' ref={scrollRef}>
-        <Outlet />
-      </div>
-    </div>
+    <ParallaxScroller
+      headerSection={() => (
+        <div id='nav'>
+          {/* <button onClick={scrollToContent}>Scroll</button> */}
+          <NavGrid goToContent={scrollToContent} />
+        </div>
+      )}
+      mainSection={() => (
+        //todo: main comp
+        <div id='nested-routes' ref={scrollRef}>
+          <Outlet />
+        </div>
+      )}
+    />
   );
 }
 

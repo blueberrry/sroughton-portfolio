@@ -8,15 +8,32 @@ import './index.scss';
  * * OR just pass child items as props headerSection={} mainSection={} footerSection={}
  * * might be limiting by restricting the props this way but will keep for now
  */
-export function ParallaxScroller({ headerSection, mainSection, footerSection }: Props) {
+
+// todo: outer may be unnecessary
+
+export function ParallaxScroller({
+  headerSection: HeaderSection,
+  mainSection: MainSection,
+  footerSection: FooterSection,
+}: Props) {
   return (
-    <div className='parallax-outer'>
-      <div className='parallax-inner'>
-        {/* These components come from parent*/}
-        {headerSection && <header className='parallax-area'>{headerSection}</header>}
-        {mainSection && <main className='no-parallax-area'>{mainSection}</main>}
-        {footerSection && <footer className='fixedFooter'>{footerSection}</footer>}
-      </div>
+    <div className='prllx-container'>
+      {/* These components come from parent*/}
+      {HeaderSection && (
+        <header className='prllx-section prllx-on'>
+          <HeaderSection />
+        </header>
+      )}
+      {MainSection && (
+        <div className='prllx-section prllx-off'>
+          <MainSection />
+        </div>
+      )}
+      {FooterSection && (
+        <footer className='fixedFooter'>
+          <FooterSection />
+        </footer>
+      )}
     </div>
   );
 }
@@ -24,7 +41,7 @@ export function ParallaxScroller({ headerSection, mainSection, footerSection }: 
 export default ParallaxScroller;
 
 type Props = {
-  headerSection: React.ReactNode;
-  mainSection: React.ReactNode;
-  footerSection?: React.ReactNode;
+  headerSection: () => React.JSX.Element;
+  mainSection: () => React.JSX.Element;
+  footerSection?: () => React.JSX.Element;
 };

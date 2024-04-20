@@ -7,9 +7,13 @@
 /*! modern-normalize v2.0.0 | MIT License | https://github.com/sindresorhus/modern-normalize */
 *,
 ::after,
-::before {
+::before,
+:root {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
+
 html {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';
   line-height: 1.15;

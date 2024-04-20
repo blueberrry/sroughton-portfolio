@@ -1,13 +1,5 @@
 import React, { useRef } from 'react';
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Routes,
-  Link,
-  Outlet,
-} from 'react-router-dom';
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
 
 import Home from 'src/views/Home';
 import Projects from 'src/views/Projects';
@@ -34,6 +26,13 @@ export function App() {
   // todo: better way
   const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
+  /**
+   * * Pseudo
+   * * Outer div overflow hidden ParallaxContainer? or just <section>
+   * * Inner div overflow-y scroll 
+   * * section container id="nav || nested-routes" styles + ::before styles
+   * * Optionally add background images later
+   */
   return (
     <div>
       <div id='nav'>

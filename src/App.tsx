@@ -26,18 +26,9 @@ export function App() {
   // todo: better way
   const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
-  /**
-   * * Pseudo
-   * * Outer div overflow hidden ParallaxContainer? or just <section>
-   * * Inner div overflow-y scroll 
-   * * section container id="nav || nested-routes" styles + ::before styles
-   * * Optionally add background images later
-   */
   return (
     <div>
       <div id='nav'>
-        {/* 
-        <Link to='projects'>Projects</Link> */}
         <button onClick={scrollToContent}>Scroll</button>
         <NavGrid goToContent={scrollToContent} />
       </div>

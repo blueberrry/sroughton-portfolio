@@ -426,3 +426,13 @@ By marking certain variables or methods with a prepending underscore (e.g., _var
  *       - It can potentially cause performance issues if it's doing a lot of work, as it
  *         can block painting and layout process.
  */
+
+
+
+
+// todo:
+Use parcel to analyse/do something with unused code
+"Assuming you're not using Create-React-App, you can use Webpack Bundle Analyzer to see what files are actually being shipped into production.
+
+But yes, unused files should not affect your production build."
+

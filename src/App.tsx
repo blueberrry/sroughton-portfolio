@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
+import { Parallax, ParallaxProvider } from 'react-scroll-parallax';
 
 import Home from 'src/views/Home';
 import Projects from 'src/views/Projects';
@@ -26,16 +27,16 @@ export function App() {
   // todo: better way
   const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
+  // play around with translateY Values once header height reduced
   return (
-    <div>
-      <div id='nav'>
-        <button onClick={scrollToContent}>Scroll</button>
+    <ParallaxProvider>
+      <Parallax speed={-10}>
         <NavGrid goToContent={scrollToContent} />
-      </div>
-      <div id='nested-routes' ref={scrollRef}>
+      </Parallax>
+      <Parallax speed={10}>
         <Outlet />
-      </div>
-    </div>
+      </Parallax>
+    </ParallaxProvider>
   );
 }
 

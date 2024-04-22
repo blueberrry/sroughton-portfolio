@@ -19,6 +19,7 @@ import GridLink, { Props as GridLinkProps } from './GridLink';
 // todo: fade animations
 // todo: nested route links   home > projects   home > gpt etc
 // todo: replace NavGrid with header onClick?
+// todo: add props with children
 
 function NavGrid({ goToContent }: any) {
   const [mode, setMode] = useState<Mode>('full');
@@ -28,6 +29,21 @@ function NavGrid({ goToContent }: any) {
   const [active, setActive] = useState<GridLinkProps['presetArea'] | null>(null);
 
   const containerBgClass = hovered ? `theme-${hovered}` : 'theme-primary';
+
+  const configContainerClasses = () => {
+    let classes = [];
+    if (hovered) {
+      classes.push(`theme-${hovered}`);
+    } else {
+      classes.push('theme-primary');
+    }
+
+    if (mode === 'header') {
+      classes.push('header');
+    }
+
+    return classes.join(' ');
+  };
 
   const resetDefaultState = () => {
     setHovered(null);
@@ -56,11 +72,11 @@ function NavGrid({ goToContent }: any) {
 
   return (
     <>
-      <button onClick={resetDefaultState}>Default state</button>
+      {/* <button onClick={resetDefaultState}>Default state</button>
 
-      <button onClick={reverse}>Reverse</button>
+      <button onClick={reverse}>Reverse</button> */}
 
-      <nav className={classNames('nav-container', containerBgClass)}>
+      <nav className={classNames('nav-container', configContainerClasses())}>
         <GridContainer presetName={'button'}>
           <GridLink
             linkTo='home'

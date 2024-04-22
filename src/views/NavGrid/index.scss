@@ -90,6 +90,14 @@ nav.nav-container {
   justify-content: center;
   align-items: center;
 
+  &.header {
+    height: 30vh; // todo: apply effect in order
+
+    > ul.grid-container {
+      height: inherit;
+    }
+  }
+
   &.theme-primary {
     @extend .theme-primary;
   }
@@ -106,8 +114,8 @@ nav.nav-container {
     @extend .theme-info;
   }
 
-  ul.grid-container {
-    li.item-auto {
+  > ul.grid-container {
+    > li.item-auto {
       &.full {
         opacity: 0; // final opacity when transitioning/initial for reverse
       }

@@ -69,42 +69,36 @@ ul.grid-container {
     transition: all 0.6s ease-in;
     //list-style-type: none;
     // preset areas
-    &.area-a {
-      grid-area: tile_01;
-    }
-    &.area-b {
-      grid-area: tile_02;
-    }
-    &.area-c {
-      grid-area: tile_03;
-    }
-    &.area-d {
-      grid-area: tile_04;
+    // Loop through grid areas and generate styles
+    // Loop through grid areas and generate styles
+    @each $area, $grid in $grid-areas {
+      &.area-#{$area} {
+        grid-area: $grid;
+
+        // Check if there's a theme for this area and apply hover style
+        @if map-has-key($themes, $area) {
+          &:hover {
+            @extend .#{map-get($themes, $area)};
+          }
+        }
+      }
     }
 
-    &.area-e {
-      grid-area: tile_05;
-    }
-
-    &.area-f {
-      grid-area: tile_06;
-    }
-
-    &.item-hovered {
-    }
-    &.item-hovered-primary {
-      background-color: $primary-hex;
-      background-color: transparent; // todo: should always have colour
-    }
-    &.item-hovered-secondary {
-      background-color: $secondary-hex;
-    }
-    &.item-hovered-tertiary {
-      background-color: $tertiary-hex;
-    }
-    &.item-hovered-info {
-      background-color: $shade-1-hex;
-    }
+    // &.item-hovered {
+    // }
+    // &.item-hovered-a {
+    //   background-color: $primary-hex;
+    //   background-color: transparent; // todo: should always have colour
+    // }
+    // &.item-hovered-secondary {
+    //   background-color: $secondary-hex;
+    // }
+    // &.item-hovered-tertiary {
+    //   background-color: $tertiary-hex;
+    // }
+    // &.item-hovered-info {
+    //   background-color: $shade-1-hex;
+    // }
   }
 }
 

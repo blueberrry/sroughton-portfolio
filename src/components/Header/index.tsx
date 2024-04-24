@@ -2,9 +2,10 @@ import React, { useRef, useState } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { NavGrid } from 'src/views/NavGrid';
 
-import GridLink, { Props as GridLinkProps } from '../../views/NavGrid/GridLink';
+import { Props as GridLinkProps } from '../../views/NavGrid/GridLink';
 
 import './index.scss';
+import { useLocation } from 'react-router-dom';
 
 type Props = {
   scrollToContent?: any;
@@ -18,24 +19,12 @@ function HeaderSwitcher({ scrollToContent = () => {} }: Props) {
 
   console.log('🚀 ~ HeaderSwitcher ~ mode:', mode);
 
+  const loc = useLocation();
+
   const navRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
   const nodeRef = mode === 'full' ? navRef : titleRef;
-
-  // todo: header needs navgrids background
-
-  // const SwitchComponent = () => {
-  //   if (mode === 'full' || mode === 'toTitle') {
-  //     return <NavGrid goToContent={scrollToContent} setMode={setMode} mode={mode} />;
-  //   }
-
-  //   if (mode === 'title') {
-  //     return <h1> HEADER </h1>;
-  //   }
-
-  //   return <></>;
-  // };
 
   const reverse = (e: any) => {
     e.preventDefault();
@@ -45,34 +34,38 @@ function HeaderSwitcher({ scrollToContent = () => {} }: Props) {
   };
 
   return (
-    <header className='header-container'>
-      <button onClick={reverse}>Reverse</button>
-      <SwitchTransition>
-        {/* @ts-ignore */}
-        <CSSTransition
-          mode='in-out'
-          key={mode === 'full' || mode === 'toTitle' ? 'full' : 'title'}
-          nodeRef={nodeRef}
-          timeout={1000}
-          // @ts-ignore
-          // addEndListener={(node: any, done: any) => node.addEventListener('transitionend', done, false)}
-          classNames='fade'>
-          <div ref={nodeRef}>
-            {mode === 'full' || mode === 'toTitle' ? (
-              <NavGrid
-                goToContent={scrollToContent}
-                setMode={setMode}
-                mode={mode}
-                active={active}
-                setActive={setActive}
-              />
-            ) : (
-              <h2>HOME</h2>
-            )}
-          </div>
-        </CSSTransition>
-      </SwitchTransition>
-    </header>
+    <>
+      {mode === 'title' && <button onClick={reverse}>Menu</button>}
+      <header className={`header-container theme-${active}`}>
+        <SwitchTransition>
+          {/* @ts-ignore */}
+          <CSSTransition
+            mode='in-out'
+            key={mode === 'full' || mode === 'toTitle' ? 'full' : 'title'}
+            nodeRef={nodeRef}
+            timeout={1000}
+            // @ts-ignore
+            // addEndListener={(node: any, done: any) => node.addEventListener('transitionend', done, false)}
+            classNames='fade'>
+            <div ref={nodeRef} style={{ width: '100%' }}>
+              {mode === 'full' || mode === 'toTitle' ? (
+                <NavGrid
+                  goToContent={scrollToContent}
+                  setMode={setMode}
+                  mode={mode}
+                  active={active}
+                  setActive={setActive}
+                />
+              ) : (
+                <div className='title-container'>
+                  <h2>{loc.pathname}</h2>
+                </div>
+              )}
+            </div>
+          </CSSTransition>
+        </SwitchTransition>
+      </header>
+    </>
   );
 }
 

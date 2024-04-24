@@ -28,7 +28,7 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
   console.log('🚀 ~ NavGrid ~ mode:', mode);
 
   // todo: is there a reason to do this? Might be better to just target ::hover in css
-  const [hovered, setHovered] = useState<GridLinkProps['type'] | null>(null);
+  const [hovered, setHovered] = useState<GridLinkProps['presetArea'] | null>(null);
 
   const navRef = useRef(null);
   const configContainerClasses = () => {
@@ -41,7 +41,7 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
 
     if (mode === 'toTitle') {
       classes.push('to-title');
-    }
+    } // todo is this class used?
 
     return classes.join(' ');
   };
@@ -51,15 +51,8 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
     setMode('full');
   };
 
-  // todo: wire up to usr scroll top
-  const reverse = (e: any) => {
-    e.preventDefault();
-    if (mode === 'toTitle' || mode === 'title') {
-      setMode('full');
-    }
-  };
-
   const handleClick: GridLinkProps['onClick'] = (e, aArea) => {
+    console.log('🚀 ~ NavGrid ~ e:', e);
     setActive(aArea); // set the active area
     if (mode === 'full') {
       setMode('toTitle'); // set header mode (link changes to header)
@@ -74,10 +67,6 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
 
   return (
     <>
-      <button onClick={resetDefaultState}>Default state</button>
-
-      <button onClick={reverse}>Reverse</button>
-
       <nav
         className={classNames('nav-container', configContainerClasses())}
         ref={navRef}
@@ -85,7 +74,6 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
         <GridContainer presetName='grid_3_3' extraClasses={['nav-list-container']}>
           <GridLink
             linkTo='home'
-            type='primary'
             presetArea='a'
             setHoveredItem={setHovered}
             onClick={handleClick}
@@ -95,7 +83,6 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
 
           <GridLink
             linkTo='projects'
-            type='secondary'
             presetArea='b'
             setHoveredItem={setHovered}
             onClick={handleClick}
@@ -104,7 +91,6 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
           />
           <GridLink
             linkTo='page-3'
-            type='tertiary'
             presetArea='c'
             setHoveredItem={setHovered}
             onClick={handleClick}
@@ -113,7 +99,6 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
           />
           <GridLink
             linkTo='page-4'
-            type='primary'
             presetArea='d'
             setHoveredItem={setHovered}
             onClick={handleClick}
@@ -122,7 +107,6 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
           />
           <GridLink
             linkTo='page-5'
-            type='secondary'
             presetArea='e'
             setHoveredItem={setHovered}
             onClick={handleClick}
@@ -131,7 +115,6 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
           />
           <GridLink
             linkTo='page-6'
-            type='tertiary'
             presetArea='f'
             setHoveredItem={setHovered}
             onClick={handleClick}

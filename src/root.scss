@@ -41,6 +41,24 @@ $spcr-sm: 0.6rem;
 $spcr-md: 1.25rem;
 $spcr-lg: 3rem;
 
+$grid-areas: (
+  a: tile_01,
+  b: tile_02,
+  c: tile_03,
+  d: tile_04,
+  e: tile_05,
+  f: tile_06,
+);
+
+$themes: (
+  a: theme-primary,
+  b: theme-secondary,
+  c: theme-tertiary,
+  d: theme-primary,
+  e: theme-secondary,
+  f: theme-tertiary,
+);
+
 @include media('>tablet', '<950px') {
 }
 

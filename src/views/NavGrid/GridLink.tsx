@@ -1,7 +1,6 @@
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ItemAuto } from 'src/components/Grid';
-import { ThemeNames } from 'src/types/types';
 
 import './index.scss';
 import { Mode as HeaderMode } from '../../components/Header';
@@ -15,7 +14,7 @@ const areaTransitionDelays = {
   f: '1500ms',
 };
 
-function GridLink({ linkTo, type, presetArea, setHoveredItem, onClick, isActive, mode }: Props) {
+function GridLink({ linkTo, presetArea, setHoveredItem, onClick, isActive, mode }: Props) {
   const [containerClasses, setContainerClasses] = useState(['full']);
 
   useEffect(() => {
@@ -52,7 +51,7 @@ function GridLink({ linkTo, type, presetArea, setHoveredItem, onClick, isActive,
 
   return (
     <ItemAuto
-      type={type}
+      color={presetArea}
       extraClasses={[`area-${presetArea} ${isActive ? 'active' : ''} ${containerClasses.join(' ')}`]}
       onHover={(name) => name && setHoveredItem(name)}>
       <NavLink
@@ -81,9 +80,8 @@ export default GridLink;
 
 export type Props = {
   linkTo: '/' | 'home' | 'projects' | 'page-3' | 'page-4' | 'page-5' | 'page-6';
-  type: ThemeNames; // style type
   presetArea: 'a' | 'b' | 'c' | 'd' | 'e' | 'f'; // preset areas defined in GridContainer
-  setHoveredItem: React.Dispatch<React.SetStateAction<Props['type']>>;
+  setHoveredItem: React.Dispatch<React.SetStateAction<Props['presetArea']>>;
   onClick: (e: MouseEvent<HTMLAnchorElement>, aArea: Props['presetArea']) => void;
   isActive: boolean;
   mode: HeaderMode;

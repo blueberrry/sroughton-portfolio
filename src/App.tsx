@@ -1,5 +1,13 @@
-import React, { useRef } from 'react';
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Outlet,
+  useNavigation,
+  useLocation,
+} from 'react-router-dom';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 'react-scroll-parallax';
 
 import Home from 'src/views/Home';

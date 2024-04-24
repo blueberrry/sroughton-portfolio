@@ -1,4 +1,4 @@
-@import '../../styles/style.scss';
+@import '../../root.scss';
 
 $cols-3: repeat(3, 1fr) !default;
 $cols-6: repeat(6, 1fr) !default;
@@ -108,12 +108,12 @@ ul.grid-container {
   }
 }
 
-ul.button-grid {
+ul.grid-3-3 {
   @include btn-grid-lr;
-  width: 800px;
-  height: 600px;
-  max-width: 47rem;
-  margin: 0 auto;
+  // width: 800px;
+  // height: 600px;
+  // max-width: 47rem;
+  // margin: 0 auto;
   background-color: transparent; // todo: should always have colour
   &.theme-primary {
     @extend .theme-primary;

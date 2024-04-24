@@ -1,11 +1,10 @@
 import React from 'react';
-import { Main } from 'src/components/Main';
 
 function Projects() {
   return (
-    <Main>
+    <section>
       <h1> Projects</h1>
-    </Main>
+    </section>
   );
 }
 

@@ -1,13 +1,9 @@
 // TODO: Rename to routes/add routing
 
 import React, { useState } from 'react';
-import { GridContainer, ItemAuto } from '../../components/Grid/';
 //import Img from '../../assets/landscape.jpg';
 
 import './index.scss';
-import { ItemAutoProps } from 'src/components/Grid/ItemAuto';
-import { Main } from 'src/components/Main';
-
 
 /**
  * Hover to focus
@@ -20,9 +16,9 @@ function Home() {
   // const containerBgClass = true ? `theme-${hoveredItem}` : '';
 
   return (
-    <Main>
+    <section>
       <h1>Home page</h1>
-    </Main>
+    </section>
   );
 }
 

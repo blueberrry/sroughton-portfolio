@@ -33,10 +33,14 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
   const navRef = useRef(null);
   const configContainerClasses = () => {
     let classes = [];
+
+    if (!active) {
+      // todo: needs initial bg colour
+    }
     if (hovered) {
       classes.push(`theme-${hovered}`);
     } else {
-      classes.push('theme-primary');
+      classes.push(`theme-${active}`);
     }
 
     if (mode === 'toTitle') {

@@ -12,19 +12,10 @@ main.main-view {
   align-items: center;
   background-color: pink;
 
-  &.theme-primary {
-    @extend .theme-primary;
-  }
-
-  &.theme-secondary {
-    @extend .theme-secondary;
-  }
-
-  &.theme-tertiary {
-    @extend .theme-tertiary;
-  }
-
-  &.theme-info {
-    @extend .theme-info;
+  @each $theme, $value in $themes {
+    // applies bg colour to header on navigation event
+    &.theme-#{$theme} {
+      @extend .#{$value};
+    }
   }
 }

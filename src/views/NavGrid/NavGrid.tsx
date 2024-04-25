@@ -10,6 +10,7 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import GridLink, { Props as GridLinkProps } from './GridLink';
 import { Mode as HeaderMode } from 'src/components/Header';
+import { getThemeClass } from 'src/utils/getThemeClass';
 
 /**
  * Hover to focus
@@ -38,9 +39,11 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
       // todo: needs initial bg colour
     }
     if (hovered) {
-      classes.push(`theme-${hovered}`);
+      const themeClass = getThemeClass(hovered);
+      classes.push(themeClass);
     } else {
-      classes.push(`theme-${active}`);
+      const themeClass = getThemeClass(active);
+      classes.push(themeClass);
     }
 
     if (mode === 'toTitle') {

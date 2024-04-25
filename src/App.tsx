@@ -1,14 +1,7 @@
-import React, { useEffect, useRef } from 'react';
-import {
-  Route,
-  createBrowserRouter,
-  createRoutesFromElements,
-  RouterProvider,
-  Outlet,
-  useNavigation,
-  useLocation,
-} from 'react-router-dom';
+import React, { useRef } from 'react';
+import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 'react-scroll-parallax';
+// import {Props} from ''
 
 import Home from 'src/views/Home';
 import Projects from 'src/views/Projects';
@@ -16,6 +9,7 @@ import Projects from 'src/views/Projects';
 import './root.scss';
 import { Main } from './components/Main';
 import HeaderSwitcher from './components/Header';
+import { useTheme } from './hooks/useTheme';
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
 //       then just render child comps
@@ -24,13 +18,16 @@ export function App() {
   // todo: useLayoutEffect
   const scrollRef = useRef(null) as any; // todo:
 
+  const { activeTheme, setActiveTheme } = useTheme();
+
   // todo: better way
   const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
+  // todo: theme in context vs prop drilling?
   return (
     <div className='parallax-container'>
-      <HeaderSwitcher />
-      <Main>
+      <HeaderSwitcher activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
+      <Main theme={activeTheme}>
         <Outlet />
       </Main>
     </div>

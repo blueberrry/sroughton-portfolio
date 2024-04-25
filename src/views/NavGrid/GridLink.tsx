@@ -51,7 +51,7 @@ function GridLink({ linkTo, presetArea, setHoveredItem, onClick, isActive, mode 
 
   return (
     <ItemAuto
-      color={presetArea}
+      theme={presetArea}
       extraClasses={[`area-${presetArea} ${isActive ? 'active' : ''} ${containerClasses.join(' ')}`]}
       onHover={(name) => name && setHoveredItem(name)}>
       <NavLink

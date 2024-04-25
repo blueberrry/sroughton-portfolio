@@ -17,7 +17,7 @@ $breakpoints: (
 
 div#app-root,
 .parallax-container {
-  height: -webkit-fill-available;
+  height: -webkit-fill-available; // todo: janky animations
   // prevents whitespace caused by parallax elements
 }
 

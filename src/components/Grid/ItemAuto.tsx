@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import useHover from 'src/hooks/useHover';
-import { Colors, ThemeNames } from 'src/types/types';
+import { ThemeNames } from 'src/types/types';
 
-export function ItemAuto({ color = 'a', onClick, onHover, extraClasses, children }: ItemAutoProps) {
+export function ItemAuto({ theme = 'a', onClick, onHover, extraClasses, children }: ItemAutoProps) {
   /**
    * Grid item pseudo
    *
@@ -18,11 +18,11 @@ export function ItemAuto({ color = 'a', onClick, onHover, extraClasses, children
 
   const { isHovered, bind } = useHover<HTMLLIElement>();
 
-  const isHoveredClass = isHovered ? `item-hovered-${color}` : ``;
+  const isHoveredClass = isHovered ? `item-hovered-${theme}` : ``;
 
   useEffect(() => {
     if (onHover && isHovered) {
-      onHover(color);
+      onHover(theme);
     }
   }, [isHovered]);
 
@@ -34,8 +34,8 @@ export function ItemAuto({ color = 'a', onClick, onHover, extraClasses, children
 }
 
 export type ItemAutoProps = {
-  onHover?: (hvr: ItemAutoProps['color']) => void;
-  color?: Colors;
+  onHover?: (hvr: ItemAutoProps['theme']) => void;
+  theme?: ThemeNames;
   onClick?: () => void;
   extraClasses?: string[];
   children?: React.ReactNode;

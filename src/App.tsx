@@ -1,23 +1,24 @@
-import React, { useRef } from 'react';
-import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
+import React, { useEffect, useRef } from 'react';
+import {
+  Route,
+  createBrowserRouter,
+  createRoutesFromElements,
+  RouterProvider,
+  Outlet,
+  useNavigation,
+  useLocation,
+} from 'react-router-dom';
+import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 'react-scroll-parallax';
 
 import Home from 'src/views/Home';
 import Projects from 'src/views/Projects';
 
-import './styles/theme/default.scss';
-import NavGrid from './views/NavGrid/NavGrid';
-
+import './root.scss';
+import { Main } from './components/Main';
+import HeaderSwitcher from './components/Header';
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
 //       then just render child comps
-/**
- * * Pseudo
- * 0 Start loading in page
- * 1 make other grid items dissapear one at a time (random order)
- * 2 transition selected item to be full width of container (break out)
- *
- * 3 fade scroll in subsequent page OR fade in + up
- */
 
 export function App() {
   // todo: useLayoutEffect
@@ -27,14 +28,11 @@ export function App() {
   const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
   return (
-    <div>
-      <div id='nav'>
-        <button onClick={scrollToContent}>Scroll</button>
-        <NavGrid goToContent={scrollToContent} />
-      </div>
-      <div id='nested-routes' ref={scrollRef}>
+    <div className='parallax-container'>
+      <HeaderSwitcher />
+      <Main>
         <Outlet />
-      </div>
+      </Main>
     </div>
   );
 }

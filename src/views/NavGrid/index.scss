@@ -1,4 +1,4 @@
-@import '../../styles/style.scss';
+@import '../../root.scss';
 
 $animation-duration: 600;
 
@@ -9,7 +9,7 @@ $last-animation-delay: nth($animation-delays, length($animation-delays));
 
 // todo: scss?
 
-@keyframes fadeOut {
+@keyframes fadeHideBlock {
   from {
     opacity: 1;
     display: block;
@@ -20,7 +20,7 @@ $last-animation-delay: nth($animation-delays, length($animation-delays));
   }
 }
 
-@keyframes fadeIn {
+@keyframes fadeShowBlock {
   0% {
     opacity: 0;
     display: none;
@@ -34,25 +34,49 @@ $last-animation-delay: nth($animation-delays, length($animation-delays));
   }
 }
 
+@keyframes fadeHideGrid {
+  from {
+    display: grid;
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    // display: none;
+  }
+}
+
+@keyframes fadeShowGrid {
+  0% {
+    // display: none;
+    opacity: 0;
+  }
+  1% {
+    display: grid;
+  }
+  100% {
+    opacity: 1;
+    display: grid;
+  }
+}
+
 @keyframes spanItem {
   0% {
     opacity: 1;
   }
 
   25% {
-    opacity: 0;
+    opacity: 1;
   }
 
   75% {
-    grid-column: 1 / -1; // span entire grid
-    grid-row: 1 / -1; // span
-    width: 100%;
+    // grid-column: 1 / -1; // span entire grid
+    // grid-row: 1 / 6; // span
+    opacity: 0;
   }
   100% {
-    opacity: 1;
-    grid-column: 1 / -1;
-    grid-row: 1 / -1;
-    width: 100%;
+    opacity: 0;
+    // grid-column: 1 / -1;
+    // grid-row: 1 / -6;
   }
 }
 
@@ -81,48 +105,80 @@ $last-animation-delay: nth($animation-delays, length($animation-delays));
 // }
 
 nav.nav-container {
+  //position: fixed;
   width: 100%;
   height: 100%;
   margin: 0;
   padding: $spcr-md;
-  transition: all 0.6s ease-in; // default fallback transition
+  //transition: all 0.6s ease-in; // default fallback transition
   display: flex;
   justify-content: center;
   align-items: center;
+  // background: url(https://picsum.photos/g/1921/1081?random) top center;
 
-  &.theme-primary {
+  // background-repeat: no-repeat;
+
+  // background-size: 100%;
+  //margin-top: -7rem;
+  //height: 100vh;
+
+  .theme-a {
     @extend .theme-primary;
   }
 
-  &.theme-secondary {
+  .theme-b {
     @extend .theme-secondary;
   }
 
-  &.theme-tertiary {
+  .theme-c {
     @extend .theme-tertiary;
   }
 
-  &.theme-info {
+  .theme-d {
     @extend .theme-info;
   }
 
-  ul.grid-container {
-    li.item-auto {
-      &.full {
-        opacity: 0; // final opacity when transitioning/initial for reverse
-      }
+  .theme-e {
+    @extend .theme-primary;
+  }
 
-      &.header {
-        opacity: 1; // final opacity when transitioning/initial for reverse
-      }
+  .theme-f {
+    @extend .theme-secondary;
+  }
+
+  .theme-g {
+    @extend .theme-tertiary;
+  }
+
+  &.to-title {
+    > ul.nav-list-container {
+      // transition out last
+      animation: fadeHideGrid #{$animation-duration}ms ease-out #{$last-animation-delay + 250}ms;
+      animation-fill-mode: forwards;
+      // transition in first
+    }
+  }
+
+  > ul.nav-list-container {
+    // @include btn-grid-lr;
+    // width: 800px;
+    // height: 600px;
+    // max-width: 47rem;
+    // margin: 0 auto;
+    background-color: transparent; // todo: should always have colour
+
+    // animation: fadeShowGrid #{$animation-duration}ms ease-in 10ms;
+    // animation-fill-mode: forwards;
+
+    > li.item-auto {
+      // opacity: 0;
+
+      // &.to-nav {
+      //   opacity: 0; // final opacity when transitioning/initial for reverse
+      // }
 
       &.active {
         border: 2px solid red;
-      }
-
-      &.active-transition-out {
-        animation: spanItem #{$animation-duration}ms ease-in #{$last-animation-delay}ms;
-        animation-fill-mode: forwards;
       }
 
       &.active-transition-in {
@@ -131,28 +187,38 @@ nav.nav-container {
         animation-fill-mode: backwards;
       }
 
-      // Loop through the transition durations
+      &.active-transition-out {
+        animation: spanItem #{$animation-duration}ms ease-in #{$last-animation-delay}ms;
+        animation-fill-mode: forwards;
+      }
+
       @each $delay in $animation-delays {
         &.transitioning-out-#{$delay}ms {
           // opacity: 0;
-          animation: fadeOut #{$animation-duration}ms ease-out #{$delay}ms;
+          animation: fadeHideBlock #{$animation-duration}ms ease-out #{$delay}ms;
           animation-fill-mode: forwards;
         }
       }
 
-      @each $delay in $animation-delays {
-        &.transitioning-in-#{$delay}ms {
-          animation: fadeIn #{$animation-duration}ms ease-out #{$delay}ms;
-          animation-fill-mode: forwards;
+      &.full {
+        opacity: 0; // final opacity when transitioning/initial for reverse
+        display: block;
+        @each $delay in $animation-delays {
+          &.transitioning-in-#{$delay}ms {
+            animation: fadeShowBlock #{$animation-duration}ms ease-out #{$delay}ms;
+            animation-fill-mode: forwards;
+          }
         }
       }
+
+      // Loop through the transition durations
 
       // react-router-dom NavLink
-      a.grid-link-content {
+      a.nav-link-content {
         display: block;
         width: 100%;
         height: 100%;
-        background: transparent; // todo: should always have colour
+        background: transparent;
       }
     }
   }

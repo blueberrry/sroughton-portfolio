@@ -1,10 +1,9 @@
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ItemAuto } from 'src/components/Grid';
-import { ThemeNames } from 'src/types/types';
 
 import './index.scss';
-import { Mode } from './NavGrid';
+import { Mode as HeaderMode } from '../../components/Header';
 
 const areaTransitionDelays = {
   a: '250ms',
@@ -15,36 +14,33 @@ const areaTransitionDelays = {
   f: '1500ms',
 };
 
-function GridLink({ linkTo, type, presetArea, setHoveredItem, onClick, isActive, mode }: Props) {
-  const [containerClasses, setContainerClasses] = useState('');
+function GridLink({ linkTo, presetArea, setHoveredItem, onClick, isActive, mode }: Props) {
+  const [containerClasses, setContainerClasses] = useState(['full']);
 
   useEffect(() => {
     if (!mode) {
-      setContainerClasses('');
+      setContainerClasses([]);
     }
 
-    if (mode === 'header') {
+    if (mode === 'toTitle') {
       if (isActive) {
         // containerClasses = isActive ? 'show' : '';
-        // todo: add transitioning classes to active
-        setContainerClasses('active-transition-out');
+        setContainerClasses(['active-transition-out']);
       }
       if (!isActive) {
-        // todo: reverse
         // const areas = ['a', 'b', 'c', 'd', 'e', 'f'];
 
-        const classes = `header transitioning-out-${areaTransitionDelays[presetArea]}`;
-        setContainerClasses(classes);
+        setContainerClasses([`transitioning-out-${areaTransitionDelays[presetArea]}`]);
       }
     }
 
     if (mode === 'full') {
+      //setContainerClasses(['full']);
       if (isActive) {
-        setContainerClasses('active-transition-in');
+        setContainerClasses(['active-transition-in']);
       }
       if (!isActive) {
-        const classes = `full transitioning-in-${areaTransitionDelays[presetArea]}`;
-        setContainerClasses(classes);
+        setContainerClasses((prev) => [...prev, `transitioning-in-${areaTransitionDelays[presetArea]}`]);
       }
     }
 
@@ -55,8 +51,8 @@ function GridLink({ linkTo, type, presetArea, setHoveredItem, onClick, isActive,
 
   return (
     <ItemAuto
-      type={type}
-      extraClasses={[`area-${presetArea} ${isActive ? 'active' : ''} ${containerClasses}`]}
+      color={presetArea}
+      extraClasses={[`area-${presetArea} ${isActive ? 'active' : ''} ${containerClasses.join(' ')}`]}
       onHover={(name) => name && setHoveredItem(name)}>
       <NavLink
         to={linkTo}
@@ -68,7 +64,7 @@ function GridLink({ linkTo, type, presetArea, setHoveredItem, onClick, isActive,
           //   goToContent();
           // }
           return [
-            'grid-link-content',
+            'nav-link-content',
             // isPending ? 'pending' : '', // todo: unused
             // isActive ? 'active' : 'inactive', // if active class, start animation
             // isTransitioning ? 'transitioning' : '',
@@ -84,10 +80,9 @@ export default GridLink;
 
 export type Props = {
   linkTo: '/' | 'home' | 'projects' | 'page-3' | 'page-4' | 'page-5' | 'page-6';
-  type: ThemeNames; // style type
   presetArea: 'a' | 'b' | 'c' | 'd' | 'e' | 'f'; // preset areas defined in GridContainer
-  setHoveredItem: React.Dispatch<React.SetStateAction<Props['type']>>;
+  setHoveredItem: React.Dispatch<React.SetStateAction<Props['presetArea']>>;
   onClick: (e: MouseEvent<HTMLAnchorElement>, aArea: Props['presetArea']) => void;
   isActive: boolean;
-  mode: Mode;
+  mode: HeaderMode;
 };

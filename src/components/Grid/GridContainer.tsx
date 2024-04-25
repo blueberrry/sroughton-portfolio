@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 
 import './index.scss';
 
-export function GridContainer({ presetName = 'button', extraClasses = [''], children }: GridContainerProps) {
+export function GridContainer({ presetName = 'grid_3_3', extraClasses = [''], children }: GridContainerProps) {
   // todo: row props
   // todo: col props
   // todo: add defined grid component container (optional at this point)
+
+  const gridRef = useRef<HTMLUListElement>(null);
 
   const { gridClasses } = useGridContainerClasses({
     presetName,
@@ -14,7 +16,20 @@ export function GridContainer({ presetName = 'button', extraClasses = [''], chil
     extraClasses,
   });
 
-  return <ul className={gridClasses}>{children}</ul>;
+  function handleTransitionEnd(e: any) {
+    return;
+    if (gridRef.current) {
+      if (e.target === gridRef.current) {
+      }
+      console.log('grid container ref transition ended', e);
+    }
+  }
+
+  return (
+    <ul className={gridClasses} onAnimationEnd={handleTransitionEnd} ref={gridRef}>
+      {children}
+    </ul>
+  );
 }
 
 type GridContainerProps = {
@@ -62,7 +77,7 @@ export const useGridContainerClasses = ({
   };
 };
 
-const GRID_PRESETS_CONFIG = { button: 'button-grid', grid2: 'grid-2' };
+const GRID_PRESETS_CONFIG = { grid_3_3: 'grid-3-3', grid2: 'grid-2' };
 
 type GridPresetName = keyof typeof GRID_PRESETS_CONFIG;
 

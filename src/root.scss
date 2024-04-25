@@ -1,8 +1,8 @@
 /* TODO: Create root colour vars */
 /* TODO: Create root spacing vars */
 
-@import '../../node_modules/include-media/dist/include-media.scss';
-@import './theme/default.scss';
+@import '../node_modules/include-media/dist/include-media.scss';
+@import './styles/theme/default.scss';
 
 $breakpoints: (
   phone: 640px,
@@ -13,6 +13,12 @@ $breakpoints: (
 * {
   font-family: 'Saira', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica Neue, Arial,
     Noto Sans, sans-serif;
+}
+
+div#app-root,
+.parallax-container {
+  height: -webkit-fill-available;
+  // prevents whitespace caused by parallax elements
 }
 
 // header {
@@ -34,6 +40,24 @@ p {
 $spcr-sm: 0.6rem;
 $spcr-md: 1.25rem;
 $spcr-lg: 3rem;
+
+$grid-areas: (
+  a: tile_01,
+  b: tile_02,
+  c: tile_03,
+  d: tile_04,
+  e: tile_05,
+  f: tile_06,
+);
+
+$themes: (
+  a: theme-primary,
+  b: theme-secondary,
+  c: theme-tertiary,
+  d: theme-primary,
+  e: theme-secondary,
+  f: theme-tertiary,
+);
 
 @include media('>tablet', '<950px') {
 }

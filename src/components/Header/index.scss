@@ -1,0 +1,66 @@
+@import '../../root.scss';
+
+.header-container {
+  height: -webkit-fill-available; // todo: janky animations on scroll, replace with something better
+  height: 100vh; // initial component height
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@each $theme, $value in $themes {
+  .theme-#{$theme} {
+    // Check if there's a theme for this area and apply hover style
+
+    @extend .#{$value};
+  }
+}
+
+.theme-a {
+  @extend .theme-primary;
+}
+
+.theme-b {
+  @extend .theme-secondary;
+}
+
+.theme-c {
+  @extend .theme-tertiary;
+}
+
+.theme-d {
+  @extend .theme-info;
+}
+
+.theme-e {
+  @extend .theme-primary;
+}
+
+.theme-f {
+  @extend .theme-secondary;
+}
+
+.theme-g {
+  @extend .theme-tertiary;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+.fade-exit {
+  opacity: 1;
+}
+.fade-enter-active {
+  opacity: 1;
+}
+.fade-exit-active {
+  opacity: 0;
+}
+.fade-enter-active,
+.fade-exit-active {
+  transition: opacity 500ms;
+}
+
+.title-container {
+  height: 100vh;
+}

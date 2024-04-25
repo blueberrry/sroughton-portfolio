@@ -6,11 +6,17 @@ main.main-view {
   min-height: 100vh;
   margin: 0;
   padding: $spcr-md;
-  transition: all 0.6s ease-in;
+  // transition: all 0.6s ease-in;
+  // transform: translateY(0vh);
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: pink;
+  transition: all 0.6s ease;
+
+  box-shadow: $top-shadow;
+  &.translate-up {
+    //transform: translateY(-50vh);
+  }
 
   @each $theme, $value in $themes {
     // applies bg colour to header on navigation event

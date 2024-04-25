@@ -1,10 +1,5 @@
 @import '../../root.scss';
 
-$animation-duration: 600;
-
-// transition delays (ms)
-$animation-delays: 250, 500, 750, 1000, 1250, 1500;
-
 $last-animation-delay: nth($animation-delays, length($animation-delays));
 
 // todo: scss?

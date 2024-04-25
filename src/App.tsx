@@ -1,15 +1,16 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 'react-scroll-parallax';
 // import {Props} from ''
 
 import Home from 'src/views/Home';
 import Projects from 'src/views/Projects';
 
-import './root.scss';
 import { Main } from './components/Main';
 import HeaderSwitcher from './components/Header';
 import { useTheme } from './hooks/useTheme';
+import './root.scss';
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
 //       then just render child comps
@@ -17,19 +18,43 @@ import { useTheme } from './hooks/useTheme';
 export function App() {
   // todo: useLayoutEffect
   const scrollRef = useRef(null) as any; // todo:
+  const mainContainerRef = useRef(null);
 
+  const [transitionMainUp, setMainTransitionUp] = useState<boolean>(false);
+  console.log('🚀 ~ App ~ mainTransitionDir:', transitionMainUp);
   const { activeTheme, setActiveTheme } = useTheme();
 
   // todo: better way
   const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
+  function transitionMain(direction: any) {
+    if (direction === 'up') {
+      console.log('transition up');
+      setMainTransitionUp(true);
+    }
+
+    if (direction === 'down') {
+      console.log('transition down');
+      setMainTransitionUp(false);
+    }
+  }
+
   // todo: theme in context vs prop drilling?
   return (
     <div className='parallax-container'>
-      <HeaderSwitcher activeTheme={activeTheme} setActiveTheme={setActiveTheme} />
-      <Main theme={activeTheme}>
-        <Outlet />
-      </Main>
+      <HeaderSwitcher activeTheme={activeTheme} setActiveTheme={setActiveTheme} transitionMain={transitionMain} />
+      <CSSTransition
+        nodeRef={mainContainerRef}
+        in={transitionMainUp}
+        timeout={200}
+        classNames='main-container'
+        unmountOnExit={true}>
+        <div ref={mainContainerRef}>
+          <Main theme={activeTheme}>
+            <Outlet />
+          </Main>
+        </div>
+      </CSSTransition>
     </div>
   );
 }

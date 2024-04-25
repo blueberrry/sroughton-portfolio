@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
 import { NavGrid } from 'src/views/NavGrid';
@@ -10,12 +10,18 @@ type Props = {
   scrollToContent?: any;
   activeTheme: ThemeNames | null;
   setActiveTheme: React.Dispatch<React.SetStateAction<Props['activeTheme']>>;
+  transitionMain?: any;
 };
 
 export type Mode = 'full' | 'toTitle' | 'title' | null;
 
 // todo: better to have a function getActiveThemeClass(selected => `theme-${selected}
-function HeaderSwitcher({ scrollToContent = () => {}, activeTheme: active, setActiveTheme: setActive }: Props) {
+function HeaderSwitcher({
+  scrollToContent = () => {},
+  activeTheme: active,
+  setActiveTheme: setActive,
+  transitionMain,
+}: Props) {
   const [mode, setMode] = useState<Mode>('full');
 
   const loc = useLocation();
@@ -31,6 +37,19 @@ function HeaderSwitcher({ scrollToContent = () => {}, activeTheme: active, setAc
       setMode('full');
     }
   };
+
+  useEffect(() => {
+    if (transitionMain) {
+      if (mode === 'title') {
+        //callback
+        transitionMain('up');
+      }
+
+      if (mode === 'full') {
+        transitionMain('down');
+      }
+    }
+  }, [mode]);
 
   return (
     <>

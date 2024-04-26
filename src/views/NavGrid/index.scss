@@ -2,8 +2,7 @@
 
 $last-animation-delay: nth($animation-delays, length($animation-delays));
 
-// todo: scss?
-
+// todo: scss function for keyframes
 @keyframes fadeHideBlock {
   from {
     opacity: 1;
@@ -36,7 +35,6 @@ $last-animation-delay: nth($animation-delays, length($animation-delays));
   }
   to {
     opacity: 0;
-    // display: none;
   }
 }
 
@@ -144,8 +142,12 @@ nav.nav-container {
     // animation-fill-mode: forwards;
 
     > li.item-auto {
-      &.active {
+      &.item-active {
         border: 2px solid red;
+      }
+
+      &.item-disabled {
+        pointer-events: none;
       }
 
       &.active-transition-in {

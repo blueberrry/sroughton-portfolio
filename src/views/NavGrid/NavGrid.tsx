@@ -9,8 +9,9 @@ import { NavLink } from 'react-router-dom';
 
 import classNames from 'classnames';
 import GridLink, { Props as GridLinkProps } from './GridLink';
-import { Mode as HeaderMode } from 'src/components/Header';
+import { Mode as HeaderMode } from 'src/App';
 import { getThemeClass } from 'src/utils/getThemeClass';
+import { Returns as UseThemeReturns } from 'src/hooks/useTheme';
 
 /**
  * Hover to focus
@@ -22,27 +23,24 @@ export type Props = {
   goToContent: any; //todo:
   setMode: React.Dispatch<React.SetStateAction<HeaderMode>>; // todo: Header could have generic type
   mode: HeaderMode;
-  active: any;
-  setActive: any;
+  activeTheme: UseThemeReturns['activeTheme'];
+  setActiveTheme: UseThemeReturns['setActiveTheme'];
 };
-function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
-  console.log('🚀 ~ NavGrid ~ mode:', mode);
+function NavGrid({ goToContent, setMode, mode, activeTheme, setActiveTheme }: Props) {
+  const navRef = useRef(null);
 
   // todo: is there a reason to do this? Might be better to just target ::hover in css
   const [hovered, setHovered] = useState<GridLinkProps['presetArea'] | null>(null);
 
-  const navRef = useRef(null);
-  const configContainerClasses = () => {
+  // todo: memoise?
+  function configContainerClasses() {
     let classes = [];
 
-    if (!active) {
-      // todo: needs initial bg colour
-    }
     if (hovered) {
       const themeClass = getThemeClass(hovered);
       classes.push(themeClass);
     } else {
-      const themeClass = getThemeClass(active);
+      const themeClass = getThemeClass(activeTheme);
       classes.push(themeClass);
     }
 
@@ -51,7 +49,7 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
     } // todo is this class used?
 
     return classes.join(' ');
-  };
+  }
 
   const resetDefaultState = () => {
     setHovered(null);
@@ -59,8 +57,9 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
   };
 
   const handleClick: GridLinkProps['onClick'] = (e, aArea) => {
-    console.log('🚀 ~ NavGrid ~ e:', e);
-    setActive(aArea); // set the active area
+    if (setActiveTheme) {
+      setActiveTheme(aArea); // set the active area
+    }
     if (mode === 'full') {
       setMode('toTitle'); // set header mode (link changes to header)
     }
@@ -84,7 +83,7 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
             presetArea='a'
             setHoveredItem={setHovered}
             onClick={handleClick}
-            isActive={active === 'a'}
+            isActive={activeTheme === 'a'}
             mode={mode}
           />
 
@@ -93,7 +92,7 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
             presetArea='b'
             setHoveredItem={setHovered}
             onClick={handleClick}
-            isActive={active === 'b'}
+            isActive={activeTheme === 'b'}
             mode={mode}
           />
           <GridLink
@@ -101,7 +100,7 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
             presetArea='c'
             setHoveredItem={setHovered}
             onClick={handleClick}
-            isActive={active === 'c'}
+            isActive={activeTheme === 'c'}
             mode={mode}
           />
           <GridLink
@@ -109,7 +108,7 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
             presetArea='d'
             setHoveredItem={setHovered}
             onClick={handleClick}
-            isActive={active === 'd'}
+            isActive={activeTheme === 'd'}
             mode={mode}
           />
           <GridLink
@@ -117,7 +116,7 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
             presetArea='e'
             setHoveredItem={setHovered}
             onClick={handleClick}
-            isActive={active === 'e'}
+            isActive={activeTheme === 'e'}
             mode={mode}
           />
           <GridLink
@@ -125,7 +124,7 @@ function NavGrid({ goToContent, setMode, mode, active, setActive }: Props) {
             presetArea='f'
             setHoveredItem={setHovered}
             onClick={handleClick}
-            isActive={active === 'f'}
+            isActive={activeTheme === 'f'}
             mode={mode}
           />
         </GridContainer>

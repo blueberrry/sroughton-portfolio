@@ -3,9 +3,9 @@ import { NavLink } from 'react-router-dom';
 import { ItemAuto } from 'src/components/Grid';
 
 import './index.scss';
-import { Mode as HeaderMode } from '../../components/Header';
+import { Mode as HeaderMode } from '../../App';
 
-const areaTransitionDelays = {
+const CSS_TRANSITION_DELAYS = {
   a: '250ms',
   b: '500ms',
   c: '750ms',
@@ -24,23 +24,19 @@ function GridLink({ linkTo, presetArea, setHoveredItem, onClick, isActive, mode 
 
     if (mode === 'toTitle') {
       if (isActive) {
-        // containerClasses = isActive ? 'show' : '';
-        setContainerClasses(['active-transition-out']);
+        setContainerClasses(['item-active', 'item-disabled', 'active-transition-out']);
       }
       if (!isActive) {
-        // const areas = ['a', 'b', 'c', 'd', 'e', 'f'];
-
-        setContainerClasses([`transitioning-out-${areaTransitionDelays[presetArea]}`]);
+        setContainerClasses(['item-disabled', `transitioning-out-${CSS_TRANSITION_DELAYS[presetArea]}`]);
       }
     }
 
     if (mode === 'full') {
-      //setContainerClasses(['full']);
       if (isActive) {
-        setContainerClasses(['active-transition-in']);
+        setContainerClasses(['item-active', 'active-transition-in']);
       }
       if (!isActive) {
-        setContainerClasses((prev) => [...prev, `transitioning-in-${areaTransitionDelays[presetArea]}`]);
+        setContainerClasses((prev) => [...prev, `transitioning-in-${CSS_TRANSITION_DELAYS[presetArea]}`]);
       }
     }
 
@@ -52,23 +48,14 @@ function GridLink({ linkTo, presetArea, setHoveredItem, onClick, isActive, mode 
   return (
     <ItemAuto
       theme={presetArea}
-      extraClasses={[`area-${presetArea} ${isActive ? 'active' : ''} ${containerClasses.join(' ')}`]}
+      extraClasses={[`area-${presetArea} ${containerClasses.join(' ')}`]}
       onHover={(name) => name && setHoveredItem(name)}>
       <NavLink
         to={linkTo}
         onClick={(e) => onClick(e, presetArea)}
         className={() => {
           // { isActive, isPending, isTransitioning }
-          // if (isActive) {
-          //   // scroll
-          //   goToContent();
-          // }
-          return [
-            'nav-link-content',
-            // isPending ? 'pending' : '', // todo: unused
-            // isActive ? 'active' : 'inactive', // if active class, start animation
-            // isTransitioning ? 'transitioning' : '',
-          ].join(' ');
+          return ['nav-link-content'].join(' ');
         }}>
         {linkTo}
       </NavLink>

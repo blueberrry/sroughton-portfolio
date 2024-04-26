@@ -8,41 +8,59 @@ import Home from 'src/views/Home';
 import Projects from 'src/views/Projects';
 
 import { Main } from './components/Main';
-import HeaderSwitcher from './components/Header';
+import HeaderSwitcher from './components/HeaderSwitcher';
 import { useTheme } from './hooks/useTheme';
 import './root.scss';
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
 //       then just render child comps
+export type TranslateFuncArgs = 'up' | 'down';
+
+export type Mode = 'full' | 'toTitle' | 'title' | null;
 
 export function App() {
   // todo: useLayoutEffect
-  const scrollRef = useRef(null) as any; // todo:
+  // const scrollRef = useRef(null) as any; // todo:
   const mainContainerRef = useRef(null);
 
   const [transitionMainUp, setMainTransitionUp] = useState<boolean>(false);
-  console.log('🚀 ~ App ~ mainTransitionDir:', transitionMainUp);
-  const { activeTheme, setActiveTheme } = useTheme();
+
+  const { activeTheme, setActiveTheme, className: activeThemeClass } = useTheme();
+  console.log('🚀 ~ App ~ className:', activeThemeClass);
+  console.log('🚀 ~ App ~ activeTheme:', activeTheme);
+  console.log('🚀 ~ App ~ setActiveTheme:', setActiveTheme);
 
   // todo: better way
-  const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
+  // const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
-  function transitionMain(direction: any) {
+  function translateUp(direction: TranslateFuncArgs) {
     if (direction === 'up') {
       console.log('transition up');
       setMainTransitionUp(true);
+      //return true;
     }
 
     if (direction === 'down') {
       console.log('transition down');
       setMainTransitionUp(false);
+      //return false;
     }
+
+    console.warn('Function argument needs to be up or down');
+    //return undefined;
   }
 
   // todo: theme in context vs prop drilling?
   return (
     <div className='parallax-container'>
-      <HeaderSwitcher activeTheme={activeTheme} setActiveTheme={setActiveTheme} transitionMain={transitionMain} />
+      <button
+        onClick={(e) => {
+          e.preventDefault();
+          setActiveTheme('b');
+        }}>
+        Set theme
+      </button>
+      <HeaderSwitcher activeTheme={activeTheme} setActiveTheme={setActiveTheme} transitionMain={translateUp} />
       <CSSTransition
         nodeRef={mainContainerRef}
         in={transitionMainUp}
@@ -50,7 +68,7 @@ export function App() {
         classNames='main-container'
         unmountOnExit={true}>
         <div ref={mainContainerRef}>
-          <Main theme={activeTheme}>
+          <Main extraClasses={activeThemeClass ? [activeThemeClass] : []}>
             <Outlet />
           </Main>
         </div>

@@ -3,25 +3,20 @@ import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
 import { NavGrid } from 'src/views/NavGrid';
 import { ThemeNames } from 'src/types/types';
+import { Returns as UseThemeReturns } from 'src/hooks/useTheme';
 
 import './index.scss';
+import { Mode, TranslateFuncArgs } from 'src/App';
 
-type Props = {
+export type Props = {
   scrollToContent?: any;
-  activeTheme: ThemeNames | null;
-  setActiveTheme: React.Dispatch<React.SetStateAction<Props['activeTheme']>>;
-  transitionMain?: any;
+  activeTheme: UseThemeReturns['activeTheme'];
+  setActiveTheme: UseThemeReturns['setActiveTheme'];
+  transitionMain?: (arg: TranslateFuncArgs) => void;
 };
 
-export type Mode = 'full' | 'toTitle' | 'title' | null;
-
 // todo: better to have a function getActiveThemeClass(selected => `theme-${selected}
-function HeaderSwitcher({
-  scrollToContent = () => {},
-  activeTheme: active,
-  setActiveTheme: setActive,
-  transitionMain,
-}: Props) {
+function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveTheme, transitionMain }: Props) {
   const [mode, setMode] = useState<Mode>('full');
 
   const loc = useLocation();
@@ -54,7 +49,7 @@ function HeaderSwitcher({
   return (
     <>
       {mode === 'title' && <button onClick={reverse}>Menu</button>}
-      <header className={`header-container ${active ? `theme-${active}` : `theme-primary`}`}>
+      <header className={`header-container ${activeTheme ? `theme-${activeTheme}` : `theme-primary`}`}>
         <SwitchTransition>
           {/* @ts-ignore */}
           <CSSTransition
@@ -71,8 +66,8 @@ function HeaderSwitcher({
                   goToContent={scrollToContent}
                   setMode={setMode}
                   mode={mode}
-                  active={active}
-                  setActive={setActive}
+                  activeTheme={activeTheme}
+                  setActiveTheme={setActiveTheme}
                 />
               ) : (
                 <div className='title-container'>

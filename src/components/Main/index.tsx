@@ -5,10 +5,8 @@ import { getThemeClass } from 'src/utils/getThemeClass';
 
 import './index.scss';
 
-export function Main({ theme, extraClasses = [''], children }: Props) {
-  const themeClass = getThemeClass(theme);
-  console.log('🚀 ~ Main ~ themeClass:', themeClass);
-  return <main className={`main-view translate-up ${classNames(themeClass, extraClasses)}`}>{children}</main>;
+export function Main({ extraClasses = [''], children }: Props) {
+  return <main className={`main-view translate-up ${classNames(extraClasses)}`}>{children}</main>;
 }
 
 type Props = {

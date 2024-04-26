@@ -3,14 +3,14 @@ import { ThemeNames } from 'src/types/types';
 import { getThemeClass } from 'src/utils/getThemeClass';
 
 export type Returns = {
-  activeTheme: ThemeNames | null;
-  setActiveTheme: React.Dispatch<React.SetStateAction<Returns['activeTheme']>>;
+  theme: ThemeNames | null;
+  setTheme: React.Dispatch<React.SetStateAction<Returns['theme']>>;
   className: string;
 };
 export function useTheme(): Returns {
-  const [activeTheme, setActiveTheme] = useState<ThemeNames | null>(null);
+  const [theme, setTheme] = useState<ThemeNames | null>(null);
 
-  const className = getThemeClass(activeTheme);
+  const className = getThemeClass(theme);
 
-  return { activeTheme, setActiveTheme, className };
+  return { theme, setTheme, className };
 }

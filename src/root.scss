@@ -21,10 +21,6 @@ div#app-root,
   // prevents whitespace caused by parallax elements
 }
 
-// header {
-//   padding: 1rem;
-// }
-
 h1 {
   padding: 1.25rem 1.75rem;
 }
@@ -59,6 +55,52 @@ $themes: (
   f: theme-tertiary,
 );
 
+$theme-images: (
+  a: home,
+  b: projects,
+  c: 3,
+  d: 4,
+  e: 5,
+  f: 6,
+);
+
+.theme-img-home {
+  // todo: cannot find image
+  background: url('~src/assets/original.jpg') top center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.theme-img-projects {
+  background: url(https://picsum.photos/g/1921/1081?random) top center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.theme-img-3 {
+  background: url(https://picsum.photos/g/1921/1081?random) top center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.theme-img-4 {
+  background: url(https://picsum.photos/g/1921/1081?random) top center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.theme-img-5 {
+  background: url(https://picsum.photos/g/1921/1081?random) top center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+.theme-img-6 {
+  background: url(https://picsum.photos/g/1921/1081?random) top center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
 @include media('>tablet', '<950px') {
 }
 
@@ -79,6 +121,10 @@ $themes: (
 }
 
 $top-shadow: 0 0 20px #333; // todo: refine
+
+@mixin defaultTransition {
+  transition: all 0.6s ease-in; // default fallback transition
+}
 
 $animation-duration: 600;
 

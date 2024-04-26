@@ -1,11 +1,7 @@
 // TODO: Rename to routes/add routing
 
-import React, { useEffect, useRef, useState } from 'react';
-import { GridContainer, ItemAuto } from '../../components/Grid';
-//import Img from '../../assets/landscape.jpg';
-
-import './index.scss';
-import { NavLink } from 'react-router-dom';
+import React, { useRef } from 'react';
+import { GridContainer } from '../../components/Grid';
 
 import classNames from 'classnames';
 import GridLink, { Props as GridLinkProps } from './GridLink';
@@ -13,6 +9,7 @@ import { Mode as HeaderMode } from 'src/App';
 import { getThemeClass } from 'src/utils/getThemeClass';
 import { Returns as UseThemeReturns } from 'src/hooks/useTheme';
 
+import './index.scss';
 /**
  * Hover to focus
  * tap to reveal (animates grid, pulls up next screen)
@@ -21,19 +18,21 @@ import { Returns as UseThemeReturns } from 'src/hooks/useTheme';
 // todo: add props with children
 export type Props = {
   goToContent: any; //todo:
-  setMode: React.Dispatch<React.SetStateAction<HeaderMode>>; // todo: Header could have generic type
   mode: HeaderMode;
-  activeTheme: UseThemeReturns['activeTheme'];
-  setActiveTheme: UseThemeReturns['setActiveTheme'];
+  setMode: React.Dispatch<React.SetStateAction<HeaderMode>>; // todo: Header could have generic type
+  activeTheme: UseThemeReturns['theme'];
+  setActiveTheme: UseThemeReturns['setTheme'];
+  hovered: UseThemeReturns['theme'];
+  setHovered: UseThemeReturns['setTheme'];
 };
-function NavGrid({ goToContent, setMode, mode, activeTheme, setActiveTheme }: Props) {
+function NavGrid({ goToContent, mode, setMode, activeTheme, setActiveTheme, hovered, setHovered }: Props) {
   const navRef = useRef(null);
 
   // todo: is there a reason to do this? Might be better to just target ::hover in css
-  const [hovered, setHovered] = useState<GridLinkProps['presetArea'] | null>(null);
+  // const [hovered, setHovered] = useState<GridLinkProps['presetArea'] | null>(null);
 
   // todo: memoise?
-  function configContainerClasses() {
+  const configContainerClasses = () => {
     let classes = [];
 
     if (hovered) {
@@ -49,7 +48,7 @@ function NavGrid({ goToContent, setMode, mode, activeTheme, setActiveTheme }: Pr
     } // todo is this class used?
 
     return classes.join(' ');
-  }
+  };
 
   const resetDefaultState = () => {
     setHovered(null);
@@ -65,11 +64,11 @@ function NavGrid({ goToContent, setMode, mode, activeTheme, setActiveTheme }: Pr
     }
   };
 
-  function handleFinalCSSTransition(e: any) {
+  const handleFinalCSSTransition = (e: any) => {
     if (e.animationName === 'fadeHideGrid') {
       setMode('title');
     }
-  }
+  };
 
   return (
     <>

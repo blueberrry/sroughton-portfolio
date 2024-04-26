@@ -2,7 +2,6 @@ import React, { useRef, useState } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 'react-scroll-parallax';
-// import {Props} from ''
 
 import Home from 'src/views/Home';
 import Projects from 'src/views/Projects';
@@ -25,41 +24,30 @@ export function App() {
 
   const [transitionMainUp, setMainTransitionUp] = useState<boolean>(false);
 
-  const { activeTheme, setActiveTheme, className: activeThemeClass } = useTheme();
-  console.log('🚀 ~ App ~ className:', activeThemeClass);
-  console.log('🚀 ~ App ~ activeTheme:', activeTheme);
-  console.log('🚀 ~ App ~ setActiveTheme:', setActiveTheme);
+  const { theme: activeTheme, setTheme: setActiveTheme, className: activeThemeClassName } = useTheme();
 
-  // todo: better way
   // const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
   function translateUp(direction: TranslateFuncArgs) {
     if (direction === 'up') {
       console.log('transition up');
       setMainTransitionUp(true);
-      //return true;
+      return true;
     }
 
     if (direction === 'down') {
       console.log('transition down');
       setMainTransitionUp(false);
-      //return false;
+      return false;
     }
 
     console.warn('Function argument needs to be up or down');
-    //return undefined;
+    return undefined;
   }
 
   // todo: theme in context vs prop drilling?
   return (
     <div className='parallax-container'>
-      <button
-        onClick={(e) => {
-          e.preventDefault();
-          setActiveTheme('b');
-        }}>
-        Set theme
-      </button>
       <HeaderSwitcher activeTheme={activeTheme} setActiveTheme={setActiveTheme} transitionMain={translateUp} />
       <CSSTransition
         nodeRef={mainContainerRef}
@@ -68,7 +56,7 @@ export function App() {
         classNames='main-container'
         unmountOnExit={true}>
         <div ref={mainContainerRef}>
-          <Main extraClasses={activeThemeClass ? [activeThemeClass] : []}>
+          <Main extraClasses={activeThemeClassName ? [activeThemeClassName] : []}>
             <Outlet />
           </Main>
         </div>

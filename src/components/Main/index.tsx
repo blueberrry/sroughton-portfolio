@@ -1,7 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ThemeNames } from 'src/types/types';
-import { getThemeClass } from 'src/utils/getThemeClass';
 
 import './index.scss';
 

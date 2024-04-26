@@ -2,16 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
 import { NavGrid } from 'src/views/NavGrid';
-import { ThemeNames } from 'src/types/types';
-import { Returns as UseThemeReturns } from 'src/hooks/useTheme';
+import { Returns as UseThemeReturns, useTheme } from 'src/hooks/useTheme';
+import { Mode, TranslateFuncArgs } from 'src/App';
+import { getThemeClass } from 'src/utils/getThemeClass';
 
 import './index.scss';
-import { Mode, TranslateFuncArgs } from 'src/App';
 
 export type Props = {
   scrollToContent?: any;
-  activeTheme: UseThemeReturns['activeTheme'];
-  setActiveTheme: UseThemeReturns['setActiveTheme'];
+  activeTheme: UseThemeReturns['theme'];
+  setActiveTheme: UseThemeReturns['setTheme'];
   transitionMain?: (arg: TranslateFuncArgs) => void;
 };
 
@@ -19,12 +19,16 @@ export type Props = {
 function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveTheme, transitionMain }: Props) {
   const [mode, setMode] = useState<Mode>('full');
 
-  const loc = useLocation();
+  const [currentThemeClassName, setCurrentThemeClassName] = useState(getThemeClass(activeTheme));
 
   const navRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
   const nodeRef = mode === 'full' ? navRef : titleRef;
+
+  const loc = useLocation();
+
+  const { theme: hoveredTheme, setTheme: setHoveredTheme } = useTheme();
 
   const reverse = (e: any) => {
     e.preventDefault();
@@ -46,10 +50,22 @@ function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveThem
     }
   }, [mode]);
 
+  useEffect(() => {
+    if (activeTheme) {
+      setCurrentThemeClassName(getThemeClass(activeTheme));
+    }
+  }, [activeTheme, setCurrentThemeClassName]);
+
+  useEffect(() => {
+    if (hoveredTheme) {
+      setCurrentThemeClassName(getThemeClass(hoveredTheme));
+    }
+  }, [hoveredTheme, setCurrentThemeClassName]);
+
   return (
     <>
       {mode === 'title' && <button onClick={reverse}>Menu</button>}
-      <header className={`header-container ${activeTheme ? `theme-${activeTheme}` : `theme-primary`}`}>
+      <header className={`header-container ${currentThemeClassName ? currentThemeClassName : `theme-primary`}`}>
         <SwitchTransition>
           {/* @ts-ignore */}
           <CSSTransition
@@ -60,14 +76,16 @@ function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveThem
             // @ts-ignore
             // addEndListener={(node: any, done: any) => node.addEventListener('transitionend', done, false)}
             classNames='fade'>
-            <div ref={nodeRef} style={{ width: '100%' }}>
+            <div ref={nodeRef} className='switch-container'>
               {mode === 'full' || mode === 'toTitle' ? (
                 <NavGrid
                   goToContent={scrollToContent}
-                  setMode={setMode}
                   mode={mode}
+                  setMode={setMode}
                   activeTheme={activeTheme}
                   setActiveTheme={setActiveTheme}
+                  hovered={hoveredTheme}
+                  setHovered={setHoveredTheme}
                 />
               ) : (
                 <div className='title-container'>

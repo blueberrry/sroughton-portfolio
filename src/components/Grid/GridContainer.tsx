@@ -8,28 +8,13 @@ export function GridContainer({ presetName = 'grid_3_3', extraClasses = [''], ch
   // todo: col props
   // todo: add defined grid component container (optional at this point)
 
-  const gridRef = useRef<HTMLUListElement>(null);
-
   const { gridClasses } = useGridContainerClasses({
     presetName,
     defaultClasses: ['grid-container'],
     extraClasses,
   });
 
-  function handleTransitionEnd(e: any) {
-    return;
-    if (gridRef.current) {
-      if (e.target === gridRef.current) {
-      }
-      console.log('grid container ref transition ended', e);
-    }
-  }
-
-  return (
-    <ul className={gridClasses} onAnimationEnd={handleTransitionEnd} ref={gridRef}>
-      {children}
-    </ul>
-  );
+  return <ul className={gridClasses}>{children}</ul>;
 }
 
 type GridContainerProps = {

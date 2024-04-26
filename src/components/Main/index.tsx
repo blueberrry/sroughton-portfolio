@@ -1,20 +1,18 @@
 import React from 'react';
 import classNames from 'classnames';
-import './index.scss';
 import { ThemeNames } from 'src/types/types';
+import { getThemeClass } from 'src/utils/getThemeClass';
 
-export function Main({ type, extraClasses = [''], children }: Props) {
-  let themeClass = '';
-  if (!type) {
-    themeClass = `theme-default`;
-  } else {
-    themeClass = `theme-${type}`;
-  }
-  return <main className={`main-view ${classNames(themeClass, extraClasses)}`}>{children}</main>;
+import './index.scss';
+
+export function Main({ theme, extraClasses = [''], children }: Props) {
+  const themeClass = getThemeClass(theme);
+  console.log('🚀 ~ Main ~ themeClass:', themeClass);
+  return <main className={`main-view translate-up ${classNames(themeClass, extraClasses)}`}>{children}</main>;
 }
 
 type Props = {
-  type?: ThemeNames;
+  theme?: ThemeNames | null;
   extraClasses?: string[];
   children?: React.ReactNode;
 };

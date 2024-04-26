@@ -62,6 +62,34 @@ ul.grid-container {
   list-style-type: none;
   @include default-grid;
 
+  &.grid-3-3 {
+    @include btn-grid-lr;
+    // width: 800px;
+    // height: 600px;
+    // max-width: 47rem;
+    // margin: 0 auto;
+    background-color: transparent; // todo: should always have colour
+    &.theme-primary {
+      @extend .theme-primary;
+    }
+
+    &.theme-secondary {
+      @extend .theme-secondary;
+    }
+
+    &.theme-tertiary {
+      @extend .theme-tertiary;
+    }
+
+    &.theme-info {
+      @extend .theme-info;
+    }
+
+    @include media('>tablet') {
+      @include btn-grid-hr;
+    }
+  }
+
   li.item-auto {
     background: grey;
     min-height: 100px;
@@ -83,49 +111,5 @@ ul.grid-container {
         }
       }
     }
-
-    // &.item-hovered {
-    // }
-    // &.item-hovered-a {
-    //   background-color: $primary-hex;
-    //   background-color: transparent; // todo: should always have colour
-    // }
-    // &.item-hovered-secondary {
-    //   background-color: $secondary-hex;
-    // }
-    // &.item-hovered-tertiary {
-    //   background-color: $tertiary-hex;
-    // }
-    // &.item-hovered-info {
-    //   background-color: $shade-1-hex;
-    // }
-  }
-}
-
-ul.grid-3-3 {
-  @include btn-grid-lr;
-  // width: 800px;
-  // height: 600px;
-  // max-width: 47rem;
-  // margin: 0 auto;
-  background-color: transparent; // todo: should always have colour
-  &.theme-primary {
-    @extend .theme-primary;
-  }
-
-  &.theme-secondary {
-    @extend .theme-secondary;
-  }
-
-  &.theme-tertiary {
-    @extend .theme-tertiary;
-  }
-
-  &.theme-info {
-    @extend .theme-info;
-  }
-
-  @include media('>tablet') {
-    @include btn-grid-hr;
   }
 }

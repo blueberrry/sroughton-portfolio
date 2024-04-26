@@ -17,7 +17,7 @@ $breakpoints: (
 
 div#app-root,
 .parallax-container {
-  height: -webkit-fill-available;
+  height: -webkit-fill-available; // todo: janky animations
   // prevents whitespace caused by parallax elements
 }
 
@@ -76,4 +76,40 @@ $themes: (
 
 .theme-info {
   background-color: $shade-1-hex;
+}
+
+$top-shadow: 0 0 20px #333; // todo: refine
+
+$animation-duration: 600;
+
+// transition delays (ms)
+$animation-delays: 250, 500, 750, 1000, 1250, 1500;
+
+div.main-container-enter {
+  // opacity: 0;
+  transform: translateY(0vh);
+  transition: transform #{$animation-duration}ms;
+}
+
+div.main-container-active {
+  // opacity: 1;
+  transform: translateY(-50vh);
+  transition: transform #{$animation-duration}ms;
+}
+
+div.main-container-enter-done {
+  // opacity: 0;
+  transform: translateY(-50vh);
+  transition: transform #{$animation-duration}ms;
+}
+
+div.main-container-exit {
+  // opacity: 1;
+  transform: translateY(-50vh);
+  transition: transform #{$animation-duration}ms;
+}
+div.main-container-exit-active {
+  // opacity: 0;
+  transform: translateY(0vh);
+  transition: transform #{$animation-duration}ms;
 }

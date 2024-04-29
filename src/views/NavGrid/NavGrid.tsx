@@ -36,10 +36,10 @@ function NavGrid({ goToContent, mode, setMode, activeTheme, setActiveTheme, hove
     let classes = [];
 
     if (hovered) {
-      const themeClass = getThemeClass(hovered);
+      const themeClass = getThemeClass(hovered, 'bg');
       classes.push(themeClass);
     } else {
-      const themeClass = getThemeClass(activeTheme);
+      const themeClass = getThemeClass(activeTheme, 'bg');
       classes.push(themeClass);
     }
 

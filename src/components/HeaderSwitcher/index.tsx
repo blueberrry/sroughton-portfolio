@@ -15,11 +15,18 @@ export type Props = {
   transitionMain?: (arg: TranslateFuncArgs) => void;
 };
 
+type BgStates = 'bg' | 'img' | 'grad';
+
 // todo: better to have a function getActiveThemeClass(selected => `theme-${selected}
 function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveTheme, transitionMain }: Props) {
   const [mode, setMode] = useState<Mode>('full');
 
-  const [currentThemeClassName, setCurrentThemeClassName] = useState(getThemeClass(activeTheme));
+  const bgStates = ['bg', 'img', 'grad'];
+  const initial = bgStates[0] as BgStates;
+
+  const [bgType, setBgType] = useState<BgStates>(initial);
+
+  const [currentThemeClassName, setCurrentThemeClassName] = useState(getThemeClass(activeTheme, bgType));
 
   const navRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -64,6 +71,8 @@ function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveThem
 
   return (
     <>
+      {mode === 'full' && <button onClick={() => setBgType}>&lt;'bg' | 'img' | 'grad'&gt; </button>}
+
       {mode === 'title' && <button onClick={reverse}>Menu</button>}
       <header className={`header-container ${currentThemeClassName ? currentThemeClassName : `theme-primary`}`}>
         <SwitchTransition>

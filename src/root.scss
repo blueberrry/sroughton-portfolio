@@ -47,76 +47,95 @@ $grid-areas: (
 );
 
 $themes: (
-  a: theme-primary,
-  b: theme-secondary,
-  c: theme-tertiary,
-  d: theme-primary,
-  e: theme-secondary,
-  f: theme-tertiary,
+  a: primary,
+  b: secondary,
+  c: tertiary,
+  d: primary,
+  e: secondary,
+  f: tertiary,
 );
 
-$theme-images: (
-  a: home,
-  b: projects,
-  c: 3,
-  d: 4,
-  e: 5,
-  f: 6,
+$img-theme: (
+  a: '~src/assets/original.jpg',
+  b: 'https://picsum.photos/g/1921/1081?random.jpg',
+  c: '~src/assets/landscape.jpg',
+  d: 'https://picsum.photos/g/1921/1081?random.jpg',
+  e: '~src/assets/original.jpg',
+  f: 'https://picsum.photos/g/1921/1081?random.jpg',
 );
 
-.theme-img-home {
-  // todo: cannot find image
-  background: url('~src/assets/original.jpg') top center;
-  background-repeat: no-repeat;
-  background-size: 100%;
+// @mixin purple-gradient($attribute) {
+//   #{$attribute}: -webkit-linear-gradient($second-color-for-gradient, $purple) !important;
+//   #{$attribute}: -moz-linear-gradient($second-color-for-gradient, $purple) !important;
+//   #{$attribute}: -ms-linear-gradient($second-color-for-gradient, $purple) !important;
+//   #{$attribute}: -o-linear-gradient($second-color-for-gradient, $purple) !important;
+//   #{$attribute}: linear-gradient($second-color-for-gradient, $purple) !important;
+// }
+
+@mixin color-gradient($attribute, $second, $purple) {
+  // #{$attribute}: -webkit-linear-gradient($second-color-for-gradient, $purple) !important;
+  // #{$attribute}: -moz-linear-gradient($second-color-for-gradient, $purple) !important;
+  // #{$attribute}: -ms-linear-gradient($second-color-for-gradient, $purple) !important;
+  // #{$attribute}: -o-linear-gradient($second-color-for-gradient, $purple) !important; //todo
+  #{$attribute}: linear-gradient($second, $purple) !important;
 }
 
-.theme-img-projects {
-  background: url(https://picsum.photos/g/1921/1081?random) top center;
-  background-repeat: no-repeat;
-  background-size: 100%;
+// -moz-gradient(linear, left top, left bottom, color-stop(0%, $topBarDarkBlue);
+// background: -ms-gradient(linear, left top, left bottom, color-stop(0%, $topBarDarkBlue);
+// }
+
+@mixin theme-img($theme, $url) {
+  &.theme-img-#{$theme} {
+    background: url(#{$url}) top center;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
 }
 
-.theme-img-3 {
-  background: url(https://picsum.photos/g/1921/1081?random) top center;
-  background-repeat: no-repeat;
-  background-size: 100%;
+@mixin theme-bg($theme, $val) {
+  &.theme-bg-#{$theme} {
+    @extend .bg-color-#{$val};
+  }
 }
 
-.theme-img-4 {
-  background: url(https://picsum.photos/g/1921/1081?random) top center;
-  background-repeat: no-repeat;
-  background-size: 100%;
+.pseudo-code-lol {
+  /*pseudo code
+  1 add prop that is background color
+  2 add prop that is bg-gradient
+  3 add prop that is background image repeat (small svg images) OR <pre> 🏡🌇 🏡🌇 🏡🌇 🏡🌇 🏡🌇 🏡🌇 </ pre>
+  4 three fade out !selected || !hovered
+  */
 }
 
-.theme-img-5 {
-  background: url(https://picsum.photos/g/1921/1081?random) top center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
+// .theme-img-5 {
+//   background: url(https://picsum.photos/g/1921/1081?random) top center;
+//   background-repeat: no-repeat;
+//   background-size: auto;
+// }
 
-.theme-img-6 {
-  background: url(https://picsum.photos/g/1921/1081?random) top center;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
+// .theme-img-6 {
+//   background: url(https://picsum.photos/g/1921/1081?random) top center;
+//   background-repeat: no-repeat;
+//   background-size: auto;
+// }
 
 @include media('>tablet', '<950px') {
 }
 
-.theme-primary {
+// todo: following classes are temp only
+.bg-color-primary {
   background-color: $primary-hex;
 }
 
-.theme-secondary {
+.bg-color-secondary {
   background-color: $secondary-hex;
 }
 
-.theme-tertiary {
+.bg-color-tertiary {
   background-color: $tertiary-hex;
 }
 
-.theme-info {
+.bg-color-info {
   background-color: $shade-1-hex;
 }
 

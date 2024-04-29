@@ -1,8 +1,8 @@
 import { ThemeNames } from 'src/types/types';
 
-export function getThemeClass(theme: ThemeNames | null | undefined, defaultTheme = 'theme-primary') {
+export function getThemeClass(theme: ThemeNames | null | undefined, type = 'bg', defaultTheme = 'theme-bg-primary') {
   if (!theme) {
     return defaultTheme;
   }
-  return `theme-${theme}`;
+  return `theme-${type}-${theme}`;
 }

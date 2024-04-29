@@ -7,10 +7,10 @@ export type Returns = {
   setTheme: React.Dispatch<React.SetStateAction<Returns['theme']>>;
   className: string;
 };
-export function useTheme(): Returns {
+export function useTheme(type = 'bg'): Returns {
   const [theme, setTheme] = useState<ThemeNames | null>(null);
 
-  const className = getThemeClass(theme);
+  const className = getThemeClass(theme, type);
 
   return { theme, setTheme, className };
 }

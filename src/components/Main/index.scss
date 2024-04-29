@@ -14,8 +14,6 @@ main.main-view {
 
   @each $theme, $value in $themes {
     // applies bg colour to header on navigation event
-    &.theme-#{$theme} {
-      @extend .#{$value};
-    }
+    @include theme-bg($theme, $value);
   }
 }

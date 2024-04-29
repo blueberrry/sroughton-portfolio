@@ -85,10 +85,8 @@ nav.nav-container {
   @include defaultTransition;
 
   @each $theme, $value in $themes {
-    // applies bg to nav container on hover
-    &.theme-#{$theme} {
-      @extend .#{$value};
-    }
+    // applies bg colour to header on navigation event
+    @include theme-bg($theme, $value);
   }
 
   // @each $theme, $img in $theme-images {

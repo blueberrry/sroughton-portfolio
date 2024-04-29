@@ -6,20 +6,40 @@
 
   padding: $spcr-lg;
   @include defaultTransition;
-  // @each $theme, $value in $themes {
+
+  // background color classnames
+  @each $theme, $value in $themes {
+    @include theme-bg($theme, $value);
+  }
+
+  // @each $theme, $value in $img-theme {
   //   // applies bg colour to header on navigation event
-  //   &.theme-#{$theme} {
-  //     @extend .#{$value};
-  //   }
+
+  //   @include theme-img($theme, $value);
   // }
 
-  @each $theme, $img in $theme-images {
-    // applies bg colour to header on navigation event
-    &.theme-#{$theme} {
-      @extend .theme-img-#{$img};
-    }
-  }
+  // background image classnames
+  // @each $theme, $img in $img-theme {
+  //   // applies bg colour to header on navigation event
+  //   // &.theme-img-#{$theme} {
+  //   //   @extend .theme-img-#{$img};
+  //   // }
+
+  //   @include theme-img($theme, $img);
+  // }
+
+  // @include color-gradient(background, #ff0000, #0000ff);
+
+  // @include theme-img('~src/assets/original.jpg', 'home');
+  // @include theme-img('https://picsum.photos/g/1921/1081?random', 'projects');
+  // @include theme-img('~src/assets/landscape.jpg', 'c');
+  // @include theme-img('https://picsum.photos/g/1921/1081?random', 'd');
+  // @include theme-img('~src/assets/original.jpg', 'e');
+  // @include theme-img('https://picsum.photos/g/1921/1081?random', 'f');
+  // @include theme-img('~src/assets/landscape.jpg', 'g');
 }
+
+// bright glow high contrast filter
 
 .switch-container {
   width: 100%;

@@ -10,7 +10,7 @@ export type Returns = {
 export function useTheme(type = 'bg'): Returns {
   const [theme, setTheme] = useState<ThemeNames | null>(null);
 
-  const className = getThemeClass(theme, type);
+  const className = getThemeClass(type, theme);
 
   return { theme, setTheme, className };
 }

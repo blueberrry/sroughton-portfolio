@@ -12,11 +12,11 @@
     @include theme-bg($theme, $value);
   }
 
-  // @each $theme, $value in $img-theme {
-  //   // applies bg colour to header on navigation event
+  @each $theme, $value in $img-theme {
+    // applies bg colour to header on navigation event
 
-  //   @include theme-img($theme, $value);
-  // }
+    @include theme-img($theme, $value);
+  }
 
   // background image classnames
   // @each $theme, $img in $img-theme {

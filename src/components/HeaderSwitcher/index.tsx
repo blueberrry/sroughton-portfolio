@@ -10,23 +10,26 @@ import './index.scss';
 
 export type Props = {
   scrollToContent?: any;
-  activeTheme: UseThemeReturns['theme'];
-  setActiveTheme: UseThemeReturns['setTheme'];
+  themeClassName: any;
+  theme: UseThemeReturns['theme'];
+  setTheme: UseThemeReturns['setTheme'];
   transitionMain?: (arg: TranslateFuncArgs) => void;
+  bgType: any; //todo
+  mode: any;
+  setMode: any;
 };
 
-type BgStates = 'bg' | 'img' | 'grad';
-
-// todo: better to have a function getActiveThemeClass(selected => `theme-${selected}
-function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveTheme, transitionMain }: Props) {
-  const [mode, setMode] = useState<Mode>('full');
-
-  const bgStates = ['bg', 'img', 'grad'];
-  const initial = bgStates[0] as BgStates;
-
-  const [bgType, setBgType] = useState<BgStates>(initial);
-
-  const [currentThemeClassName, setCurrentThemeClassName] = useState(getThemeClass(activeTheme, bgType));
+function HeaderSwitcher({
+  scrollToContent = () => {},
+  themeClassName,
+  theme,
+  setTheme,
+  transitionMain,
+  bgType,
+  mode,
+  setMode,
+}: Props) {
+  // const [themeClassName, setCurrentThemeClassName] = useState(getThemeClass(bgType, activeTheme));
 
   const navRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
@@ -35,7 +38,7 @@ function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveThem
 
   const loc = useLocation();
 
-  const { theme: hoveredTheme, setTheme: setHoveredTheme } = useTheme();
+  // const { theme: hoveredTheme, setTheme: setHoveredTheme } = useTheme(bgType);
 
   const reverse = (e: any) => {
     e.preventDefault();
@@ -58,23 +61,21 @@ function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveThem
   }, [mode]);
 
   useEffect(() => {
-    if (activeTheme) {
-      setCurrentThemeClassName(getThemeClass(activeTheme));
+    if (theme) {
+      setTheme(theme);
     }
-  }, [activeTheme, setCurrentThemeClassName]);
+  }, [theme, setTheme]);
 
-  useEffect(() => {
-    if (hoveredTheme) {
-      setCurrentThemeClassName(getThemeClass(hoveredTheme));
-    }
-  }, [hoveredTheme, setCurrentThemeClassName]);
+  // useEffect(() => {
+  //   if (hoveredTheme) {
+  //     setTheme(getThemeClass(bgType, hoveredTheme));
+  //   }
+  // }, [hoveredTheme, setCurrentThemeClassName]);
 
   return (
     <>
-      {mode === 'full' && <button onClick={() => setBgType}>&lt;'bg' | 'img' | 'grad'&gt; </button>}
-
       {mode === 'title' && <button onClick={reverse}>Menu</button>}
-      <header className={`header-container ${currentThemeClassName ? currentThemeClassName : `theme-primary`}`}>
+      <header className={`header-container ${themeClassName ? themeClassName : `theme-bg-a`}`}>
         <SwitchTransition>
           {/* @ts-ignore */}
           <CSSTransition
@@ -88,13 +89,15 @@ function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveThem
             <div ref={nodeRef} className='switch-container'>
               {mode === 'full' || mode === 'toTitle' ? (
                 <NavGrid
+                  themeClassName={themeClassName}
                   goToContent={scrollToContent}
                   mode={mode}
                   setMode={setMode}
-                  activeTheme={activeTheme}
-                  setActiveTheme={setActiveTheme}
-                  hovered={hoveredTheme}
-                  setHovered={setHoveredTheme}
+                  theme={theme}
+                  setTheme={setTheme}
+                  // hovered={hoveredTheme}
+                  // setHovered={setHoveredTheme}
+                  //                  bgType={bgType}
                 />
               ) : (
                 <div className='title-container'>

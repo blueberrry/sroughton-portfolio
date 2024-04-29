@@ -16,6 +16,7 @@ import './root.scss';
 export type TranslateFuncArgs = 'up' | 'down';
 
 export type Mode = 'full' | 'toTitle' | 'title' | null;
+export type BgStates = 'bg' | 'img' | 'grad';
 
 export function App() {
   // todo: useLayoutEffect
@@ -24,7 +25,14 @@ export function App() {
 
   const [transitionMainUp, setMainTransitionUp] = useState<boolean>(false);
 
-  const { theme: activeTheme, setTheme: setActiveTheme, className: activeThemeClassName } = useTheme();
+  const [headerMode, setHeaderMode] = useState<Mode>('full');
+
+  const bgStates = ['bg', 'img', 'grad'];
+  const initial = bgStates[0] as BgStates;
+
+  const [bgType, setBgType] = useState<BgStates>(initial);
+
+  const { theme, setTheme, className: activeThemeClassName } = useTheme(bgType);
 
   // const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
@@ -48,7 +56,52 @@ export function App() {
   // todo: theme in context vs prop drilling?
   return (
     <div className='parallax-container'>
-      <HeaderSwitcher activeTheme={activeTheme} setActiveTheme={setActiveTheme} transitionMain={translateUp} />
+      {/* todo: move logic to storybook story */}
+      {headerMode === 'full' && (
+        <form>
+          <fieldset>
+            <label> BG color </label>
+            <input
+              type='radio'
+              // defaultChecked
+              name='bg'
+              value={bgStates[0]}
+              checked={bgType === bgStates[0]}
+              onChange={() => setBgType('bg')}
+            />
+          </fieldset>
+          <fieldset>
+            <label> BG img </label>
+            <input
+              type='radio'
+              name='img'
+              value={bgStates[1]}
+              checked={bgType === bgStates[1]}
+              onChange={() => setBgType('img')}
+            />
+          </fieldset>
+          <fieldset>
+            <label> BG gradient </label>
+            <input
+              type='radio'
+              name='grad'
+              value={bgStates[2]}
+              checked={bgType === bgStates[2]}
+              onChange={() => setBgType('grad')}
+            />
+          </fieldset>
+        </form>
+      )}
+
+      <HeaderSwitcher
+        themeClassName={activeThemeClassName}
+        theme={theme}
+        setTheme={setTheme}
+        transitionMain={translateUp}
+        bgType={bgType}
+        mode={headerMode}
+        setMode={setHeaderMode}
+      />
       <CSSTransition
         nodeRef={mainContainerRef}
         in={transitionMainUp}

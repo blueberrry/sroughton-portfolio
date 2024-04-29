@@ -20,12 +20,11 @@ export type Props = {
   goToContent: any; //todo:
   mode: HeaderMode;
   setMode: React.Dispatch<React.SetStateAction<HeaderMode>>; // todo: Header could have generic type
-  activeTheme: UseThemeReturns['theme'];
-  setActiveTheme: UseThemeReturns['setTheme'];
-  hovered: UseThemeReturns['theme'];
-  setHovered: UseThemeReturns['setTheme'];
+  themeClassName: any;
+  theme: UseThemeReturns['theme'];
+  setTheme: UseThemeReturns['setTheme'];
 };
-function NavGrid({ goToContent, mode, setMode, activeTheme, setActiveTheme, hovered, setHovered }: Props) {
+function NavGrid({ goToContent, mode, setMode, themeClassName, theme, setTheme }: Props) {
   const navRef = useRef(null);
 
   // todo: is there a reason to do this? Might be better to just target ::hover in css
@@ -33,15 +32,7 @@ function NavGrid({ goToContent, mode, setMode, activeTheme, setActiveTheme, hove
 
   // todo: memoise?
   const configContainerClasses = () => {
-    let classes = [];
-
-    if (hovered) {
-      const themeClass = getThemeClass(hovered, 'bg');
-      classes.push(themeClass);
-    } else {
-      const themeClass = getThemeClass(activeTheme, 'bg');
-      classes.push(themeClass);
-    }
+    let classes = [themeClassName];
 
     if (mode === 'toTitle') {
       classes.push('to-title');
@@ -51,13 +42,13 @@ function NavGrid({ goToContent, mode, setMode, activeTheme, setActiveTheme, hove
   };
 
   const resetDefaultState = () => {
-    setHovered(null);
+    setTheme(null);
     setMode('full');
   };
 
   const handleClick: GridLinkProps['onClick'] = (e, aArea) => {
-    if (setActiveTheme) {
-      setActiveTheme(aArea); // set the active area
+    if (setTheme) {
+      setTheme(aArea); // set the active area
     }
     if (mode === 'full') {
       setMode('toTitle'); // set header mode (link changes to header)
@@ -80,50 +71,50 @@ function NavGrid({ goToContent, mode, setMode, activeTheme, setActiveTheme, hove
           <GridLink
             linkTo='home'
             presetArea='a'
-            setHoveredItem={setHovered}
+            setTheme={setTheme}
             onClick={handleClick}
-            isActive={activeTheme === 'a'}
+            isActive={theme === 'a'}
             mode={mode}
           />
 
           <GridLink
             linkTo='projects'
             presetArea='b'
-            setHoveredItem={setHovered}
+            setTheme={setTheme}
             onClick={handleClick}
-            isActive={activeTheme === 'b'}
+            isActive={theme === 'b'}
             mode={mode}
           />
           <GridLink
             linkTo='page-3'
             presetArea='c'
-            setHoveredItem={setHovered}
+            setTheme={setTheme}
             onClick={handleClick}
-            isActive={activeTheme === 'c'}
+            isActive={theme === 'c'}
             mode={mode}
           />
           <GridLink
             linkTo='page-4'
             presetArea='d'
-            setHoveredItem={setHovered}
+            setTheme={setTheme}
             onClick={handleClick}
-            isActive={activeTheme === 'd'}
+            isActive={theme === 'd'}
             mode={mode}
           />
           <GridLink
             linkTo='page-5'
             presetArea='e'
-            setHoveredItem={setHovered}
+            setTheme={setTheme}
             onClick={handleClick}
-            isActive={activeTheme === 'e'}
+            isActive={theme === 'e'}
             mode={mode}
           />
           <GridLink
             linkTo='page-6'
             presetArea='f'
-            setHoveredItem={setHovered}
+            setTheme={setTheme}
             onClick={handleClick}
-            isActive={activeTheme === 'f'}
+            isActive={theme === 'f'}
             mode={mode}
           />
         </GridContainer>

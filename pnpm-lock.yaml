@@ -58,6 +58,9 @@ devDependencies:
   '@parcel/packager-raw-url':
     specifier: 2.10.3
     version: 2.10.3(@parcel/core@2.10.3)
+  '@parcel/transformer-inline-string':
+    specifier: 2.10.3
+    version: 2.10.3(@parcel/core@2.10.3)
   '@parcel/transformer-sass':
     specifier: 2.10.3
     version: 2.10.3(@parcel/core@2.10.3)
@@ -908,6 +911,15 @@ packages:
       '@parcel/utils': 2.10.3
       '@parcel/workers': 2.10.3(@parcel/core@2.10.3)
       nullthrows: 1.1.1
+    dev: true
+
+  /@parcel/transformer-inline-string@2.10.3(@parcel/core@2.10.3):
+    resolution: {integrity: sha512-vOxBqLkzouA744b4x1KoaV4+Lo8kQmnz1Y2ahlnt2bEER3TMJpGiEiggFahq3WQKOOFOfhBcVFH0ncBCszCfWg==}
+    engines: {node: '>= 12.0.0', parcel: ^2.10.3}
+    dependencies:
+      '@parcel/plugin': 2.10.3(@parcel/core@2.10.3)
+    transitivePeerDependencies:
+      - '@parcel/core'
     dev: true
 
   /@parcel/transformer-js@2.10.3(@parcel/core@2.10.3):

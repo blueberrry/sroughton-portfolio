@@ -436,3 +436,13 @@ Use parcel to analyse/do something with unused code
 
 But yes, unused files should not affect your production build."
 
+
+
+// todo: text component that handles wraps/breakpoints
+         should be a <p> tag
+
+word-wrap: break-word;
+word-break: break-word;
+
+// todo: gradient color to white
+linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))

@@ -21,10 +21,6 @@ div#app-root,
   // prevents whitespace caused by parallax elements
 }
 
-// header {
-//   padding: 1rem;
-// }
-
 h1 {
   padding: 1.25rem 1.75rem;
 }
@@ -51,34 +47,103 @@ $grid-areas: (
 );
 
 $themes: (
-  a: theme-primary,
-  b: theme-secondary,
-  c: theme-tertiary,
-  d: theme-primary,
-  e: theme-secondary,
-  f: theme-tertiary,
+  a: primary,
+  b: secondary,
+  c: tertiary,
+  d: primary,
+  e: secondary,
+  f: tertiary,
 );
+
+$img-theme: (
+  a: '~src/assets/original.jpg',
+  b: 'https://picsum.photos/g/1921/1081?random.jpg',
+  c: '~src/assets/landscape.jpg',
+  d: 'https://picsum.photos/g/1921/1081?random.jpg',
+  e: '~src/assets/original.jpg',
+  f: 'https://picsum.photos/g/1921/1081?random.jpg',
+);
+
+// @mixin purple-gradient($attribute) {
+//   #{$attribute}: -webkit-linear-gradient($second-color-for-gradient, $purple) !important;
+//   #{$attribute}: -moz-linear-gradient($second-color-for-gradient, $purple) !important;
+//   #{$attribute}: -ms-linear-gradient($second-color-for-gradient, $purple) !important;
+//   #{$attribute}: -o-linear-gradient($second-color-for-gradient, $purple) !important;
+//   #{$attribute}: linear-gradient($second-color-for-gradient, $purple) !important;
+// }
+
+@mixin color-gradient($attribute, $second, $purple) {
+  // #{$attribute}: -webkit-linear-gradient($second-color-for-gradient, $purple) !important;
+  // #{$attribute}: -moz-linear-gradient($second-color-for-gradient, $purple) !important;
+  // #{$attribute}: -ms-linear-gradient($second-color-for-gradient, $purple) !important;
+  // #{$attribute}: -o-linear-gradient($second-color-for-gradient, $purple) !important; //todo
+  #{$attribute}: linear-gradient($second, $purple) !important;
+}
+
+// -moz-gradient(linear, left top, left bottom, color-stop(0%, $topBarDarkBlue);
+// background: -ms-gradient(linear, left top, left bottom, color-stop(0%, $topBarDarkBlue);
+// }
+
+@mixin theme-img($theme, $url) {
+  &.theme-img-#{$theme} {
+    background: url(#{$url}) top center;
+    background-repeat: no-repeat;
+    background-size: auto;
+  }
+}
+
+@mixin theme-bg($theme, $val) {
+  &.theme-bg-#{$theme} {
+    @extend .bg-color-#{$val};
+  }
+}
+
+.pseudo-code-lol {
+  /*pseudo code
+  1 add prop that is background color
+  2 add prop that is bg-gradient
+  3 add prop that is background image repeat (small svg images) OR <pre> 🏡🌇 🏡🌇 🏡🌇 🏡🌇 🏡🌇 🏡🌇 </ pre>
+  4 three fade out !selected || !hovered
+  */
+}
+
+// .theme-img-5 {
+//   background: url(https://picsum.photos/g/1921/1081?random) top center;
+//   background-repeat: no-repeat;
+//   background-size: auto;
+// }
+
+// .theme-img-6 {
+//   background: url(https://picsum.photos/g/1921/1081?random) top center;
+//   background-repeat: no-repeat;
+//   background-size: auto;
+// }
 
 @include media('>tablet', '<950px') {
 }
 
-.theme-primary {
+// todo: following classes are temp only
+.bg-color-primary {
   background-color: $primary-hex;
 }
 
-.theme-secondary {
+.bg-color-secondary {
   background-color: $secondary-hex;
 }
 
-.theme-tertiary {
+.bg-color-tertiary {
   background-color: $tertiary-hex;
 }
 
-.theme-info {
+.bg-color-info {
   background-color: $shade-1-hex;
 }
 
 $top-shadow: 0 0 20px #333; // todo: refine
+
+@mixin defaultTransition {
+  transition: all 0.6s ease-in; // default fallback transition
+}
 
 $animation-duration: 600;
 

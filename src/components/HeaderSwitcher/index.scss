@@ -3,16 +3,47 @@
 .header-container {
   height: -webkit-fill-available; // todo: janky animations on scroll, replace with something better
   height: 100vh; // initial component height
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.6s ease-in; // default fallback transition
+
+  padding: $spcr-lg;
+  @include defaultTransition;
+
+  // background color classnames
   @each $theme, $value in $themes {
-    // applies bg colour to header on navigation event
-    &.theme-#{$theme} {
-      @extend .#{$value};
-    }
+    @include theme-bg($theme, $value);
   }
+
+  // @each $theme, $value in $img-theme {
+  //   // applies bg colour to header on navigation event
+
+  //   @include theme-img($theme, $value);
+  // }
+
+  // background image classnames
+  // @each $theme, $img in $img-theme {
+  //   // applies bg colour to header on navigation event
+  //   // &.theme-img-#{$theme} {
+  //   //   @extend .theme-img-#{$img};
+  //   // }
+
+  //   @include theme-img($theme, $img);
+  // }
+
+  // @include color-gradient(background, #ff0000, #0000ff);
+
+  // @include theme-img('~src/assets/original.jpg', 'home');
+  // @include theme-img('https://picsum.photos/g/1921/1081?random', 'projects');
+  // @include theme-img('~src/assets/landscape.jpg', 'c');
+  // @include theme-img('https://picsum.photos/g/1921/1081?random', 'd');
+  // @include theme-img('~src/assets/original.jpg', 'e');
+  // @include theme-img('https://picsum.photos/g/1921/1081?random', 'f');
+  // @include theme-img('~src/assets/landscape.jpg', 'g');
+}
+
+// bright glow high contrast filter
+
+.switch-container {
+  width: 100%;
+  height: 100%;
 }
 
 .fade-enter {

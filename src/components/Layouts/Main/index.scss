@@ -1,27 +1,29 @@
 @import '../../../root.scss';
 
-main.default-main {
+main.default {
   border: 2px solid purple;
-}
 
-main.primary-main {
-  width: 100%;
-  min-height: 100vh;
-  margin: 0;
-  padding: $spcr-md;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.6s ease;
+  &.primary-main {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: $spcr-md;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s ease;
 
-  box-shadow: $top-shadow;
+    box-shadow: $top-shadow;
 
-  @each $theme, $value in $themes {
-    // applies bg colour to header on navigation event
-    @include theme-bg($theme, $value);
+    @each $theme, $value in $themes {
+      // applies bg colour to header on navigation event
+      @include theme-bg($theme, $value);
+    }
+
+    color: $shade-1-rgba;
   }
-}
 
-main.secondary-main {
-  border: 2px solid blue;
+  &.secondary-main {
+    border: 2px solid blue;
+  }
 }

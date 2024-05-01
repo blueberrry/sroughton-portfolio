@@ -1,10 +1,9 @@
 @import '../../../root.scss';
 
-article.default-article {
-}
+article.default {
+  &.primary-article {
+  }
 
-article.primary-article {
-}
-
-article.secondary-article {
+  &.secondary-article {
+  }
 }

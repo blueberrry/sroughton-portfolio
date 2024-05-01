@@ -14,13 +14,13 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export function Section({ type = 'default', title, extraClasses = [''], children }: PropsWithChildren<Props>) {
+export function Section({ type = 'primary', title, extraClasses = [''], children }: PropsWithChildren<Props>) {
   const sectionClasses = new Array(`${CLASSES[type]}-section`);
 
   const { classes } = useClasses({ containerClasses: sectionClasses, extraClasses });
 
   return (
-    <section className={classes}>
+    <section className={`default ${classes}`}>
       {title && <h3>{title}</h3>}
       {children}
     </section>

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
+
 import './index.scss';
 
 type Props = {};
@@ -12,7 +13,6 @@ export function BreadCrumbs({}: Props) {
 
   return (
     <nav className='breadcrumb-container'>
-      <li></li>
       <ol role='navigation' className='breadcrumb'>
         <li className='breadcrumb-item'>
           <Link to='/'>Home</Link>

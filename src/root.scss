@@ -17,7 +17,7 @@ $breakpoints: (
 
 div#app-root,
 .parallax-container {
-  height: -webkit-fill-available; // todo: janky animations
+  height: -webkit-fill-available; // todo: janky scroll
   // prevents whitespace caused by parallax elements
 }
 
@@ -177,4 +177,11 @@ div.main-container-exit-active {
   // opacity: 0;
   transform: translateY(0vh);
   transition: transform #{$animation-duration}ms;
+}
+
+.temp-form {
+  margin: 0 auto;
+  max-width: 42rem;
+  display: flex;
+  justify-content: space-around;
 }

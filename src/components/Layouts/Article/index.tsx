@@ -14,13 +14,13 @@ type Props = {
   children?: React.ReactNode;
 };
 
-export function Article({ type = 'default', title, extraClasses = [''], children }: PropsWithChildren<Props>) {
+export function Article({ type = 'primary', title, extraClasses = [''], children }: PropsWithChildren<Props>) {
   const articleClasses = new Array(`${CLASSES[type]}-article`);
 
   const { classes } = useClasses({ containerClasses: articleClasses, extraClasses });
 
   return (
-    <article className={classes}>
+    <article className={`default ${classes}`}>
       {title && <h3>{title}</h3>}
       {children}
     </article>

@@ -10,16 +10,15 @@ import { Main } from './components/Layouts/Main';
 import HeaderSwitcher from './components/HeaderSwitcher';
 import { useTheme } from './hooks/useTheme';
 import './root.scss';
+import { BgStates } from './types/types';
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
 //       then just render child comps
 export type TranslateFuncArgs = 'up' | 'down';
 
 export type Mode = 'full' | 'toTitle' | 'title' | null;
-export type BgStates = 'bg' | 'img' | 'grad';
 
 export function App() {
-  // todo: useLayoutEffect
   // const scrollRef = useRef(null) as any; // todo:
   const mainContainerRef = useRef(null);
 
@@ -32,7 +31,7 @@ export function App() {
 
   const [bgType, setBgType] = useState<BgStates>(initial);
 
-  const { theme, setTheme, className: activeThemeClassName } = useTheme(bgType);
+  const { theme, setTheme, className: activeThemeClassName } = useTheme({ type: bgType });
 
   // const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
@@ -58,7 +57,7 @@ export function App() {
     <div className='parallax-container'>
       {/* todo: move logic to storybook story */}
       {headerMode === 'full' && (
-        <form>
+        <form className='temp-form'>
           <fieldset>
             <label> BG color </label>
             <input
@@ -109,7 +108,7 @@ export function App() {
         classNames='main-container'
         unmountOnExit={true}>
         <div ref={mainContainerRef}>
-          <Main type='primary' extraClasses={activeThemeClassName ? [activeThemeClassName] : []}>
+          <Main theme={theme} type='primary'>
             <Outlet />
           </Main>
         </div>

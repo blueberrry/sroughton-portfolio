@@ -1,13 +1,12 @@
 @import '../../../root.scss';
 
-section.default-section {
+section.default {
   border: 2px solid yellow;
-}
+  &.primary-section {
+    border: 2px solid orange;
+  }
 
-section.primary-section {
-  border: 2px solid orange;
-}
-
-section.secondary-section {
-  border: 2px solid green;
+  &.secondary-section {
+    border: 2px solid green;
+  }
 }

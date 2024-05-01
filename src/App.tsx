@@ -6,7 +6,7 @@ import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 
 import Home from 'src/views/pages/Home';
 import Projects from 'src/views/pages/Projects';
 
-import { Main } from './components/Main';
+import { Main } from './components/Layouts/Main';
 import HeaderSwitcher from './components/HeaderSwitcher';
 import { useTheme } from './hooks/useTheme';
 import './root.scss';
@@ -109,7 +109,7 @@ export function App() {
         classNames='main-container'
         unmountOnExit={true}>
         <div ref={mainContainerRef}>
-          <Main extraClasses={activeThemeClassName ? [activeThemeClassName] : []}>
+          <Main type='primary' extraClasses={activeThemeClassName ? [activeThemeClassName] : []}>
             <Outlet />
           </Main>
         </div>

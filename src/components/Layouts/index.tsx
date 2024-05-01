@@ -1,4 +1,5 @@
-import { Layouts } from './Layouts';
+import { Article } from './Article';
 import { Section } from './Section';
+import { Main } from './Main';
 
-export { Layouts, Section as Standard };
+export { Article, Section, Main };

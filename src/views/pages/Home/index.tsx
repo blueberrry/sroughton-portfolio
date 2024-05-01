@@ -1,25 +1,12 @@
 // TODO: Rename to routes/add routing
 
-import React, { useState } from 'react';
-
-import { useMatches } from 'react-router-dom';
-import BreadCrumbs from 'src/components/Breadcrumbs';
+import React from 'react';
 
 import './index.scss';
-/**
- * Hover to focus
- * tap to reveal (animates grid, pulls up next screen)
- */
+import { Article } from 'src/components/Layouts';
 
 function Home() {
-  // const [hoveredItem, setHoveredItem] = useState<ItemAutoProps['type']>('primary');
-
-  // const containerBgClass = true ? `theme-${hoveredItem}` : '';
-
-  const matches = useMatches();
-  console.log('🚀 ~ Home ~ matches:', matches);
-
-  return <Layouts type='mainSection'></Layouts>;
+  return <Article type='primary'>test</Article>;
 }
 
 // render alongside desktop/ route to on mobile

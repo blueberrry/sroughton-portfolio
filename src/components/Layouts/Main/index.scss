@@ -1,6 +1,10 @@
-@import '../../root.scss';
+@import '../../../root.scss';
 
-main.main-view {
+main.default-main {
+  border: 2px solid purple;
+}
+
+main.primary-main {
   width: 100%;
   min-height: 100vh;
   margin: 0;
@@ -16,4 +20,8 @@ main.main-view {
     // applies bg colour to header on navigation event
     @include theme-bg($theme, $value);
   }
+}
+
+main.secondary-main {
+  border: 2px solid blue;
 }

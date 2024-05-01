@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { ItemAuto } from 'src/components/Grid';
 
 import './index.scss';
-import { Mode as HeaderMode } from '../../App';
+import { Mode as HeaderMode } from '../../../App';
 
 const CSS_TRANSITION_DELAYS = {
   a: '250ms',

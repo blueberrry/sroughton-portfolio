@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
-import { NavGrid } from 'src/views/NavGrid';
+import { NavGrid } from 'src/views/sections/NavGrid';
 import { Returns as UseThemeReturns, useTheme } from 'src/hooks/useTheme';
 import { Mode, TranslateFuncArgs } from 'src/App';
 import { getThemeClass } from 'src/utils/getThemeClass';

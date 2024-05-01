@@ -3,8 +3,8 @@ import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, O
 import { CSSTransition } from 'react-transition-group';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 'react-scroll-parallax';
 
-import Home from 'src/views/Home';
-import Projects from 'src/views/Projects';
+import Home from 'src/views/pages/Home';
+import Projects from 'src/views/pages/Projects';
 
 import { Main } from './components/Main';
 import HeaderSwitcher from './components/HeaderSwitcher';

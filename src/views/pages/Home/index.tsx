@@ -1,10 +1,11 @@
 // TODO: Rename to routes/add routing
 
 import React, { useState } from 'react';
-//import Img from '../../assets/landscape.jpg';
+
+import { useMatches } from 'react-router-dom';
+import BreadCrumbs from 'src/components/Breadcrumbs';
 
 import './index.scss';
-
 /**
  * Hover to focus
  * tap to reveal (animates grid, pulls up next screen)
@@ -15,11 +16,10 @@ function Home() {
 
   // const containerBgClass = true ? `theme-${hoveredItem}` : '';
 
-  return (
-    <section>
-      <h1>Home page</h1>
-    </section>
-  );
+  const matches = useMatches();
+  console.log('🚀 ~ Home ~ matches:', matches);
+
+  return <Layouts type='mainSection'></Layouts>;
 }
 
 // render alongside desktop/ route to on mobile

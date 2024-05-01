@@ -1,7 +1,7 @@
 // TODO: Rename to routes/add routing
 
 import React, { useRef } from 'react';
-import { GridContainer } from '../../components/Grid';
+import { GridContainer } from '../../../components/Grid';
 
 import classNames from 'classnames';
 import GridLink, { Props as GridLinkProps } from './GridLink';
@@ -67,6 +67,7 @@ function NavGrid({ goToContent, mode, setMode, themeClassName, theme, setTheme }
         className={classNames('nav-container', configContainerClasses())}
         ref={navRef}
         onAnimationEnd={handleFinalCSSTransition}>
+        <h3> Grid Nav </h3>
         <GridContainer presetName='grid_3_3' extraClasses={['nav-list-container']}>
           <GridLink
             linkTo='home'

@@ -2,16 +2,16 @@ import React, { useEffect, useRef, useState } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
 import { NavGrid } from 'src/views/features/NavGrid';
-import { Returns as UseThemeReturns } from 'src/hooks/useTheme';
+import { Returns as UseThemeReturns } from 'src/hooks/useBgClass';
 import { TranslateFuncArgs } from 'src/App';
 
 import './index.scss';
 
 export type Props = {
   scrollToContent?: any;
-  themeClassName: any;
-  theme: UseThemeReturns['theme'];
-  setTheme: UseThemeReturns['setTheme'];
+  bgClassName: any;
+  activeArea: UseThemeReturns['activeArea'];
+  setActiveArea: UseThemeReturns['setActiveArea'];
   transitionMain?: (arg: TranslateFuncArgs) => void;
   bgType: any; //todo
   mode: any;
@@ -20,24 +20,20 @@ export type Props = {
 
 function HeaderSwitcher({
   scrollToContent = () => {},
-  themeClassName,
-  theme,
-  setTheme,
+  bgClassName,
+  activeArea,
+  setActiveArea,
   transitionMain,
   bgType,
   mode,
   setMode,
 }: Props) {
-  // const [themeClassName, setCurrentThemeClassName] = useState(getThemeClass(bgType, activeTheme));
-
   const navRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
   const nodeRef = mode === 'full' ? navRef : titleRef;
 
   const loc = useLocation();
-
-  // const { theme: hoveredTheme, setTheme: setHoveredTheme } = useTheme(bgType);
 
   const reverse = (e: any) => {
     e.preventDefault();
@@ -60,10 +56,10 @@ function HeaderSwitcher({
   }, [mode]);
 
   useEffect(() => {
-    if (theme) {
-      setTheme(theme);
+    if (activeArea) {
+      setActiveArea(activeArea);
     }
-  }, [theme, setTheme]);
+  }, [activeArea, setActiveArea]);
 
   // useEffect(() => {
   //   if (hoveredTheme) {
@@ -74,7 +70,7 @@ function HeaderSwitcher({
   return (
     <>
       {mode === 'title' && <button onClick={reverse}>Menu</button>}
-      <header className={`header-container ${themeClassName ? themeClassName : `theme-bg-a`}`}>
+      <header className={`header-container ${bgClassName ? bgClassName : `bg-a`}`}>
         <SwitchTransition>
           {/* @ts-ignore */}
           <CSSTransition
@@ -88,12 +84,12 @@ function HeaderSwitcher({
             <div ref={nodeRef} className='switch-container'>
               {mode === 'full' || mode === 'toTitle' ? (
                 <NavGrid
-                  themeClassName={themeClassName}
+                  bgClassName={bgClassName}
                   goToContent={scrollToContent}
                   mode={mode}
                   setMode={setMode}
-                  theme={theme}
-                  setTheme={setTheme}
+                  activeArea={activeArea}
+                  setActiveArea={setActiveArea}
                   // hovered={hoveredTheme}
                   // setHovered={setHoveredTheme}
                   //                  bgType={bgType}

@@ -1,0 +1,37 @@
+/** *** *** Default theme *** *** */
+
+// todo: theme switcher context
+// on data attribute change on <html>, switch whatever
+/* Color swatch */
+$primary: rgb(0, 39, 34);
+$secondary: rgb(58, 90, 83);
+$tertiary: rgb(40, 140, 200);
+
+$shade-a3: rgb(165, 152, 132);
+$shade-a2: rgb(191, 178, 163);
+$shade-a1: rgb(242, 240, 240);
+
+/* Color swatch */
+$default-primary: rgb(0, 39, 34);
+$default-secondary: rgb(58, 90, 83);
+
+$default-shade-a3: rgb(165, 152, 132);
+$default-shade-a2: rgb(191, 178, 163);
+$default-shade-a1: rgb(242, 240, 240);
+
+$default-shade-b3: rgb(40, 140, 200);
+
+/** *** *** Tropical theme *** *** */
+
+$tropical-primary: rgb(2, 81, 89);
+$tropical-secondary: rgb(38, 140, 140);
+$tropical-tertiary: rgb(128, 140, 39);
+
+$tropical-shade-a3: rgb(188, 191, 80);
+
+$tropical-shade-b3: rgb(242, 110, 80);
+
+// Define a function to add alpha to RGB color
+@function rgba-add-alpha($red, $green, $blue, $alpha) {
+  @return rgba($red, $green, $blue, $alpha);
+}

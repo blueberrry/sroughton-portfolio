@@ -8,7 +8,7 @@ import Projects from 'src/views/pages/Projects';
 
 import { Main } from './components/Layouts/Main';
 import HeaderSwitcher from './components/HeaderSwitcher';
-import { useTheme } from './hooks/useTheme';
+import { useBgClass } from './hooks/useBgClass';
 import './root.scss';
 import { BgStates } from './types/types';
 // todo: document with comments
@@ -31,7 +31,7 @@ export function App() {
 
   const [bgType, setBgType] = useState<BgStates>(initial);
 
-  const { theme, setTheme, className: activeThemeClassName } = useTheme({ type: bgType });
+  const { activeArea, setActiveArea, className: activeAreaBgClass } = useBgClass({ type: bgType });
 
   // const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
@@ -93,9 +93,9 @@ export function App() {
       )}
 
       <HeaderSwitcher
-        themeClassName={activeThemeClassName}
-        theme={theme}
-        setTheme={setTheme}
+        bgClassName={activeAreaBgClass}
+        activeArea={activeArea}
+        setActiveArea={setActiveArea}
         transitionMain={translateUp}
         bgType={bgType}
         mode={headerMode}
@@ -108,7 +108,7 @@ export function App() {
         classNames='main-container'
         unmountOnExit={true}>
         <div ref={mainContainerRef}>
-          <Main theme={theme} type='primary'>
+          <Main theme={activeArea} type='primary'>
             <Outlet />
           </Main>
         </div>

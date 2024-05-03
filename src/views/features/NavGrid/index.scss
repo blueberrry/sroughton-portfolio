@@ -84,15 +84,15 @@ nav.nav-container {
 
   @include defaultTransition;
 
-  @each $theme, $value in $themes {
+  @each $area, $color in $area-themes {
     // applies bg colour to header on navigation event
-    @include theme-bg($theme, $value);
+    @include bg-col($area, $color);
   }
 
-  @each $theme, $value in $img-theme {
+  @each $area, $img in $img-theme {
     // applies bg colour to header on navigation event
 
-    @include theme-img($theme, $value);
+    @include bg-img($area, $img);
   }
 
   &.to-title {

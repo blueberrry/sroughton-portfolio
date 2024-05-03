@@ -3,13 +3,13 @@ import BreadCrumbs from 'src/components/Breadcrumbs';
 import { useClasses } from 'src/hooks/useClasses';
 import { ClassKeys } from '../types';
 import { CLASSES } from '../consts';
-import { ThemeNames } from 'src/types/types';
-import { useTheme } from 'src/hooks/useTheme';
+import { AreaNames } from 'src/types/types';
+import { useBgClass } from 'src/hooks/useBgClass';
 
 import './index.scss';
 
 type Props = {
-  theme: ThemeNames | null;
+  theme: AreaNames | null;
   type?: ClassKeys;
   title?: string;
   extraClasses?: string[];
@@ -17,7 +17,7 @@ type Props = {
 };
 
 export function Main({ theme = 'a', type = 'primary', title, extraClasses = [], children }: PropsWithChildren<Props>) {
-  const { className: themeClassName } = useTheme({ type: 'bg', initialValue: theme });
+  const { className: themeClassName } = useBgClass({ type: 'bg', initialValue: theme });
 
   const mainClasses = new Array(`${CLASSES[type]}-main`);
 

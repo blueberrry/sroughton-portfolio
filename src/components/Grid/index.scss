@@ -96,9 +96,10 @@ ul.grid-container {
         grid-area: $grid;
 
         // Check if there's a theme for this area and apply hover style
-        @if map-has-key($themes, $area) {
+        @if map-has-key($area-themes, $area) {
           &:hover {
-            @extend .bg-color-#{map-get($themes, $area)};
+            //@extend .bg-color-#{map-get($themes, $area)};
+            background-color: default-#{map-get($area-themes, $area)};
           }
         }
       }

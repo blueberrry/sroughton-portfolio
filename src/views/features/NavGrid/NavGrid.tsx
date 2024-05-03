@@ -6,8 +6,7 @@ import { GridContainer } from '../../../components/Grid';
 import classNames from 'classnames';
 import GridLink, { Props as GridLinkProps } from './GridLink';
 import { Mode as HeaderMode } from 'src/App';
-import { getThemeClass } from 'src/utils/getThemeClass';
-import { Returns as UseThemeReturns } from 'src/hooks/useTheme';
+import { Returns as UseBgClassReturns } from 'src/hooks/useBgClass';
 
 import './index.scss';
 /**
@@ -20,11 +19,11 @@ export type Props = {
   goToContent: any; //todo:
   mode: HeaderMode;
   setMode: React.Dispatch<React.SetStateAction<HeaderMode>>; // todo: Header could have generic type
-  themeClassName: any;
-  theme: UseThemeReturns['theme'];
-  setTheme: UseThemeReturns['setTheme'];
+  bgClassName: any;
+  activeArea: UseBgClassReturns['activeArea'];
+  setActiveArea: UseBgClassReturns['setActiveArea'];
 };
-function NavGrid({ goToContent, mode, setMode, themeClassName, theme, setTheme }: Props) {
+function NavGrid({ goToContent, mode, setMode, bgClassName, activeArea, setActiveArea }: Props) {
   const navRef = useRef(null);
 
   // todo: is there a reason to do this? Might be better to just target ::hover in css
@@ -32,7 +31,7 @@ function NavGrid({ goToContent, mode, setMode, themeClassName, theme, setTheme }
 
   // todo: memoise?
   const configContainerClasses = () => {
-    let classes = [themeClassName];
+    let classes = [bgClassName];
 
     if (mode === 'toTitle') {
       classes.push('to-title');
@@ -42,13 +41,13 @@ function NavGrid({ goToContent, mode, setMode, themeClassName, theme, setTheme }
   };
 
   const resetDefaultState = () => {
-    setTheme(null);
+    setActiveArea(null);
     setMode('full');
   };
 
   const handleClick: GridLinkProps['onClick'] = (e, aArea) => {
-    if (setTheme) {
-      setTheme(aArea); // set the active area
+    if (setActiveArea) {
+      setActiveArea(aArea); // set the active area
     }
     if (mode === 'full') {
       setMode('toTitle'); // set header mode (link changes to header)
@@ -72,50 +71,50 @@ function NavGrid({ goToContent, mode, setMode, themeClassName, theme, setTheme }
           <GridLink
             linkTo='home'
             presetArea='a'
-            setTheme={setTheme}
+            setTheme={setActiveArea}
             onClick={handleClick}
-            isActive={theme === 'a'}
+            isActive={activeArea === 'a'}
             mode={mode}
           />
 
           <GridLink
             linkTo='projects'
             presetArea='b'
-            setTheme={setTheme}
+            setTheme={setActiveArea}
             onClick={handleClick}
-            isActive={theme === 'b'}
+            isActive={activeArea === 'b'}
             mode={mode}
           />
           <GridLink
             linkTo='page-3'
             presetArea='c'
-            setTheme={setTheme}
+            setTheme={setActiveArea}
             onClick={handleClick}
-            isActive={theme === 'c'}
+            isActive={activeArea === 'c'}
             mode={mode}
           />
           <GridLink
             linkTo='page-4'
             presetArea='d'
-            setTheme={setTheme}
+            setTheme={setActiveArea}
             onClick={handleClick}
-            isActive={theme === 'd'}
+            isActive={activeArea === 'd'}
             mode={mode}
           />
           <GridLink
             linkTo='page-5'
             presetArea='e'
-            setTheme={setTheme}
+            setTheme={setActiveArea}
             onClick={handleClick}
-            isActive={theme === 'e'}
+            isActive={activeArea === 'e'}
             mode={mode}
           />
           <GridLink
             linkTo='page-6'
             presetArea='f'
-            setTheme={setTheme}
+            setTheme={setActiveArea}
             onClick={handleClick}
-            isActive={theme === 'f'}
+            isActive={activeArea === 'f'}
             mode={mode}
           />
         </GridContainer>

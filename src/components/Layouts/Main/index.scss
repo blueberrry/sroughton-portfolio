@@ -13,12 +13,12 @@ main.default {
 
     box-shadow: $top-shadow;
 
-    @each $theme, $value in $themes {
+    @each $area, $color in $area-themes {
       // applies bg colour to header on navigation event
-      @include theme-bg($theme, $value);
+      @include bg-col($area, $color);
     }
 
-    color: $shade-1-rgba;
+    color: $default-shade-a1;
   }
 
   &.secondary-main {

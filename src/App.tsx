@@ -127,11 +127,12 @@ export function App() {
         classNames='main-container'
         unmountOnExit={true}>
         <div ref={mainContainerRef}>
-          <Main theme={activeArea} type='primary'>
+          <Main active={activeArea} type='primary'>
             <Outlet />
           </Main>
         </div>
       </CSSTransition>
+      <footer>{/* Todo: */}</footer>
     </div>
   );
 }

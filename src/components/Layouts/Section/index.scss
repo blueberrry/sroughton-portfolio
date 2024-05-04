@@ -5,9 +5,11 @@ section.default {
 
   &.primary-section {
     border: 0.5rem solid var(--border-color);
+    background-color: var(--neutral-color);
   }
 
   &.secondary-section {
     border: 0.5rem solid var(--accent-color);
+    background-color: var(--background-color-secondary);
   }
 }

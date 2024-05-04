@@ -75,6 +75,7 @@ export function App() {
           <button onClick={() => changeTheme('mystic')}>Mystic Theme</button>
           <button onClick={() => changeTheme('night')}>Night Theme</button>
           <button onClick={() => changeTheme('purple-hills')}>Purple hills Theme</button>
+          <button onClick={() => changeTheme('tropical')}>Tropical Theme</button>
 
           <fieldset>
             <label> BG color </label>

@@ -1,41 +1,39 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
-import { NavGrid } from 'src/views/NavGrid';
-import { Returns as UseThemeReturns, useTheme } from 'src/hooks/useTheme';
-import { Mode, TranslateFuncArgs } from 'src/App';
-import { getThemeClass } from 'src/utils/getThemeClass';
+import { NavGrid } from 'src/views/features/NavGrid';
+import { Returns as UseThemeReturns } from 'src/hooks/useBgClass';
+import { TranslateFuncArgs } from 'src/App';
 
 import './index.scss';
 
 export type Props = {
   scrollToContent?: any;
-  activeTheme: UseThemeReturns['theme'];
-  setActiveTheme: UseThemeReturns['setTheme'];
+  bgClassName: any;
+  activeArea: UseThemeReturns['activeArea'];
+  setActiveArea: UseThemeReturns['setActiveArea'];
   transitionMain?: (arg: TranslateFuncArgs) => void;
+  bgType: any; //todo
+  mode: any;
+  setMode: any;
 };
 
-type BgStates = 'bg' | 'img' | 'grad';
-
-// todo: better to have a function getActiveThemeClass(selected => `theme-${selected}
-function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveTheme, transitionMain }: Props) {
-  const [mode, setMode] = useState<Mode>('full');
-
-  const bgStates = ['bg', 'img', 'grad'];
-  const initial = bgStates[0] as BgStates;
-
-  const [bgType, setBgType] = useState<BgStates>(initial);
-
-  const [currentThemeClassName, setCurrentThemeClassName] = useState(getThemeClass(activeTheme, bgType));
-
+function HeaderSwitcher({
+  scrollToContent = () => {},
+  bgClassName,
+  activeArea,
+  setActiveArea,
+  transitionMain,
+  bgType,
+  mode,
+  setMode,
+}: Props) {
   const navRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
   const nodeRef = mode === 'full' ? navRef : titleRef;
 
   const loc = useLocation();
-
-  const { theme: hoveredTheme, setTheme: setHoveredTheme } = useTheme();
 
   const reverse = (e: any) => {
     e.preventDefault();
@@ -58,23 +56,21 @@ function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveThem
   }, [mode]);
 
   useEffect(() => {
-    if (activeTheme) {
-      setCurrentThemeClassName(getThemeClass(activeTheme));
+    if (activeArea) {
+      setActiveArea(activeArea);
     }
-  }, [activeTheme, setCurrentThemeClassName]);
+  }, [activeArea, setActiveArea]);
 
-  useEffect(() => {
-    if (hoveredTheme) {
-      setCurrentThemeClassName(getThemeClass(hoveredTheme));
-    }
-  }, [hoveredTheme, setCurrentThemeClassName]);
+  // useEffect(() => {
+  //   if (hoveredTheme) {
+  //     setTheme(getThemeClass(bgType, hoveredTheme));
+  //   }
+  // }, [hoveredTheme, setCurrentThemeClassName]);
 
   return (
     <>
-      {mode === 'full' && <button onClick={() => setBgType}>&lt;'bg' | 'img' | 'grad'&gt; </button>}
-
       {mode === 'title' && <button onClick={reverse}>Menu</button>}
-      <header className={`header-container ${currentThemeClassName ? currentThemeClassName : `theme-primary`}`}>
+      <header className={`header-container ${bgClassName ? bgClassName : `bg-a`}`}>
         <SwitchTransition>
           {/* @ts-ignore */}
           <CSSTransition
@@ -88,13 +84,15 @@ function HeaderSwitcher({ scrollToContent = () => {}, activeTheme, setActiveThem
             <div ref={nodeRef} className='switch-container'>
               {mode === 'full' || mode === 'toTitle' ? (
                 <NavGrid
+                  bgClassName={bgClassName}
                   goToContent={scrollToContent}
                   mode={mode}
                   setMode={setMode}
-                  activeTheme={activeTheme}
-                  setActiveTheme={setActiveTheme}
-                  hovered={hoveredTheme}
-                  setHovered={setHoveredTheme}
+                  activeArea={activeArea}
+                  setActiveArea={setActiveArea}
+                  // hovered={hoveredTheme}
+                  // setHovered={setHoveredTheme}
+                  //                  bgType={bgType}
                 />
               ) : (
                 <div className='title-container'>

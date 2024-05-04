@@ -446,3 +446,48 @@ word-break: break-word;
 
 // todo: gradient color to white
 linear-gradient(rgba(255, 255, 255, 0), rgb(255, 255, 255))
+
+
+
+
+
+ TODOS:
+
+  New colour theme including complementary and glowing colours
+  
+  Cool SVG Icons
+
+  Ensure most styles are encapsulated with <Section> <Article> <Main>
+
+
+Main returns:  Breadcrumbs, h2, children
++ Breadcrumb styles
++ Seperators
+
+Main CSS:      Centered content, max-width, h2, theme, font color (light/dark/theme)
+
+Article returns: Page style layout, h3, sub-header/h4, children, box-shadow, bg(light/dark/theme)
+Article CSS:
+
+article.primary-article {
+	margin: 1rem auto;
+	max-width: 42rem;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	box-shadow: ..;
+
+	> h3.title {
+		font-family: ..;
+		text-decoration: underline;
+		font-size: 3rem;
+		color: black; // dark theme = white;
+	}
+
+	> h4.sub-title {
+		font-famiy: ..;
+		font-size: 2rem;
+	}
+}
+
+Section returns: Card style layout, h3, sub-header/h4, children, box-shadow, bg (light/dark)

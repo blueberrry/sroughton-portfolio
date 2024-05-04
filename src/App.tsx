@@ -1,15 +1,19 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 'react-scroll-parallax';
+import ThemeProvider, { ThemeContext } from './context/ThemeContext';
 
-import Home from 'src/views/Home';
-import Projects from 'src/views/Projects';
+import Home from 'src/views/pages/Home';
+import Projects from 'src/views/pages/Projects';
 
-import { Main } from './components/Main';
+import { Main } from './components/Layouts/Main';
 import HeaderSwitcher from './components/HeaderSwitcher';
-import { useTheme } from './hooks/useTheme';
+import { useBgClass } from './hooks/useBgClass';
+import { BgStates } from './types/types';
+
 import './root.scss';
+
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
 //       then just render child comps
@@ -18,13 +22,26 @@ export type TranslateFuncArgs = 'up' | 'down';
 export type Mode = 'full' | 'toTitle' | 'title' | null;
 
 export function App() {
-  // todo: useLayoutEffect
+  const { theme, changeTheme } = useContext(ThemeContext);
+
+  // todo: extract to hook?
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
   // const scrollRef = useRef(null) as any; // todo:
   const mainContainerRef = useRef(null);
 
   const [transitionMainUp, setMainTransitionUp] = useState<boolean>(false);
 
-  const { theme: activeTheme, setTheme: setActiveTheme, className: activeThemeClassName } = useTheme();
+  const [headerMode, setHeaderMode] = useState<Mode>('full');
+
+  const bgStates = ['bg', 'img', 'grad'];
+  const initial = bgStates[0] as BgStates;
+
+  const [bgType, setBgType] = useState<BgStates>(initial);
+
+  const { activeArea, setActiveArea, className: activeAreaBgClass } = useBgClass({ type: bgType });
 
   // const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
@@ -48,7 +65,54 @@ export function App() {
   // todo: theme in context vs prop drilling?
   return (
     <div className='parallax-container'>
-      <HeaderSwitcher activeTheme={activeTheme} setActiveTheme={setActiveTheme} transitionMain={translateUp} />
+      {/* todo: move logic to storybook story */}
+      {headerMode === 'full' && (
+        <form className='temp-form' onSubmit={(e) => e.preventDefault()}>
+          <button onClick={() => changeTheme('default')}>Default Theme</button>
+          <button onClick={() => changeTheme('tropical')}>Tropical Theme</button>
+          <fieldset>
+            <label> BG color </label>
+            <input
+              type='radio'
+              // defaultChecked
+              name='bg'
+              value={bgStates[0]}
+              checked={bgType === bgStates[0]}
+              onChange={() => setBgType('bg')}
+            />
+          </fieldset>
+          <fieldset>
+            <label> BG img </label>
+            <input
+              type='radio'
+              name='img'
+              value={bgStates[1]}
+              checked={bgType === bgStates[1]}
+              onChange={() => setBgType('img')}
+            />
+          </fieldset>
+          <fieldset>
+            <label> BG gradient </label>
+            <input
+              type='radio'
+              name='grad'
+              value={bgStates[2]}
+              checked={bgType === bgStates[2]}
+              onChange={() => setBgType('grad')}
+            />
+          </fieldset>
+        </form>
+      )}
+
+      <HeaderSwitcher
+        bgClassName={activeAreaBgClass}
+        activeArea={activeArea}
+        setActiveArea={setActiveArea}
+        transitionMain={translateUp}
+        bgType={bgType}
+        mode={headerMode}
+        setMode={setHeaderMode}
+      />
       <CSSTransition
         nodeRef={mainContainerRef}
         in={transitionMainUp}
@@ -56,7 +120,7 @@ export function App() {
         classNames='main-container'
         unmountOnExit={true}>
         <div ref={mainContainerRef}>
-          <Main extraClasses={activeThemeClassName ? [activeThemeClassName] : []}>
+          <Main theme={activeArea} type='primary'>
             <Outlet />
           </Main>
         </div>
@@ -85,5 +149,9 @@ function AppRoutes() {
 }
 
 export function createApp() {
-  return <AppRoutes />;
+  return (
+    <ThemeProvider>
+      <AppRoutes />
+    </ThemeProvider>
+  );
 }

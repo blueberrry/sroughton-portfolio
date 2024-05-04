@@ -2,7 +2,11 @@
 /* TODO: Create root spacing vars */
 
 @import '../node_modules/include-media/dist/include-media.scss';
-@import './styles/theme/default.scss';
+@import './styles/theme/_colors.scss';
+@import './styles/theme/_themes.scss';
+
+// themes control css vars
+// vars apply the correct theme color
 
 $breakpoints: (
   phone: 640px,
@@ -17,7 +21,7 @@ $breakpoints: (
 
 div#app-root,
 .parallax-container {
-  height: -webkit-fill-available; // todo: janky animations
+  height: -webkit-fill-available; // todo: janky scroll
   // prevents whitespace caused by parallax elements
 }
 
@@ -46,7 +50,10 @@ $grid-areas: (
   f: tile_06,
 );
 
-$themes: (
+$themes: ('default', 'dark', 'tropical');
+
+// maps named areas (a, b, c, ..) to colors names (primary, secondary..).
+$area-themes: (
   a: primary,
   b: secondary,
   c: tertiary,
@@ -84,17 +91,21 @@ $img-theme: (
 // background: -ms-gradient(linear, left top, left bottom, color-stop(0%, $topBarDarkBlue);
 // }
 
-@mixin theme-img($theme, $url) {
-  &.theme-img-#{$theme} {
+@mixin bg-img($area, $url) {
+  &.bg-img-#{$area} {
     background: url(#{$url}) top center;
     background-repeat: no-repeat;
     background-size: auto;
   }
 }
 
-@mixin theme-bg($theme, $val) {
-  &.theme-bg-#{$theme} {
-    @extend .bg-color-#{$val};
+@mixin bg-col($area, $val) {
+  &.bg-#{$area} {
+    //  @extend .bg-color-#{$val};
+
+    // background-color: #{$val};
+
+    background-color: var(--#{$val}-color);
   }
 }
 
@@ -123,21 +134,21 @@ $img-theme: (
 }
 
 // todo: following classes are temp only
-.bg-color-primary {
-  background-color: $primary-hex;
-}
+// .bg-color-primary {
+//   background-color: $default-primary;
+// }
 
-.bg-color-secondary {
-  background-color: $secondary-hex;
-}
+// .bg-color-secondary {
+//   background-color: $default-secondary;
+// }
 
-.bg-color-tertiary {
-  background-color: $tertiary-hex;
-}
+// .bg-color-tertiary {
+//   background-color: $default-tertiary;
+// }
 
-.bg-color-info {
-  background-color: $shade-1-hex;
-}
+// .bg-color-info {
+//   background-color: $default-shade-a1;
+// }
 
 $top-shadow: 0 0 20px #333; // todo: refine
 
@@ -177,4 +188,11 @@ div.main-container-exit-active {
   // opacity: 0;
   transform: translateY(0vh);
   transition: transform #{$animation-duration}ms;
+}
+
+.temp-form {
+  margin: 0 auto;
+  max-width: 42rem;
+  display: flex;
+  justify-content: space-around;
 }

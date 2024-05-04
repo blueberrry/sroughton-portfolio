@@ -1,0 +1,25 @@
+@import '../../../root.scss';
+
+main.default {
+  border: 2px solid purple;
+
+  &.primary-main {
+    width: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: $spcr-md;
+    display: flex;
+    transition: all 0.6s ease;
+
+    box-shadow: $top-shadow;
+
+    @each $area, $color in $area-themes {
+      // applies bg colour to header on navigation event
+      @include bg-col($area, $color);
+    }
+  }
+
+  &.secondary-main {
+    border: 2px solid blue;
+  }
+}

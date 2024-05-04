@@ -1,0 +1,50 @@
+// todo: move to _themes.scss
+html[data-theme='default'] {
+  --primary-color: #{$default-primary};
+  --secondary-color: #{$default-secondary};
+  --tertiary-color: #{$default-tertiary};
+
+  --neutral-color: #{$default-neutral};
+  --background-primary-color: #{$default-background-primary};
+  --background-secondary-color: #{$default-background-secondary};
+
+  --text-color: #{$default-text};
+  --inverse-color: #{$default-inverse};
+
+  --accent-color: #{$default-accent};
+  --highlight-color: #{$default-highlight};
+  --border-color: #{$default-border};
+
+  --button-color: #{$default-button};
+  --link-color: #{$default-link};
+
+  --success-color: #{$default-success};
+  --warning-color: #{$default-warning};
+  --error-color: #{$default-error};
+  --info-color: #{$default-info};
+}
+
+html[data-theme='tropical'] {
+  --primary-color: #{$tropical-primary};
+  --secondary-color: #{$tropical-secondary};
+  --tertiary-color: #{$tropical-tertiary};
+
+  --neutral-color: #{$tropical-neutral};
+  --background-primary-color: #{$tropical-background-primary};
+  --background-secondary-color: #{$tropical-background-secondary};
+
+  --text-color: #{$tropical-text};
+  --inverse-color: #{$tropical-inverse};
+
+  --accent-color: #{$tropical-accent};
+  --highlight-color: #{$tropical-highlight};
+  --border-color: #{$tropical-border};
+
+  --button-color: #{$tropical-button};
+  --link-color: #{$tropical-link};
+
+  --success-color: #{$tropical-success};
+  --warning-color: #{$tropical-warning};
+  --error-color: #{$tropical-error};
+  --info-color: #{$tropical-info};
+}

@@ -1,0 +1,16 @@
+@import '../../root.scss';
+
+nav.breadcrumb-container {
+  width: 100%;
+  > ol.breadcrumb {
+    width: inherit;
+    display: flex;
+    list-style-type: none;
+    justify-content: flex-start;
+
+    li.breadcrumb-item {
+      &.active {
+      }
+    }
+  }
+}

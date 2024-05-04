@@ -8,15 +8,15 @@
   @include defaultTransition;
 
   // background color classnames
-  @each $theme, $value in $themes {
-    @include theme-bg($theme, $value);
+  @each $area, $color in $area-themes {
+    @include bg-col($area, $color);
   }
 
-  // @each $theme, $value in $img-theme {
-  //   // applies bg colour to header on navigation event
+  @each $area, $img in $img-theme {
+    // applies bg colour to header on navigation event
 
-  //   @include theme-img($theme, $value);
-  // }
+    @include bg-img($area, $img);
+  }
 
   // background image classnames
   // @each $theme, $img in $img-theme {

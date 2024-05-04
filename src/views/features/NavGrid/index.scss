@@ -1,4 +1,4 @@
-@import '../../root.scss';
+@import '../../../root.scss';
 
 $last-animation-delay: nth($animation-delays, length($animation-delays));
 
@@ -84,17 +84,16 @@ nav.nav-container {
 
   @include defaultTransition;
 
-  @each $theme, $value in $themes {
+  @each $area, $color in $area-themes {
     // applies bg colour to header on navigation event
-    @include theme-bg($theme, $value);
+    @include bg-col($area, $color);
   }
 
-  // @each $theme, $img in $theme-images {
-  //   // applies bg colour to header on navigation event
-  //   &.theme-#{$theme} {
-  //     @extend .theme-img-#{$img};
-  //   }
-  // }
+  @each $area, $img in $img-theme {
+    // applies bg colour to header on navigation event
+
+    @include bg-img($area, $img);
+  }
 
   &.to-title {
     > ul.nav-list-container {
@@ -106,11 +105,6 @@ nav.nav-container {
   }
 
   > ul.nav-list-container {
-    // @include btn-grid-lr;
-    // width: 800px;
-    // height: 600px;
-    // max-width: 47rem;
-    // margin: 0 auto;
     background-color: transparent; // todo: should always have colour
 
     > li.item-auto {

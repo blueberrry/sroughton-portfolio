@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import useHover from 'src/hooks/useHover';
-import { ThemeNames } from 'src/types/types';
+import { AreaNames } from 'src/types/types';
 
 export function ItemAuto({ theme = 'a', onClick, onHover, extraClasses, children }: ItemAutoProps) {
   /**
@@ -35,7 +35,7 @@ export function ItemAuto({ theme = 'a', onClick, onHover, extraClasses, children
 
 export type ItemAutoProps = {
   onHover?: (hvr: ItemAutoProps['theme']) => void;
-  theme?: ThemeNames;
+  theme?: AreaNames;
   onClick?: () => void;
   extraClasses?: string[];
   children?: React.ReactNode;

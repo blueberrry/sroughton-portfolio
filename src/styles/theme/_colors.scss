@@ -36,6 +36,58 @@ $default-warning: orange;
 $default-error: red;
 $default-info: blue;
 
+/* *** Mystic theme 1.0 *** */
+
+$mystic-primary: #733b73;
+$mystic-secondary: #f55654;
+$mystic-tertiary: #f99551;
+
+$mystic-neutral: #91b87c;
+
+$mystic-background-primary: #ffd58c;
+$mystic-background-secondary: #427c80;
+
+$mystic-text: #241124;
+$mystic-inverse: #f0f0f0;
+
+$mystic-accent: #427c80;
+$mystic-highlight: #cc001f;
+$mystic-border: #cc7a7a;
+
+$mystic-success: #389b57;
+$mystic-warning: #cc9a00;
+$mystic-error: #f00b07;
+$mystic-info: #0080cc;
+
+$mystic-button: #32374f;
+$mystic-link: #025159;
+
+/* *** Night theme 1.0 *** */
+
+$night-primary: #242e49;
+$night-secondary: #574963;
+$night-tertiary: #7c677a;
+
+$night-neutral: #ffe0e6;
+
+$night-background-primary: #b18b9a;
+$night-background-secondary: #6e546c;
+
+$night-text: scale-color($night-primary, $lightness: - 50%);
+$night-inverse: #ffe0e6;
+
+$night-accent: #427c80;
+$night-highlight: #cc001f;
+$night-border: #cc7a7a;
+
+$night-success: #389b57;
+$night-warning: #cc9a00;
+$night-error: #f00b07;
+$night-info: #0080cc;
+
+$night-button: #32374f;
+$night-link: #025159;
+
 /** *** *** Tropical theme 2.0 *** *** */
 
 $tropical-primary: rgb(2, 81, 89);
@@ -61,6 +113,32 @@ $tropical-info: blue;
 
 $tropical-button: yellow;
 $tropical-link: pink;
+
+/* *** Purple hills theme 1.0 *** */
+
+$purple-hills-primary: #643958;
+$purple-hills-secondary: #9d446a;
+$purple-hills-tertiary: #f67989;
+
+$purple-hills-neutral: #c1a194;
+
+$purple-hills-background-primary: #456e66;
+$purple-hills-background-secondary: #07313d;
+
+$purple-hills-text: scale-color($purple-hills-background-secondary, $lightness: - 50%);
+$purple-hills-inverse: #ffe0e6;
+
+$purple-hills-accent: #427c80;
+$purple-hills-highlight: #cc001f;
+$purple-hills-border: #cc7a7a;
+
+$purple-hills-success: #389b57;
+$purple-hills-warning: #cc9a00;
+$purple-hills-error: #f00b07;
+$purple-hills-info: #0080cc;
+
+$purple-hills-button: #32374f;
+$purple-hills-link: #025159;
 
 // optional - $tropical-background-extra
 

@@ -43,6 +43,8 @@ export function App() {
 
   const { activeArea, setActiveArea, className: activeAreaBgClass } = useBgClass({ type: bgType });
 
+  // card styled section title text, spacing, icons
+
   // const scrollToContent = () => setTimeout(() => scrollRef.current.scrollIntoView({ behavior: 'smooth' }), 500);
 
   function translateUp(direction: TranslateFuncArgs) {
@@ -70,6 +72,10 @@ export function App() {
         <form className='temp-form' onSubmit={(e) => e.preventDefault()}>
           <button onClick={() => changeTheme('default')}>Default Theme</button>
           <button onClick={() => changeTheme('tropical')}>Tropical Theme</button>
+          <button onClick={() => changeTheme('mystic')}>Mystic Theme</button>
+          <button onClick={() => changeTheme('night')}>Night Theme</button>
+          <button onClick={() => changeTheme('purple-hills')}>Purple hills Theme</button>
+
           <fieldset>
             <label> BG color </label>
             <input

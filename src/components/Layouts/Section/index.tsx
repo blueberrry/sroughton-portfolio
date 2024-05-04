@@ -2,6 +2,7 @@ import React, { PropsWithChildren } from 'react';
 
 import { useClasses } from 'src/hooks/useClasses';
 
+import { Title } from '../Title';
 import { CLASSES } from '../consts';
 import { ClassKeys } from '../types';
 
@@ -21,7 +22,7 @@ export function Section({ type = 'primary', title, extraClasses = [''], children
 
   return (
     <section className={`default ${classes}`}>
-      {title && <h3>{title}</h3>}
+      {title && <Title text={title} type='medium' />}
       {children}
     </section>
   );

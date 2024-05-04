@@ -1,4 +1,3 @@
-// todo: move to _themes.scss
 html[data-theme='default'] {
   --primary-color: #{$default-primary};
   --secondary-color: #{$default-secondary};
@@ -47,4 +46,79 @@ html[data-theme='tropical'] {
   --warning-color: #{$tropical-warning};
   --error-color: #{$tropical-error};
   --info-color: #{$tropical-info};
+}
+
+html[data-theme='mystic'] {
+  --primary-color: #{$mystic-primary};
+  --secondary-color: #{$mystic-secondary};
+  --tertiary-color: #{$mystic-tertiary};
+
+  --neutral-color: #{$mystic-neutral};
+  --background-primary-color: #{$mystic-background-primary};
+  --background-secondary-color: #{$mystic-background-secondary};
+
+  --text-color: #{$mystic-text};
+  --inverse-color: #{$mystic-inverse};
+
+  --accent-color: #{$mystic-accent};
+  --highlight-color: #{$mystic-highlight};
+  --border-color: #{$mystic-border};
+
+  --button-color: #{$mystic-button};
+  --link-color: #{$mystic-link};
+
+  --success-color: #{$mystic-success};
+  --warning-color: #{$mystic-warning};
+  --error-color: #{$mystic-error};
+  --info-color: #{$mystic-info};
+}
+
+html[data-theme='night'] {
+  --primary-color: #{$night-primary};
+  --secondary-color: #{$night-secondary};
+  --tertiary-color: #{$night-tertiary};
+
+  --neutral-color: #{$night-neutral};
+  --background-primary-color: #{$night-background-primary};
+  --background-secondary-color: #{$night-background-secondary};
+
+  --text-color: #{$night-text};
+  --inverse-color: #{$night-inverse};
+
+  --accent-color: #{$night-accent};
+  --highlight-color: #{$night-highlight};
+  --border-color: #{$night-border};
+
+  --button-color: #{$night-button};
+  --link-color: #{$night-link};
+
+  --success-color: #{$night-success};
+  --warning-color: #{$night-warning};
+  --error-color: #{$night-error};
+  --info-color: #{$night-info};
+}
+
+html[data-theme='purple-hills'] {
+  --primary-color: #{$purple-hills-primary};
+  --secondary-color: #{$purple-hills-secondary};
+  --tertiary-color: #{$purple-hills-tertiary};
+
+  --neutral-color: #{$purple-hills-neutral};
+  --background-primary-color: #{$purple-hills-background-primary};
+  --background-secondary-color: #{$purple-hills-background-secondary};
+
+  --text-color: #{$purple-hills-text};
+  --inverse-color: #{$purple-hills-inverse};
+
+  --accent-color: #{$purple-hills-accent};
+  --highlight-color: #{$purple-hills-highlight};
+  --border-color: #{$purple-hills-border};
+
+  --button-color: #{$purple-hills-button};
+  --link-color: #{$purple-hills-link};
+
+  --success-color: #{$purple-hills-success};
+  --warning-color: #{$purple-hills-warning};
+  --error-color: #{$purple-hills-error};
+  --info-color: #{$purple-hills-info};
 }

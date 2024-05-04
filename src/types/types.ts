@@ -1,4 +1,4 @@
-export type ThemeNames = 'default' | 'tropical';
+export type ThemeNames = 'default' | 'tropical' | 'mystic' | 'night' | 'purple-hills';
 
 export type AreaNames = 'a' | 'b' | 'c' | 'd' | 'e' | 'f';
 

@@ -25,15 +25,29 @@ div#app-root,
   // prevents whitespace caused by parallax elements
 }
 
-h1 {
+@mixin main-title {
+  // font-size:
+  // font-family
   padding: 1.25rem 1.75rem;
 }
 
-h2 {
+@mixin sub-title {
   padding: 1rem 1.5rem;
 }
 
-p {
+@mixin medium-title {
+  padding: 0.75rem 1rem;
+}
+
+@mixin medium-sub-title {
+  padding: 0.75rem 1rem;
+}
+
+@mixin small-title {
+  padding: 0.75rem 1rem;
+}
+
+@mixin small-sub-title {
   padding: 0.75rem 1rem;
 }
 
@@ -57,9 +71,9 @@ $area-themes: (
   a: primary,
   b: secondary,
   c: tertiary,
-  d: primary,
-  e: secondary,
-  f: tertiary,
+  d: neutral,
+  e: background-primary,
+  f: background-secondary,
 );
 
 $img-theme: (
@@ -117,18 +131,6 @@ $img-theme: (
   4 three fade out !selected || !hovered
   */
 }
-
-// .theme-img-5 {
-//   background: url(https://picsum.photos/g/1921/1081?random) top center;
-//   background-repeat: no-repeat;
-//   background-size: auto;
-// }
-
-// .theme-img-6 {
-//   background: url(https://picsum.photos/g/1921/1081?random) top center;
-//   background-repeat: no-repeat;
-//   background-size: auto;
-// }
 
 @include media('>tablet', '<950px') {
 }

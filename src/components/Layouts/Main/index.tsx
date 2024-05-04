@@ -17,11 +17,11 @@ type Props = {
 };
 
 export function Main({ theme = 'a', type = 'primary', title, extraClasses = [], children }: PropsWithChildren<Props>) {
-  const { className: themeClassName } = useBgClass({ type: 'bg', initialValue: theme });
+  const { className: bgClassName } = useBgClass({ type: 'bg', initialValue: theme });
 
   const mainClasses = new Array(`${CLASSES[type]}-main`);
 
-  const { classes } = useClasses({ containerClasses: [...mainClasses, themeClassName], extraClasses });
+  const { classes } = useClasses({ containerClasses: [...mainClasses, bgClassName], extraClasses });
 
   return (
     <main className={`default ${classes}`}>

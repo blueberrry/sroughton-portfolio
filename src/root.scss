@@ -5,21 +5,6 @@
 @import './styles/theme/_colors.scss';
 @import './styles/theme/_themes.scss';
 
-// todo: move to _themes.scss
-// [data-theme='dark']
-html {
-  // --background-color: #{$default-primary};
-  // --color: #{$neutral-0};
-
-  --primary-color: #{$default-primary};
-  --secondary-color: #{$default-secondary};
-}
-
-html[data-theme='light'] {
-  --primary-color: #{$tropical-primary};
-  --secondary-color: #{$tropical-secondary};
-}
-
 // themes control css vars
 // vars apply the correct theme color
 
@@ -65,18 +50,9 @@ $grid-areas: (
   f: tile_06,
 );
 
-$actual-themes: ('default', 'dark', 'tropical');
+$themes: ('default', 'dark', 'tropical');
 
-// maps theme named areas (a, b, c, ..) to colors names (primary, secondary..).
-// $area-themes: (
-//   a: $primary,
-//   b: $secondary,
-//   c: $tertiary,
-//   d: $primary,
-//   e: $secondary,
-//   f: $tertiary,
-// );
-
+// maps named areas (a, b, c, ..) to colors names (primary, secondary..).
 $area-themes: (
   a: primary,
   b: secondary,

@@ -1,7 +1,8 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 'react-scroll-parallax';
+import ThemeProvider, { ThemeContext } from './context/ThemeContext';
 
 import Home from 'src/views/pages/Home';
 import Projects from 'src/views/pages/Projects';
@@ -9,8 +10,10 @@ import Projects from 'src/views/pages/Projects';
 import { Main } from './components/Layouts/Main';
 import HeaderSwitcher from './components/HeaderSwitcher';
 import { useBgClass } from './hooks/useBgClass';
-import './root.scss';
 import { BgStates } from './types/types';
+
+import './root.scss';
+
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
 //       then just render child comps
@@ -19,6 +22,12 @@ export type TranslateFuncArgs = 'up' | 'down';
 export type Mode = 'full' | 'toTitle' | 'title' | null;
 
 export function App() {
+  const { theme, changeTheme } = useContext(ThemeContext);
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
+
   // const scrollRef = useRef(null) as any; // todo:
   const mainContainerRef = useRef(null);
 
@@ -57,7 +66,9 @@ export function App() {
     <div className='parallax-container'>
       {/* todo: move logic to storybook story */}
       {headerMode === 'full' && (
-        <form className='temp-form'>
+        <form className='temp-form' onSubmit={(e) => e.preventDefault()}>
+          <button onClick={() => changeTheme('default')}>Default Theme</button>
+          <button onClick={() => changeTheme('tropical')}>Tropical Theme</button>
           <fieldset>
             <label> BG color </label>
             <input
@@ -137,5 +148,9 @@ function AppRoutes() {
 }
 
 export function createApp() {
-  return <AppRoutes />;
+  return (
+    <ThemeProvider>
+      <AppRoutes />
+    </ThemeProvider>
+  );
 }

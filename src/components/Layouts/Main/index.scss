@@ -17,8 +17,6 @@ main.default {
       // applies bg colour to header on navigation event
       @include bg-col($area, $color);
     }
-
-    color: $default-shade-a1;
   }
 
   &.secondary-main {

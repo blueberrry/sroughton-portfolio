@@ -24,6 +24,7 @@ export type Mode = 'full' | 'toTitle' | 'title' | null;
 export function App() {
   const { theme, changeTheme } = useContext(ThemeContext);
 
+  // todo: extract to hook?
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);

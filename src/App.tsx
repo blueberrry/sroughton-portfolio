@@ -14,6 +14,7 @@ import { BgStates } from './types/types';
 
 import './root.scss';
 
+// todo: 🎉🚮 STORYBOOOOOOOOOOK 
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
 //       then just render child comps

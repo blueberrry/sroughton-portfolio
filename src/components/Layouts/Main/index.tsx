@@ -9,15 +9,15 @@ import { useBgClass } from 'src/hooks/useBgClass';
 import './index.scss';
 
 type Props = {
-  theme: AreaNames | null;
+  active: AreaNames | null;
   type?: ClassKeys;
   title?: string;
   extraClasses?: string[];
   children?: React.ReactNode;
 };
 
-export function Main({ theme = 'a', type = 'primary', title, extraClasses = [], children }: PropsWithChildren<Props>) {
-  const { className: bgClassName } = useBgClass({ type: 'bg', initialValue: theme });
+export function Main({ active = 'a', type = 'primary', title, extraClasses = [], children }: PropsWithChildren<Props>) {
+  const { className: bgClassName } = useBgClass({ type: 'bg', initialValue: active });
 
   const mainClasses = new Array(`${CLASSES[type]}-main`);
 

@@ -14,6 +14,7 @@ import { BgStates } from './types/types';
 
 import './root.scss';
 
+// todo: 🎉🚮 STORYBOOOOOOOOOOK 
 // todo: document with comments
 // todo: all page content should be main footer so create single component that does this and pass style
 //       then just render child comps
@@ -75,6 +76,7 @@ export function App() {
           <button onClick={() => changeTheme('mystic')}>Mystic Theme</button>
           <button onClick={() => changeTheme('night')}>Night Theme</button>
           <button onClick={() => changeTheme('purple-hills')}>Purple hills Theme</button>
+          <button onClick={() => changeTheme('tropical')}>Tropical Theme</button>
 
           <fieldset>
             <label> BG color </label>
@@ -126,11 +128,12 @@ export function App() {
         classNames='main-container'
         unmountOnExit={true}>
         <div ref={mainContainerRef}>
-          <Main theme={activeArea} type='primary'>
+          <Main active={activeArea} type='primary'>
             <Outlet />
           </Main>
         </div>
       </CSSTransition>
+      <footer>{/* Todo: */}</footer>
     </div>
   );
 }

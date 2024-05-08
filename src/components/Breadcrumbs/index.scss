@@ -1,17 +1,120 @@
 @import '../../root.scss';
 
 nav.breadcrumb-container {
+  //max-width: 200px;
   color: red;
-  width: 100%;
   > ol.breadcrumb {
     width: inherit;
     display: flex;
+    // justify-content: space-between;
     list-style-type: none;
-    justify-content: flex-start;
+
+    // todo: consider adding these to css reset
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
 
     li.breadcrumb-item {
+      position: relative;
+      // background-color: var(--secondary-color); // todo: storybook needs themes
+      //margin-right: $spcr-sm;
+      display: inline-table;
+      //background-color: $tropical-secondary;
+
+      display: inline;
+      align-items: center;
+      //margin: auto auto auto 1rem;
+      line-height: 1rem;
+      //height: 1.25rem;
+      // max-height: 1rem;
+      // height: 1rem;
+
       &.active {
+        color: white !important;
+      }
+
+      a {
+        display: block;
+        float: left;
+        height: 25px;
+        background: $tropical-primary;
+
+        text-align: center;
+        padding: 15px 10px 0 30px;
+        position: relative;
+        margin: 0 5px 0 0;
+        font-size: 10px;
+        text-decoration: none;
+
+        &:link,
+        &:hover,
+        &:visited,
+        &:focus {
+          color: white;
+          text-decoration: none;
+        }
+
+        &:hover {
+          background: #357dfd;
+        }
+
+        &:after {
+          content: '';
+          border-top: 20px solid transparent;
+          border-bottom: 20px solid transparent;
+          border-left: 20px solid $tropical-primary;
+          position: absolute;
+          right: -20px;
+          top: 0;
+          z-index: 1;
+        }
+
+        &:hover {
+          &:after {
+            border-left-color: #357dfd;
+          }
+        }
+      }
+
+      &:first-of-type {
+        a {
+          border-top-left-radius: 5px;
+          border-bottom-left-radius: 5px;
+        }
+      }
+
+      &:not(:first-of-type) {
+        a {
+          &:before {
+            content: '';
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+          }
+
+          &:after {
+            content: '';
+            border-top: 20px solid transparent;
+            border-bottom: 20px solid transparent;
+            border-left: 20px solid $tropical-primary;
+            position: absolute;
+            right: -20px;
+            top: 0;
+            z-index: 1;
+          }
+
+          &:hover {
+            &:after {
+              border-left-color: #357dfd;
+            }
+          }
+        }
       }
     }
   }
+
+  // unused atm
 }

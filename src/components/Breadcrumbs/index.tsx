@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import FourRems from 'src/icons/4rems';
 
 import './index.scss';
+import { BREADCRUMB_ROOTS } from 'src/consts';
 
-type Props = { seperators: boolean; root?: 'home' | 'nav' | null; pathnames: string[] }; // todo: Generic type of rout names/hrefs
+type Props = { seperators: boolean; root?: (typeof BREADCRUMB_ROOTS)[number]; pathnames: string[] }; // todo: Generic type of rout names/hrefs
 
+// todo: Icons (home/projects etc)
 export function BreadCrumbs({ seperators, root = null, pathnames }: Props) {
   console.log('🚀 ~ BreadCrumbs ~ pathnames:', pathnames);
   return (
@@ -13,10 +15,8 @@ export function BreadCrumbs({ seperators, root = null, pathnames }: Props) {
       <ol role='navigation' className='breadcrumb'>
         {root && (
           <li className='breadcrumb-item'>
-            <span>
-              <Link to='/'>{root.charAt(0).toUpperCase()}</Link> &nbsp; | + &nbsp;
-            </span>
-            {seperators && <Seperator />}
+            <Link to='/'>{root.charAt(0).toUpperCase() + root.slice(1)}</Link>
+            {/* {seperators && <Seperator />} */}
           </li>
         )}
 
@@ -28,8 +28,14 @@ export function BreadCrumbs({ seperators, root = null, pathnames }: Props) {
             console.log('🚀 ~ BreadCrumbs ~ routeTo:', routeTo);
             return (
               <li key={`${part}-${index}`} className={`breadcrumb-item ${isLast ? 'active' : ''}`}>
-                <span>{isLast ? part : <Link to={routeTo}>{part}</Link>}</span>
-                {seperators && <Seperator />}
+                {isLast ? (
+                  part
+                ) : (
+                  <Link to={routeTo}>
+                    {part}
+                    {/* {seperators && <Seperator />} */}
+                  </Link>
+                )}
               </li>
             );
           })}
@@ -39,7 +45,7 @@ export function BreadCrumbs({ seperators, root = null, pathnames }: Props) {
 }
 
 function Seperator() {
-  return <span> | </span>;
+  return <span className='seperator'>|</span>;
 }
 
 // import React from 'react';

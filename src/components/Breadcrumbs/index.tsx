@@ -4,6 +4,7 @@ import FourRems from 'src/icons/4rems';
 
 import './index.scss';
 import { BREADCRUMB_ROOTS } from 'src/consts';
+import { firstCharUpper } from 'src/utils/firstCharUpper';
 
 type Props = { seperators: boolean; root?: (typeof BREADCRUMB_ROOTS)[number]; pathnames: string[] }; // todo: Generic type of rout names/hrefs
 
@@ -15,7 +16,7 @@ export function BreadCrumbs({ seperators, root = null, pathnames }: Props) {
       <ol role='navigation' className='breadcrumb'>
         {root && (
           <li className='breadcrumb-item'>
-            <Link to='/'>{root.charAt(0).toUpperCase() + root.slice(1)}</Link>
+            <Link to='/'>{firstCharUpper(root)}</Link>
             {/* {seperators && <Seperator />} */}
           </li>
         )}

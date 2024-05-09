@@ -4,7 +4,7 @@
   // Define default sizes
   $default-size: (
     small: 0.5,
-    medium: 1
+    medium: 1,
   );
 
   // Extract size multiplier from the $default-size map
@@ -17,8 +17,8 @@
   // Extract colors from the $colors list
   $default-before-color: #fff; // Default color for ::before
   $default-after-color: #000; // Default color for ::after
-  $before-color: if(length($colors) > 0, nth($colors, 1), $default-before-color);
-  $after-color: if(length($colors) > 1, nth($colors, 2), $default-after-color);
+  $before-color: if(length($colors) > 0, nth($colors, 1), $tropical-primary);
+  $after-color: if(length($colors) > 1, nth($colors, 2), $fff);
 
   @if $type == 'before' {
     &:before {
@@ -50,14 +50,6 @@
     @include customArrow(after, $colors, $size);
   }
 }
-
-// Usage
-.your-element {
-  @include customArrow(both, #your-before-color, #your-after-color, small); // Specify size as 'small'
-}
-
-
-
 
 nav.breadcrumb-container {
   //max-width: 200px;
@@ -100,6 +92,11 @@ nav.breadcrumb-container {
         height: 25px;
         padding: 15px 10px 0 30px;
 
+        @include media('<tablet') {
+          height: 12.5px;
+          padding: 7.5px 5px 0 15px;
+        }
+
         position: relative;
         float: left;
         display: block;
@@ -134,26 +131,30 @@ nav.breadcrumb-container {
 
       &:not(:first-of-type) {
         a {
-          &:before {
-            content: '';
-            border-top: 20px solid transparent;
-            border-bottom: 20px solid transparent;
-            border-left: 20px solid #fff;
-            position: absolute;
-            left: 0;
-            top: 0;
+          @include customArrow(both, (#fff, $tropical-primary), medium); // Specify size as 'small'
+          @include media('<tablet') {
+            @include customArrow(both, (#fff, $tropical-primary), small); // Specify size as 'small'
           }
+          // &:before {
+          //   content: '';
+          //   border-top: 20px solid transparent;
+          //   border-bottom: 20px solid transparent;
+          //   border-left: 20px solid #fff;
+          //   position: absolute;
+          //   left: 0;
+          //   top: 0;
+          // }
 
-          &:after {
-            content: '';
-            border-top: 20px solid transparent;
-            border-bottom: 20px solid transparent;
-            border-left: 20px solid $tropical-primary;
-            position: absolute;
-            right: -20px;
-            top: 0;
-            z-index: 1;
-          }
+          // &:after {
+          //   content: '';
+          //   border-top: 20px solid transparent;
+          //   border-bottom: 20px solid transparent;
+          //   border-left: 20px solid $tropical-primary;
+          //   position: absolute;
+          //   right: -20px;
+          //   top: 0;
+          //   z-index: 1;
+          // }
 
           &:hover {
             &:after {
@@ -172,16 +173,21 @@ nav.breadcrumb-container {
             display: none;
           }
 
-          &:after {
-            content: '';
-            border-top: 20px solid transparent;
-            border-bottom: 20px solid transparent;
-            border-left: 20px solid $tropical-primary;
-            position: absolute;
-            right: -20px;
-            top: 0;
-            z-index: 1;
+          @include customArrow(after, (#fff, $tropical-primary), medium); // Specify size as 'small'
+
+          @include media('<tablet') {
+            @include customArrow(after, (#fff, $tropical-primary), small); // Specify size as 'small'
           }
+          // &:after {
+          //   content: '';
+          //   border-top: 20px solid transparent;
+          //   border-bottom: 20px solid transparent;
+          //   border-left: 20px solid $tropical-primary;
+          //   position: absolute;
+          //   right: -20px;
+          //   top: 0;
+          //   z-index: 1;
+          // }
         }
       }
 

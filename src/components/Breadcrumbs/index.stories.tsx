@@ -57,3 +57,18 @@ export const MultipleLocations: Story = {
     root: 'home',
   },
 };
+
+export const LongLinkText: Story = {
+  args: {
+    seperators: true,
+    pathnames: ['projects', 'new-projects', 'elaborate-long-article-title', 'next-title', 'even nexter title'],
+    root: 'home',
+  },
+  decorators: [
+    (Story) => (
+      <div style={{ maxWidth: '20rem', height: '100vh', border: '1px solid purple' }}>
+        <Story />
+      </div>
+    ),
+  ],
+};

@@ -4,7 +4,7 @@ import FourRems from 'src/icons/4rems';
 
 import './index.scss';
 import { BREADCRUMB_ROOTS } from 'src/consts';
-import { firstCharUpper } from 'src/utils/firstCharUpper';
+import { firstCharUpper } from '../../utils/firstCharUpper';
 
 type Props = { seperators: boolean; root?: (typeof BREADCRUMB_ROOTS)[number]; pathnames: string[] }; // todo: Generic type of rout names/hrefs
 
@@ -15,7 +15,7 @@ export function BreadCrumbs({ seperators, root = null, pathnames }: Props) {
     <nav className='breadcrumb-container'>
       <ol role='navigation' className='breadcrumb'>
         {root && (
-          <li className='breadcrumb-item'>
+          <li className='breadcrumb-item first'>
             <Link to='/'>{firstCharUpper(root)}</Link>
             {/* {seperators && <Seperator />} */}
           </li>
@@ -25,18 +25,15 @@ export function BreadCrumbs({ seperators, root = null, pathnames }: Props) {
           pathnames.map((part, index) => {
             const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
             const isLast = index === pathnames.length - 1;
+            console.log('🚀 ~ BreadCrumbs ~ routeTo:', routeTo);
             console.log('🚀 ~ BreadCrumbs ~ isLast:', isLast);
             console.log('🚀 ~ BreadCrumbs ~ routeTo:', routeTo);
             return (
-              <li key={`${part}-${index}`} className={`breadcrumb-item ${isLast ? 'active' : ''}`}>
-                {isLast ? (
-                  part
-                ) : (
-                  <Link to={routeTo}>
-                    {part}
-                    {/* {seperators && <Seperator />} */}
-                  </Link>
-                )}
+              <li key={`${part}-${index}`} className={`breadcrumb-item ${isLast ? 'last' : ''}`}>
+                <Link to={routeTo}>
+                  {part}
+                  {/* {seperators && <Seperator />} */}
+                </Link>
               </li>
             );
           })}

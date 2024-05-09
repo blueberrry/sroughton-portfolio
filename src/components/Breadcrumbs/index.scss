@@ -1,5 +1,64 @@
 @import '../../root.scss';
 
+@mixin customArrow($type: both, $colors: auto, $size: medium) {
+  // Define default sizes
+  $default-size: (
+    small: 0.5,
+    medium: 1
+  );
+
+  // Extract size multiplier from the $default-size map
+  $multiplier: map-get($default-size, $size);
+
+  // Calculate sizes based on the multiplier
+  $border-size: 20px * $multiplier;
+  $right-position: 20px * $multiplier;
+
+  // Extract colors from the $colors list
+  $default-before-color: #fff; // Default color for ::before
+  $default-after-color: #000; // Default color for ::after
+  $before-color: if(length($colors) > 0, nth($colors, 1), $default-before-color);
+  $after-color: if(length($colors) > 1, nth($colors, 2), $default-after-color);
+
+  @if $type == 'before' {
+    &:before {
+      content: '';
+      border-top: $border-size solid transparent;
+      border-bottom: $border-size solid transparent;
+      border-left: $border-size solid $before-color;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }
+
+  @if $type == 'after' {
+    &:after {
+      content: '';
+      border-top: $border-size solid transparent;
+      border-bottom: $border-size solid transparent;
+      border-left: $border-size solid $after-color;
+      position: absolute;
+      right: -$right-position;
+      top: 0;
+      z-index: 1;
+    }
+  }
+
+  @if $type == 'both' {
+    @include customArrow(before, $colors, $size);
+    @include customArrow(after, $colors, $size);
+  }
+}
+
+// Usage
+.your-element {
+  @include customArrow(both, #your-before-color, #your-after-color, small); // Specify size as 'small'
+}
+
+
+
+
 nav.breadcrumb-container {
   //max-width: 200px;
   color: red;
@@ -47,6 +106,10 @@ nav.breadcrumb-container {
         background: $tropical-primary;
 
         font-size: $font-sz-body;
+        @include media('<tablet') {
+          font-size: $font-sz-sm;
+        }
+
         text-align: center;
         text-decoration: none;
 

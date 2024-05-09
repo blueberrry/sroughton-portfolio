@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import FourRems from 'src/icons/4rems';
 
-import './index.scss';
 import { BREADCRUMB_ROOTS } from 'src/consts';
 import { firstCharUpper } from '../../utils/firstCharUpper';
+import './index.scss';
 
 type Props = { seperators: boolean; root?: (typeof BREADCRUMB_ROOTS)[number]; pathnames: string[] }; // todo: Generic type of rout names/hrefs
 

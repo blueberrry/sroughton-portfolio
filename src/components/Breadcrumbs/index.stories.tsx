@@ -10,11 +10,6 @@ const meta: Meta<typeof BreadCrumbs> = {
   component: BreadCrumbs,
   parameters: [],
   argTypes: {
-    seperators: {
-      control: 'boolean',
-      name: 'Has Seperators?',
-      description: 'Optionally apply seperator components between each breadcrumb item.',
-    },
     pathnames: {
       control: 'object',
       name: 'Path Names',
@@ -44,7 +39,6 @@ type Story = StoryObj<typeof BreadCrumbs>;
 
 export const TwoLocations: Story = {
   args: {
-    seperators: true,
     pathnames: ['one', 'two'],
     root: 'home',
   },
@@ -52,7 +46,6 @@ export const TwoLocations: Story = {
 
 export const MultipleLocations: Story = {
   args: {
-    seperators: true,
     pathnames: ['one', 'two', 'three', 'four'],
     root: 'home',
   },
@@ -60,7 +53,6 @@ export const MultipleLocations: Story = {
 
 export const LongLinkText: Story = {
   args: {
-    seperators: true,
     pathnames: ['projects', 'new-projects', 'elaborate-long-article-title', 'next-title', 'even nexter title'],
     root: 'home',
   },
@@ -71,4 +63,18 @@ export const LongLinkText: Story = {
       </div>
     ),
   ],
+};
+
+export const RootRouteOnly: Story = {
+  args: {
+    pathnames: [],
+    root: 'home',
+  },
+};
+
+export const SingleRouteOnly: Story = {
+  args: {
+    pathnames: ['projects'],
+    root: null,
+  },
 };

@@ -22,7 +22,7 @@ const preview: Preview = {
       }, [theme]);
 
       return (
-        <ThemeProvider>
+        <ThemeProvider initial='mystic'>
           <Story />
         </ThemeProvider>
       );

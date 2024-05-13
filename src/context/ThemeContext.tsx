@@ -1,4 +1,4 @@
-import React, { createContext, useState } from 'react';
+import React, { PropsWithChildren, createContext, useState } from 'react';
 import { ThemeNames } from 'src/types/types';
 
 interface ContextProps {
@@ -12,11 +12,12 @@ export const ThemeContext = createContext<ContextProps>({
 });
 
 interface Props {
-  children?: React.ReactNode;
+  initial?: ThemeNames;
+  // children?: React.ReactNode;
 }
 
-const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useState<ThemeNames>('default');
+const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({ initial, children }) => {
+  const [theme, setTheme] = useState<ThemeNames>(initial ? initial : 'default');
 
   const changeThemeHandler = (theme: ThemeNames) => {
     if (theme) {

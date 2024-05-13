@@ -17,12 +17,14 @@
   // Extract colors from the $colors list
   $default-before-color: #fff; // Default color for ::before
   $default-after-color: #000; // Default color for ::after
-  $before-color: if(length($colors) > 0, nth($colors, 1), $tropical-primary);
-  $after-color: if(length($colors) > 1, nth($colors, 2), $fff);
+  $before-color: if(length($colors) > 0, nth($colors, 1), $default-before-color);
+  $after-color: if(length($colors) > 1, nth($colors, 2), $default-after-color);
 
   @if $type == 'before' {
     &:before {
       content: '';
+      clear: both;
+
       border-top: $border-size solid transparent;
       border-bottom: $border-size solid transparent;
       border-left: $border-size solid $before-color;
@@ -30,11 +32,19 @@
       left: 0;
       top: 0;
     }
+
+    &:hover {
+      &:before {
+        border-lef-color: $before-color;
+      }
+    }
   }
 
   @if $type == 'after' {
     &:after {
       content: '';
+      clear: both;
+
       border-top: $border-size solid transparent;
       border-bottom: $border-size solid transparent;
       border-left: $border-size solid $after-color;
@@ -42,6 +52,12 @@
       right: -$right-position;
       top: 0;
       z-index: 1;
+    }
+
+    &:hover {
+      &:after {
+        border-left-color: $before-color;
+      }
     }
   }
 
@@ -53,8 +69,7 @@
 
 nav.breadcrumb-container {
   //max-width: 200px;
-  color: red;
-  > ol.breadcrumb {
+  > ol.breadcrumb-list {
     width: inherit;
     display: flex;
     // justify-content: space-between;
@@ -65,44 +80,46 @@ nav.breadcrumb-container {
     margin-block-end: 0;
     padding-inline-start: 0;
 
-    overflow-x: scroll; // todo: mobile behaviour, focus item, snap to (if needed) OR alternative menu for mobile
+    background: var(--secondary-color);
+
+    padding: 0.5rem;
+
+    //   overflow-x: scroll; // todo: mobile behaviour, focus item, snap to (if needed) OR alternative menu for mobile
 
     li.breadcrumb-item {
       position: relative;
-      // background-color: var(--secondary-color); // todo: storybook needs themes applied
-      //margin-right: $spcr-sm;
-      display: inline-table;
-      //background-color: $tropical-secondary;
 
-      display: inline;
-      align-items: center;
-      //margin: auto auto auto 1rem;
-      line-height: 1rem;
+      display: inline-table;
+
       text-wrap: nowrap;
-      //height: 1.25rem;
       // max-height: 1rem;
       // height: 1rem;
+      display: block;
 
       &.active {
         color: red !important;
       }
 
       a {
+        line-height: 1rem;
         margin: 0 5px 0 0;
-        height: 25px;
+        height: 40px;
+
         padding: 15px 10px 0 30px;
+        clear: both;
 
         @include media('<tablet') {
-          height: 12.5px;
-          padding: 7.5px 5px 0 15px;
+          // height: 25px;
+          // padding: 1rem 0.75rem 0rem 2rem;
+          // todo: change smaller
         }
 
         position: relative;
         float: left;
         display: block;
-        background: $tropical-primary;
-
+        background: var(--primary-color);
         font-size: $font-sz-body;
+
         @include media('<tablet') {
           font-size: $font-sz-sm;
         }
@@ -114,85 +131,58 @@ nav.breadcrumb-container {
         &:hover,
         &:visited,
         &:focus {
-          color: white;
+          color: var(--inverse-color);
           text-decoration: none;
         }
 
         &:hover {
-          background: #357dfd;
-        }
-
-        &:hover {
-          &:after {
-            border-left-color: #357dfd;
-          }
+          background: var(--secondary-color);
         }
       }
 
       &:not(:first-of-type) {
         a {
-          @include customArrow(both, (#fff, $tropical-primary), medium); // Specify size as 'small'
+          @include customArrow(both, (var(--secondary-color), var(--primary-color)), medium); // Specify size as 'small'
           @include media('<tablet') {
-            @include customArrow(both, (#fff, $tropical-primary), small); // Specify size as 'small'
-          }
-          // &:before {
-          //   content: '';
-          //   border-top: 20px solid transparent;
-          //   border-bottom: 20px solid transparent;
-          //   border-left: 20px solid #fff;
-          //   position: absolute;
-          //   left: 0;
-          //   top: 0;
-          // }
-
-          // &:after {
-          //   content: '';
-          //   border-top: 20px solid transparent;
-          //   border-bottom: 20px solid transparent;
-          //   border-left: 20px solid $tropical-primary;
-          //   position: absolute;
-          //   right: -20px;
-          //   top: 0;
-          //   z-index: 1;
-          // }
-
-          &:hover {
-            &:after {
-              border-left-color: #357dfd;
-            }
+            @include customArrow(
+              both,
+              (var(--secondary-color), var(--primary-color)),
+              small
+            ); // Specify size as 'small'
           }
         }
       }
 
       &.first {
         a {
+          background: var(--tertiary-color);
           border-top-left-radius: 5px;
           border-bottom-left-radius: 5px;
+
           &:before {
             content: '';
             display: none;
           }
 
-          @include customArrow(after, (#fff, $tropical-primary), medium); // Specify size as 'small'
+          @include customArrow(after, (var(--primary-color), var(--tertiary-color)), medium); // Specify size as 'small'
 
           @include media('<tablet') {
-            @include customArrow(after, (#fff, $tropical-primary), small); // Specify size as 'small'
+            @include customArrow(
+              after,
+              (var(--primary-color), var(--tertiary-color)),
+              small
+            ); // Specify size as 'small'
           }
-          // &:after {
-          //   content: '';
-          //   border-top: 20px solid transparent;
-          //   border-bottom: 20px solid transparent;
-          //   border-left: 20px solid $tropical-primary;
-          //   position: absolute;
-          //   right: -20px;
-          //   top: 0;
-          //   z-index: 1;
-          // }
+
+          &:hover {
+            background: var(--primary-color);
+          }
         }
       }
 
       &.last {
         a {
+          // background: var(--default-accent);
           border-top-right-radius: 5px;
           border-bottom-right-radius: 5px;
           &:after {

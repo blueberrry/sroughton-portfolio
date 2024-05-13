@@ -21,7 +21,7 @@ export function BreadCrumbs({ root = null, pathnames }: Props) {
     <nav className='breadcrumb-container'>
       <ol role='navigation' className='breadcrumb-list'>
         {root && (
-          <li className='breadcrumb-item first' key={`null-2`}>
+          <li className='breadcrumb-item first' key={`_first-item`}>
             <Link to='/'>{firstCharUpper(root)}</Link>
           </li>
         )}

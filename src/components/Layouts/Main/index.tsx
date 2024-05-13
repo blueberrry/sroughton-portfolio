@@ -30,7 +30,7 @@ export function Main({ active = 'a', type = 'primary', title, extraClasses = [],
 
   return (
     <main className={`default ${classes}`}>
-      <BreadCrumbs pathnames={pathnames} seperators />
+      <BreadCrumbs pathnames={pathnames} />
       {title && <h2>{title}</h2>}
       {children}
     </main>

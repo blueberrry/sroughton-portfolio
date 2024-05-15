@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Crab = (
+const CRAB = (
   <image
     width='150'
     height='152'
@@ -8,4 +8,6 @@ const Crab = (
   />
 );
 
-export const SVG = { crab: Crab };
+export const SVG_IMAGES = { crab: CRAB };
+
+export const SVG_TEXT = { home: '🏘️' };

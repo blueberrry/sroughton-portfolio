@@ -1,3 +1,5 @@
+@import './colors';
+
 html[data-theme='default'] {
   --primary-color: #{$default-primary};
   --secondary-color: #{$default-secondary};

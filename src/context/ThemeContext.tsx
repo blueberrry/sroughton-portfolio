@@ -1,28 +1,29 @@
-import React, { PropsWithChildren, createContext, useState } from 'react';
+import React, { PropsWithChildren, createContext, useCallback, useState } from 'react';
 import { ThemeNames } from 'src/types/types';
 
 interface ContextProps {
-  theme: ThemeNames;
+  theme: ThemeNames | null;
   changeTheme: (theme: ContextProps['theme']) => void;
 }
 
 export const ThemeContext = createContext<ContextProps>({
-  theme: 'default',
+  theme: null,
   changeTheme: () => {},
 });
 
 interface Props {
-  initial?: ThemeNames;
-  // children?: React.ReactNode;
+  initialTheme?: ThemeNames;
+  children?: React.ReactNode;
 }
 
-const ThemeProvider: React.FC<PropsWithChildren<Props>> = ({ initial, children }) => {
-  const [theme, setTheme] = useState<ThemeNames>(initial ? initial : 'default');
+const ThemeProvider: React.FC<Props> = ({ initialTheme, children }) => {
+  // const initTheme = initial ? initial : 'default';
+  const [theme, setTheme] = useState<ThemeNames | null>(initialTheme ?? 'default');
 
   const changeThemeHandler = (theme: ThemeNames) => {
     if (theme) {
       setTheme(theme);
-    } else console.warn('no theme/unrecognised theme');
+    }
   };
 
   return (

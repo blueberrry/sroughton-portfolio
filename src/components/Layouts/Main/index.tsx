@@ -24,7 +24,7 @@ export function Main({ active = 'a', type = 'primary', title, extraClasses = [],
 
   const { className: bgClassName } = useBgClass({ type: 'bg', initialValue: active });
 
-  const mainClasses = new Array(`${CLASSES[type]}-main`);
+  const mainClasses = new Array(`${CLASSES[type]}-main`); // todo: create hook?
 
   const { classes } = useClasses({ containerClasses: [...mainClasses, bgClassName], extraClasses });
 

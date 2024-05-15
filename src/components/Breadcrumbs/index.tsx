@@ -12,7 +12,7 @@ type Props = { root?: (typeof BREADCRUMB_ROOTS)[number]; pathnames: string[] }; 
 // todo: Icons (home/projects etc)
 export function BreadCrumbs({ root = null, pathnames }: Props) {
   console.log('🚀 ~ BreadCrumbs ~ pathnames:', pathnames);
-  if (!root && pathnames.length < 2) {
+  if (!root && pathnames.length < 1) {
     // component must have at least two routes?
     // nah get rid, should be able to handle one route only
     return <></>;
@@ -30,12 +30,12 @@ export function BreadCrumbs({ root = null, pathnames }: Props) {
           pathnames.map((part, index) => {
             const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
             const isFirst = !root && index === 0;
-            const isLast = index === pathnames.length - 1;
+            const isLast = index === pathnames.length - 1 && index !== 0;
 
             return (
               <li
                 key={`${part}-${index}`}
-                className={`breadcrumb-item ${isFirst ? 'first' : ''}${isLast ? 'last' : ''}`}>
+                className={`breadcrumb-item ${isFirst ? 'first' : ''} ${isLast ? 'last' : ''}`}>
                 <Link to={routeTo}>{part}</Link>
               </li>
             );

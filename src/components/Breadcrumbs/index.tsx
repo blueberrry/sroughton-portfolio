@@ -9,6 +9,7 @@ import './index.scss';
 
 type Props = { root?: (typeof BREADCRUMB_ROOTS)[number]; pathnames: string[] }; // todo: Generic type of rout names/hrefs
 
+// todo: test click action in story
 // todo: Icons (home/projects etc)
 export function BreadCrumbs({ root = null, pathnames }: Props) {
   console.log('🚀 ~ BreadCrumbs ~ pathnames:', pathnames);

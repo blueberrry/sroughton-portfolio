@@ -9,50 +9,38 @@ type Props = {
   name: SvgImgProps | SvgTxtProps;
 };
 
-function getSvgElement(name: Props['name']): ReactElement<any, any> {
+// todo: make responsive or pass props to adjust size: sm/md/lg
+function getSvgElement(name: Props['name']): ReactElement {
   if (name in SVG_IMAGES) {
-    return <>{SVG_IMAGES[name as SvgImgProps]}</>; // Type assertion required
+    const imageAttributes = SVG_IMAGES[name as SvgImgProps];
+    return <image width='4rem' height='4rem' {...imageAttributes} />; // Type assertion required
   } else if (name in SVG_TEXT) {
-    return <>{SVG_TEXT[name as SvgTxtProps]}</>; // Type assertion required
+    return (
+      <text
+        x='2rem'
+        y='2rem'
+        textAnchor='middle'
+        dominantBaseline='middle'
+        style={{ fontSize: '2.5rem', fill: 'var(--primary-color)' }}>
+        {SVG_TEXT[name as SvgTxtProps]}
+      </text>
+    ); // Type assertion required
   }
   throw new Error('Invalid SVG element name');
 }
 
-// todo: create a list of icons that are ~4rem sized (trasnparent bg and square)
-// returns max-width 4rem vector icon
+// returns 4rem² vector icon from local consts file
 function FourRems({ name }: Props) {
-  if (!name) {
-    return <></>;
-  }
-
-  // const getMarkup = () => {
-  //   const images = Object.keys(SVG_IMAGES) as Array<SvgImgProps['name']>;
-  //   const text = Object.keys(SVG_TEXT) as Array<SvgTxtProps['name']>;
-  //   const allMarkup = [...images, ...text];
-
-  //   if (!name) {
-  //     return null;
-  //   }
-  //   if (allMarkup.includes(name)) {
-  //     let key: string = name.toString();
-  //     const markup: Element = SVG_IMAGES[key] as Element;
-  //     return markup;
-  //   }
-  // };
-
   return (
     <svg
-      style={{ maxWidth: '4rem' }}
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
       width='4rem'
-      height='auto'
+      height='4rem'
       xmlSpace='preserve'
       version='1.1'
-      viewBox='0 0 150 152'>
+      viewBox='0 0 4rem 4rem'>
       {getSvgElement(name)}
-      {/* <SVGImage name='crab' />
-      <SVGText name='crab' /> */}
     </svg>
   );
 }

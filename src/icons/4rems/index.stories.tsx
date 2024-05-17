@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
 import FourRems from './';
-import { SVG_IMAGES, SVG_TEXT } from './consts';
+import { SVG_IMAGES, SVG_PATHS, SVG_TEXT } from './consts';
 
 const meta: Meta<typeof FourRems> = {
   title: 'Icons',
@@ -35,6 +35,20 @@ export const SvgText: Story = {
       control: { type: 'select' },
       options: Object.keys(SVG_TEXT),
       name: 'Svg Text Elements',
+      description: 'Choose an SVG text element from the list',
+    },
+  },
+};
+
+export const SvgPaths: Story = {
+  args: {
+    name: 'homePaths',
+  },
+  argTypes: {
+    name: {
+      control: { type: 'select' },
+      options: Object.keys(SVG_PATHS),
+      name: 'Svg Path Elements',
       description: 'Choose an SVG text element from the list',
     },
   },

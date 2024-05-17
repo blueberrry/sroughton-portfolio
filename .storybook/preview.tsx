@@ -23,6 +23,13 @@ const StoryWrapper = ({ children }: xProps) => {
       <button
         onClick={(e) => {
           e.preventDefault();
+          changeTheme('default');
+        }}>
+        Default theme
+      </button>
+      <button
+        onClick={(e) => {
+          e.preventDefault();
           changeTheme('night');
         }}>
         Night theme

@@ -1,3 +1,5 @@
-const BREADCRUMB_ITEMS = {defaultPath: '/'}
+//const BREADCRUMB_ITEMS = {defaultPath: '/'}
 
-export {}
+const BREADCRUMB_ROOTS = ['home', 'nav', null];
+
+export { BREADCRUMB_ROOTS };

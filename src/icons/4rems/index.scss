@@ -4,8 +4,6 @@ svg.icon-container {
   width: inherit; // default 4rem on width attr
   height: inherit; // default 4rem on height attr
 
-  border: 2px solid red;
-
   &.paths_projects {
     fill: var(--secondary-color);
   }
@@ -27,7 +25,7 @@ svg.icon-container {
     &.tools {
       fill: var(--secondary-color);
     }
-    &.design  {
+    &.design {
       fill: var(--secondary-color);
     }
   }

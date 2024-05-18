@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import FourRems from 'src/icons/4rems';
 
 import { BREADCRUMB_ROOTS } from 'src/consts';
 import { firstCharUpper } from '../../utils/firstCharUpper';

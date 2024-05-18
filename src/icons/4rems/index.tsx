@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
 
 import { SvgElement, SvgElementProps } from './SvgElement';
+
 import { SVG_PATHS } from './consts';
+
+import './index.scss';
 
 type Props = SvgElementProps;
 // returns 4rem² vector icon from local consts file
 function FourRems({ name }: Props) {
-  const [viewBox, setViewBox] = useState('4rem 4rem');
-  const [fill, setFill] = useState({ fill: 'none' }); // todo: check if working as intended
+  const [viewBox, setViewBox] = useState<string>('64 64');
 
   useEffect(() => {
     if (name?.length > 0) {
@@ -16,28 +18,19 @@ function FourRems({ name }: Props) {
         setViewBox('24 24');
       }
 
-      if (name === 'projectsPaths') {
+      if (name === 'paths_projects' || name === 'paths_tools' || name === 'paths_design') {
         setViewBox('512 512');
       }
+
+      if (name === 'img_crab') {
+        setViewBox('150 150');
+      }
     }
-    
 
     return () => {
       // Optionally clean up state
     };
   }, [name, setViewBox]);
-
-  useEffect(() => {
-    if (name?.length > 0) {
-      if (name === 'plusPaths') {
-        setFill({ fill: 'none' });
-      }
-    }
-
-    return () => {
-      // Optionally clean up sate
-    };
-  }, [name, setFill]);
 
   return (
     <svg
@@ -48,7 +41,7 @@ function FourRems({ name }: Props) {
       xmlSpace='preserve'
       version='1.1'
       viewBox={`0 0 ${viewBox}`}
-      {...fill}>
+      className={`icon-container ${name}`}>
       <SvgElement name={name} />
     </svg>
   );

@@ -14,7 +14,7 @@ type Story = StoryObj<typeof FourRems>;
 
 export const SvgImage: Story = {
   args: {
-    name: 'crab',
+    name: 'img_crab',
   },
   argTypes: {
     name: {
@@ -28,7 +28,7 @@ export const SvgImage: Story = {
 
 export const SvgText: Story = {
   args: {
-    name: 'articles',
+    name: 'text_articles',
   },
   argTypes: {
     name: {
@@ -42,7 +42,7 @@ export const SvgText: Story = {
 
 export const SvgPaths: Story = {
   args: {
-    name: 'homePaths',
+    name: 'paths_projects',
   },
   argTypes: {
     name: {

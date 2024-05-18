@@ -12,17 +12,12 @@ export type SvgElementProps = { name: SvgImgProps | SvgTxtProps | SvgPathsProps 
 export function SvgElement({ name }: SvgElementProps): ReactElement {
   if (name in SVG_IMAGES) {
     const imageAttributes = SVG_IMAGES[name as SvgImgProps];
-    return <image width='4rem' height='4rem' {...imageAttributes} />;
+    return <image width='4rem' height='4rem' {...imageAttributes} className={name.split('_')[1]} />;
   }
 
   if (name in SVG_TEXT) {
     return (
-      <text
-        x='2rem'
-        y='2rem'
-        textAnchor='middle'
-        dominantBaseline='middle'
-        style={{ fontSize: '2.5rem', fill: 'var(--primary-color)' }}>
+      <text x='2rem' y='2rem' textAnchor='middle' dominantBaseline='middle' className={name.split('_')[1]}>
         {SVG_TEXT[name as SvgTxtProps]}
       </text>
     );
@@ -34,7 +29,7 @@ export function SvgElement({ name }: SvgElementProps): ReactElement {
     return (
       <>
         {pathAttributes.map((attr: any, index: number) => {
-          return <path {...attr} key={`${attr.d}-${index}`} />;
+          return <path {...attr} key={`${attr.d}-${index}`} className={name.split('_')[1]} />;
         })}
       </>
     );

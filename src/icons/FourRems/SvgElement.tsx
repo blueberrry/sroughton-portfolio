@@ -6,18 +6,23 @@ export type SvgImgProps = keyof typeof SVG_IMAGES;
 export type SvgTxtProps = keyof typeof SVG_TEXT;
 export type SvgPathsProps = keyof typeof SVG_PATHS;
 
-export type SvgElementProps = { name: SvgImgProps | SvgTxtProps | SvgPathsProps };
+export type SvgElementProps = { name: SvgImgProps | SvgTxtProps | SvgPathsProps; variant?: 'light' | 'dark' };
 
 // todo: make responsive
-export function SvgElement({ name }: SvgElementProps): ReactElement {
+export function SvgElement({ name, variant }: SvgElementProps): ReactElement {
   if (name in SVG_IMAGES) {
     const imageAttributes = SVG_IMAGES[name as SvgImgProps];
-    return <image width='4rem' height='4rem' {...imageAttributes} className={name.split('_')[1]} />;
+    return <image width='4rem' height='4rem' {...imageAttributes} className={`${name.split('_')[1]} ${variant}`} />;
   }
 
   if (name in SVG_TEXT) {
     return (
-      <text x='2rem' y='2rem' textAnchor='middle' dominantBaseline='middle' className={name.split('_')[1]}>
+      <text
+        x='2rem'
+        y='2rem'
+        textAnchor='middle'
+        dominantBaseline='middle'
+        className={`${name.split('_')[1]} ${variant}`}>
         {SVG_TEXT[name as SvgTxtProps]}
       </text>
     );
@@ -29,7 +34,7 @@ export function SvgElement({ name }: SvgElementProps): ReactElement {
     return (
       <>
         {pathAttributes.map((attr: any, index: number) => {
-          return <path {...attr} key={`${attr.d}-${index}`} className={name.split('_')[1]} />;
+          return <path {...attr} key={`${attr.d}-${index}`} className={`${name.split('_')[1]} ${variant}`} />;
         })}
       </>
     );

@@ -23,7 +23,6 @@
   @if $type == 'before' {
     &:before {
       content: '';
-      clear: both;
 
       border-top: $border-size solid transparent;
       border-bottom: $border-size solid transparent;
@@ -43,7 +42,6 @@
   @if $type == 'after' {
     &:after {
       content: '';
-      clear: both;
 
       border-top: $border-size solid transparent;
       border-bottom: $border-size solid transparent;
@@ -88,13 +86,8 @@ nav.breadcrumb-container {
 
     li.breadcrumb-item {
       position: relative;
-
       display: inline-table;
-
       text-wrap: nowrap;
-      // max-height: 1rem;
-      // height: 1rem;
-      display: block;
 
       &.active {
         color: red !important;
@@ -106,17 +99,21 @@ nav.breadcrumb-container {
         height: 40px;
 
         padding: 15px 10px 0 30px;
-        clear: both;
-
+        padding: 1rem 1rem 0.75rem 2.5rem;
         @include media('<tablet') {
           // height: 25px;
           // padding: 1rem 0.75rem 0rem 2rem;
           // todo: change smaller
+          height: 20px;
+          padding: 3px 10px 0 20px;
         }
 
         position: relative;
-        float: left;
-        display: block;
+        // float: left;
+        // display: block;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background: var(--primary-color);
         font-size: $font-sz-body;
 
@@ -137,6 +134,10 @@ nav.breadcrumb-container {
 
         &:hover {
           background: var(--secondary-color);
+        }
+
+        > .icon-container {
+          margin-right: 0.5rem;
         }
       }
 

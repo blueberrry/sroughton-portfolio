@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import FourRems from './';
+import FourRems from '.';
 import { SVG_IMAGES, SVG_PATHS, SVG_TEXT } from './consts';
 
 const meta: Meta<typeof FourRems> = {

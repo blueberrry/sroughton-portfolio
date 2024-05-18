@@ -39,14 +39,21 @@ type Story = StoryObj<typeof BreadCrumbs>;
 
 export const TwoLocations: Story = {
   args: {
-    pathnames: ['one', 'two'],
+    pathnames: ['projects', 'two'],
+    root: 'home',
+  },
+};
+
+export const WithIcons: Story = {
+  args: {
+    pathnames: ['projects', 'two'],
     root: 'home',
   },
 };
 
 export const MultipleLocations: Story = {
   args: {
-    pathnames: ['one', 'two', 'three', 'four'],
+    pathnames: ['one', 'projects', 'three', 'four'],
     root: 'home',
   },
 };
@@ -56,13 +63,6 @@ export const LongLinkText: Story = {
     pathnames: ['projects', 'new-projects', 'elaborate-long-article-title', 'next-title', 'even nexter title'],
     root: 'home',
   },
-  decorators: [
-    (Story) => (
-      <div style={{ maxWidth: '20rem', height: '100vh', border: '1px solid purple' }}>
-        <Story />
-      </div>
-    ),
-  ],
 };
 
 export const RootRouteOnly: Story = {

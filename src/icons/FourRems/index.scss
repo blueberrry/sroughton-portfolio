@@ -1,11 +1,45 @@
 @import '../../root.scss';
 
+@mixin variants($attr) {
+  &.light {
+    #{$attr}: var(--inverse-color);
+  }
+  &.dark {
+    #{$attr}: var(--text-color);
+  }
+}
+
+@mixin sizes {
+}
 svg.icon-container {
-  width: inherit; // default 4rem on width attr
-  height: inherit; // default 4rem on height attr
+  // width: inherit; // default 4rem on width attr
+  // height: inherit; // default 4rem on height attr
+  width: 3rem;
+  height: 3rem;
+
+  &.xSmall {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &.small {
+    width: 2rem;
+    height: 2rem;
+  }
+  &.medium {
+    width: 3rem;
+    height: 3rem;
+  }
+  &.large {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  @include variants(fill);
 
   &.paths_projects {
     fill: var(--secondary-color);
+    @include variants(fill);
   }
 
   &.paths_plus {
@@ -14,19 +48,26 @@ svg.icon-container {
 
   &.paths_design {
     fill: var(--secondary-color);
+    @include variants(fill);
   }
 
   path {
     stroke: var(--secondary-color);
     stroke-width: 0.075rem; //todo: keep consistent across paths
+
+    @include variants(stroke);
+
     &.home {
       fill: none;
     }
+
     &.tools {
       fill: var(--secondary-color);
+      @include variants(fill);
     }
     &.design {
       fill: var(--secondary-color);
+      @include variants(fill);
     }
   }
 
@@ -35,6 +76,8 @@ svg.icon-container {
     y: inherit; // default 2rem set on text y attr
     font-size: 2.5rem; //todo - check
     fill: var(--secondary-color);
+
+    @include variants(fill);
   }
 
   image {

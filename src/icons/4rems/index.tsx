@@ -16,7 +16,10 @@ function FourRems({ name }: Props) {
         setViewBox('24 24');
       }
 
-      if(paths === 'projectsPaths') {}
+      if (name === 'projectsPaths') {
+        setViewBox('512 512');
+      }
+    }
     
 
     return () => {

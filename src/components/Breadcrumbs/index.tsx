@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import FourRems from '../../icons/FourRems';
 
@@ -48,12 +48,12 @@ export function BreadCrumbs({ root = null, pathnames }: Props) {
               <li
                 key={`${part}-${index}`}
                 className={`breadcrumb-item ${isFirst ? 'first' : ''} ${isLast ? 'last' : ''}`}>
-                <Link to={routeTo}>
+                <NavLink to={routeTo}>
                   <span className='icon-container'>
                     <BreadCrumbIcon name={part} />
                   </span>
                   {part}
-                </Link>
+                </NavLink>
               </li>
             );
           })}

@@ -29,6 +29,7 @@ export function BreadCrumbs({ root = null, pathnames }: Props) {
     // nah get rid, should be able to handle one route only
     return <></>;
   }
+
   return (
     <nav className='breadcrumb-container'>
       <ol role='navigation' className='breadcrumb-list'>
@@ -41,8 +42,8 @@ export function BreadCrumbs({ root = null, pathnames }: Props) {
         {pathnames &&
           pathnames.map((part, index) => {
             const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
-            const isFirst = !root && index === 0;
-            const isLast = index === pathnames.length - 1 && index !== 0;
+            let isFirst = !root && index === 0;
+            let isLast = index === pathnames.length - 1;
 
             return (
               <li

@@ -37,10 +37,17 @@ export default meta;
 
 type Story = StoryObj<typeof BreadCrumbs>;
 
-export const TwoLocations: Story = {
+export const RootPusOne: Story = {
   args: {
-    pathnames: ['projects', 'two'],
+    pathnames: ['projects'],
     root: 'home',
+  },
+};
+
+export const NoRootTwo: Story = {
+  args: {
+    pathnames: ['projects', 'page-2'],
+    root: null,
   },
 };
 

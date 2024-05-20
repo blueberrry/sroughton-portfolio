@@ -11,7 +11,6 @@
   // Extract size multiplier from the $default-size map
   $multiplier: map-get($default-size, $size);
 
-  // Calculate sizes based on the multiplier
   $border-size: 20px * $multiplier;
   $right-position: 20px * $multiplier;
 

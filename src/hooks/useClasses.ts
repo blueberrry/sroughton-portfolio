@@ -11,6 +11,9 @@ export const useClasses = ({ containerClasses, extraClasses }: UseClassesArgs) =
 
   useEffect(() => {
     let classes: string[] = [];
+    if (!containerClasses && !extraClasses) {
+      return;
+    }
 
     if (containerClasses) {
       classes = [...classes, ...containerClasses];

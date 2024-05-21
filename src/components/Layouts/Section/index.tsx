@@ -1,10 +1,12 @@
 import React, { PropsWithChildren } from 'react';
 
-import { useClasses } from '../../../hooks/useClasses';
+import { Title } from 'src/components/Typography';
 
-import Title from '../Title';
-import { COMPONENT_STYLE_TYPES } from '../consts';
-import { CompStyleTypeKeys } from '../../../types/types';
+import { useClasses } from 'src/hooks/useClasses';
+
+import { CompStyleTypeKeys } from 'src/types/types';
+
+import { COMPONENT_STYLE_TYPES } from 'src/consts';
 
 import './index.scss';
 
@@ -22,7 +24,7 @@ function Section({ type = 'primary', title, extraClasses = [''], children }: Pro
 
   return (
     <section className={`default ${classes}`}>
-      {title && <Title text={title} type='medium' />}
+      {title && <Title type='medium' text={title} extraClasses={['section-title']} />}
       {children}
     </section>
   );

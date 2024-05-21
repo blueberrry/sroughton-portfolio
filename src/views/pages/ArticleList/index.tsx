@@ -2,6 +2,8 @@ import React from 'react';
 import { ARTICLE_LIST_JSON } from './index.stories';
 import { Article, Section } from '../../../components/Layouts';
 
+import './index.scss';
+
 type Props = { items: Array<any> };
 
 // todo: separate concerns
@@ -11,7 +13,7 @@ function ArticleList({ items = ARTICLE_LIST_JSON }: Props) {
   // container invisible?
 
   return (
-    <div>
+    <div className='article-list-container'>
       {items.map((item, index) => {
         return (
           <Article
@@ -35,7 +37,8 @@ function ArticleList({ items = ARTICLE_LIST_JSON }: Props) {
                   })}
                 </Section>
               );
-            })}
+            })
+            }
           </Article>
         );
       })}

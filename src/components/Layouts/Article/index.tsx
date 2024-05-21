@@ -1,5 +1,6 @@
 import React, { PropsWithChildren } from 'react';
 
+import { Title } from '../../Typography/index';
 import { useClasses } from '../../../hooks/useClasses';
 
 import { COMPONENT_STYLE_TYPES } from '../consts';
@@ -19,13 +20,15 @@ type Props = {
   subTitle?: string;
   //sections: [{ title: ''; images: []; paragraphs: [] }];
   //images: [{ href: ''; alt: '' }, { href: ''; alt: '' }];
-  date?: Date;
+  date?: string; //todo Date type
   tags?: string[]; // todo: relative links?
   extraClasses?: string[];
   children?: React.ReactNode;
 };
 
 function Article({ id, type = 'primary', title, date, tags, extraClasses = [''], children }: PropsWithChildren<Props>) {
+  console.log('🚀 ~ Article ~ tags:', tags);
+  console.log('🚀 ~ Article ~ date:', date);
   console.log('🚀 ~ Article ~ id:', id);
   const articleClasses = new Array(`${COMPONENT_STYLE_TYPES[type]}-article`);
 
@@ -33,7 +36,7 @@ function Article({ id, type = 'primary', title, date, tags, extraClasses = [''],
 
   return (
     <article className={`default ${classes}`}>
-      {title && <h3>{title}</h3>}
+      {title && <Title text={title} type='sub' extraClasses={['article-title']} />}
       {children}
     </article>
   );

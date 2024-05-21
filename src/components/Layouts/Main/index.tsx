@@ -1,10 +1,14 @@
 import React, { PropsWithChildren } from 'react';
 import { BreadCrumbs } from 'src/components/Breadcrumbs';
+import { Title } from 'src/components/Typography';
+
 import { useClasses } from 'src/hooks/useClasses';
-import { CompStyleTypeKeys } from '../../../types/types';
-import { COMPONENT_STYLE_TYPES } from '../consts';
-import { AreaNames } from 'src/types/types';
 import { useBgClass } from 'src/hooks/useBgClass';
+
+import { CompStyleTypeKeys } from '../../../types/types';
+import { AreaNames } from 'src/types/types';
+
+import { COMPONENT_STYLE_TYPES } from '../consts';
 
 import './index.scss';
 import { useLocation } from 'react-router-dom';
@@ -31,7 +35,7 @@ function Main({ active = 'a', type = 'primary', title, extraClasses = [], childr
   return (
     <main className={`default ${classes}`}>
       <BreadCrumbs pathnames={pathnames} root={'home'} />
-      {title && <h2>{title}</h2>}
+      {title && <Title type='main' text={title} />}
       {children}
     </main>
   );

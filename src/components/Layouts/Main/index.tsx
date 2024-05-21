@@ -19,9 +19,8 @@ type Props = {
 
 function Main({ active = 'a', type = 'primary', title, extraClasses = [], children }: PropsWithChildren<Props>) {
   const location = useLocation();
-  console.log('🚀 ~ Main ~ location:', location);
+
   const pathnames = location.pathname.split('/').filter((x) => x);
-  console.log('🚀 ~ Main ~ pathnames:', pathnames);
 
   const { className: bgClassName } = useBgClass({ bgType: 'bg', initialValue: active });
 

@@ -44,7 +44,7 @@ export function App() {
 
   const [bgType, setBgType] = useState<BgStates>(initial);
 
-  const { activeArea, setActiveArea, className: activeAreaBgClass } = useBgClass({ type: bgType });
+  const { activeArea, setActiveArea, className: activeAreaBgClass } = useBgClass({ bgType });
 
   // card styled section title text, spacing, icons
 

@@ -6,7 +6,7 @@ type Props = {
   text: string;
 };
 
-export function Title({ text = '', type = 'main' }: Props) {
+function Title({ text = '', type = 'main' }: Props) {
   switch (
     type // Remove unnecessary curly braces from switch statement
   ) {
@@ -30,3 +30,5 @@ export function Title({ text = '', type = 'main' }: Props) {
       ); // Changed to div for a default case
   }
 }
+
+export default Title;

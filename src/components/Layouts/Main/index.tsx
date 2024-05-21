@@ -1,8 +1,8 @@
 import React, { PropsWithChildren } from 'react';
 import { BreadCrumbs } from 'src/components/Breadcrumbs';
 import { useClasses } from 'src/hooks/useClasses';
-import { ClassKeys } from '../types';
-import { CLASSES } from '../consts';
+import { CompStyleTypeKeys } from '../../../types/types';
+import { COMPONENT_STYLE_TYPES } from '../consts';
 import { AreaNames } from 'src/types/types';
 import { useBgClass } from 'src/hooks/useBgClass';
 
@@ -11,21 +11,21 @@ import { useLocation } from 'react-router-dom';
 
 type Props = {
   active: AreaNames | null;
-  type?: ClassKeys;
+  type?: CompStyleTypeKeys;
   title?: string;
   extraClasses?: string[];
   children?: React.ReactNode;
 };
 
-export function Main({ active = 'a', type = 'primary', title, extraClasses = [], children }: PropsWithChildren<Props>) {
+function Main({ active = 'a', type = 'primary', title, extraClasses = [], children }: PropsWithChildren<Props>) {
   const location = useLocation();
   console.log('🚀 ~ Main ~ location:', location);
   const pathnames = location.pathname.split('/').filter((x) => x);
   console.log('🚀 ~ Main ~ pathnames:', pathnames);
 
-  const { className: bgClassName } = useBgClass({ type: 'bg', initialValue: active });
+  const { className: bgClassName } = useBgClass({ bgType: 'bg', initialValue: active });
 
-  const mainClasses = new Array(`${CLASSES[type]}-main`); // todo: create hook?
+  const mainClasses = new Array(`${COMPONENT_STYLE_TYPES[type]}-main`); // todo: create hook?
 
   const { classes } = useClasses({ containerClasses: [...mainClasses, bgClassName], extraClasses });
 
@@ -37,3 +37,5 @@ export function Main({ active = 'a', type = 'primary', title, extraClasses = [],
     </main>
   );
 }
+
+export default Main;

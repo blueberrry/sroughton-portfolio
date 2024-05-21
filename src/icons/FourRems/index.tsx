@@ -6,9 +6,11 @@ import { SVG_PATHS } from './consts';
 
 import './index.scss';
 
-type Props = SvgElementProps;
+type Sizes = 'xSmall' | 'small' | 'medium' | 'large';
+type Props = SvgElementProps & { size?: Sizes };
+
 // returns 4rem² vector icon from local consts file
-function FourRems({ name }: Props) {
+function FourRems({ name, variant, size }: Props) {
   const [viewBox, setViewBox] = useState<string>('64 64');
 
   useEffect(() => {
@@ -36,12 +38,12 @@ function FourRems({ name }: Props) {
     <svg
       xmlns='http://www.w3.org/2000/svg'
       xmlnsXlink='http://www.w3.org/1999/xlink'
-      width='4rem'
-      height='4rem'
+      // width={size ? ICON_SIZES[size] : ICON_SIZES['default']}
+      // height={size ? ICON_SIZES[size] : ICON_SIZES['default']}
       xmlSpace='preserve'
       version='1.1'
       viewBox={`0 0 ${viewBox}`}
-      className={`icon-container ${name}`}>
+      className={`icon-container ${name} ${variant} ${size}`}>
       <SvgElement name={name} />
     </svg>
   );

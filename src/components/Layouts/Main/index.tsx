@@ -21,6 +21,7 @@ export function Main({ active = 'a', type = 'primary', title, extraClasses = [],
   const location = useLocation();
   console.log('🚀 ~ Main ~ location:', location);
   const pathnames = location.pathname.split('/').filter((x) => x);
+  console.log('🚀 ~ Main ~ pathnames:', pathnames);
 
   const { className: bgClassName } = useBgClass({ type: 'bg', initialValue: active });
 
@@ -30,7 +31,7 @@ export function Main({ active = 'a', type = 'primary', title, extraClasses = [],
 
   return (
     <main className={`default ${classes}`}>
-      <BreadCrumbs pathnames={pathnames} />
+      <BreadCrumbs pathnames={pathnames} root={'home'} />
       {title && <h2>{title}</h2>}
       {children}
     </main>

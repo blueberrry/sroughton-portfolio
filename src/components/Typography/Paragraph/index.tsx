@@ -28,6 +28,8 @@ const isAllowedChild = (node: ReactNode): boolean => {
   return false;
 };
 
+//export const COMPONENT_STYLE_TYPES = ['main', 'sub'];
+
 function Paragraph({ type = 'primary', centered = false, extraClasses, children }: PropsWithChildren<Props>) {
   const [componentClasses, setComponentClasses] = useState(extraClasses ?? []);
 

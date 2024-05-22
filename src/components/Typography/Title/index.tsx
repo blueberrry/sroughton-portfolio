@@ -1,15 +1,18 @@
 import React from 'react';
 import { useClasses } from 'src/hooks/useClasses';
+import { TitleStyleTypes } from 'src/types/types';
 
 import './index.scss';
 
 type Props = {
-  type?: 'default' | 'main' | 'sub' | 'medium' | 'medium-sub' | 'small' | 'small-sub';
-  extraClasses?: string[];
+  type?: TitleStyleTypes;
   text: string;
+  extraClasses?: string[];
+  centered?: boolean;
 };
 
-function Title({ text = '', type = 'main', extraClasses = [] }: Props) {
+// todo: centered
+function Title({ type = 'main', text = '', centered = false, extraClasses = [] }: Props) {
   const { classes } = useClasses({ containerClasses: [], extraClasses });
 
   switch (

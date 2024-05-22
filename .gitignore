@@ -132,4 +132,8 @@ dist
 .pnp.*
 
 
+# Storybook log
 *storybook.log
+
+# Inspirational ideas/samples/mood board/style guide (keeping local for now)
+.inpiration

@@ -19,6 +19,6 @@ section.default {
     background-color: var(--background-secondary-color);
   }
   > p {
-    margin: $spcr-md $spcr-sm;
+    margin: $spcr-md $spcr-sm; // todo: should be handled in component 
   }
 }

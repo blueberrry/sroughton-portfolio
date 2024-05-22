@@ -18,7 +18,4 @@ section.default {
     border: 0.5rem solid var(--accent-color);
     background-color: var(--background-secondary-color);
   }
-  > p {
-    margin: $spcr-md $spcr-sm; // todo: should be handled in component 
-  }
 }

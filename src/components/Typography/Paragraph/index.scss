@@ -1,9 +1,14 @@
 @import 'src/root.scss';
 
 p.default {
-  margin: 
+  margin: $spcr-md $spcr-sm; // todo: should be handled in component
   &.primary-paragraph {
   }
   &.secondary-paragraph {
   }
 }
+
+// todo: font family (do we have two fonts? Is it SB?
+// todo: line-height
+// todo: letter-spacing
+// todo: color

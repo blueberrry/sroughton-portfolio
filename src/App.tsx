@@ -7,7 +7,7 @@ import ThemeProvider, { ThemeContext } from './context/ThemeContext';
 import Home from 'src/views/pages/Home';
 import Projects from 'src/views/pages/Projects';
 
-import { Main } from './components/Layouts/Main';
+import { Main } from './components/Layouts';
 import HeaderSwitcher from './components/HeaderSwitcher';
 import { useBgClass } from './hooks/useBgClass';
 import { BgStates } from './types/types';

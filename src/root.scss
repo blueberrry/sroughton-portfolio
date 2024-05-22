@@ -14,10 +14,9 @@ $breakpoints: (
   desktop: 1024px,
 ) !default;
 
+/* ~-####-~  Global  ~-####-~  */
 * {
-  /****** *********** important ************ ******/
   line-height: 1rem;
-
   font-family:
     'Saira',
     ui-sans-serif,
@@ -31,34 +30,84 @@ $breakpoints: (
     sans-serif;
 }
 
+/* ~-####-~  Typography  ~-####-~  */
+$title-font: 'Vidaloka', Georgia, 'Times New Roman', Arial, Tahoma, 'Courier New', serif;
+
+$main-font: 'Exo', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+
+// normal: 400, 700, italics: 400 700
+$pre-font: 'Space Mono', monospace;
+
+$font-weights: 100, 200, 400, 600, 700;
+
+$font-weights: (
+  xsmall: 100,
+  small: 200,
+  body: 400,
+  semibold: 600,
+  bold: 700,
+);
+
+@mixin y-even-spacer($margin, $padding) {
+  margin-top: $margin;
+  margin-bottom: $margin;
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin primary-title {
+  font-family: $title-font;
+}
+
+@mixin secondary-title {
+  font-family: $title-font;
+  font-weight: 200;
+  text-decoration: underline;
+}
+// keeping title styles global in case styled needed for elsewhere
+@mixin main-title {
+  @include primary-title;
+  @include y-even-spacer($spcr-lg, $spcr-md);
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+@mixin sub-title {
+  @include secondary-title;
+  @include y-even-spacer($spcr-md, $spcr-sm);
+  font-size: 3rem;
+}
+
+@mixin medium-title {
+  @include primary-title;
+  @include y-even-spacer($spcr-md, $spcr-sm);
+  font-size: 2.25rem;
+  font-weight: 600;
+}
+
+@mixin medium-sub-title {
+  @include secondary-title;
+  @include y-even-spacer($spcr-sm, $spcr-sm);
+  font-size: 1.5rem;
+}
+
+@mixin small-title {
+  @include primary-title;
+  @include y-even-spacer($spcr-sm, $spcr-xsm);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+@mixin small-sub-title {
+  @include secondary-title;
+  @include y-even-spacer($spcr-sm, $spcr-xsm);
+  font-size: 1rem;
+}
+
 div#app-root,
 .parallax-container {
   height: -webkit-fill-available; // todo: janky scroll
   // prevents whitespace caused by parallax elements
-}
-
-@mixin main-title {
-  padding: 1.25rem 1.75rem;
-}
-
-@mixin sub-title {
-  padding: 1rem 1.5rem;
-}
-
-@mixin medium-title {
-  padding: 0.75rem 1rem;
-}
-
-@mixin medium-sub-title {
-  padding: 0.75rem 1rem;
-}
-
-@mixin small-title {
-  padding: 0.75rem 1rem;
-}
-
-@mixin small-sub-title {
-  padding: 0.75rem 1rem;
 }
 
 $spcr-xsm: 0.3rem;

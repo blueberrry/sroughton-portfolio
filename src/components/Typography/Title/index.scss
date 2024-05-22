@@ -4,49 +4,28 @@
 
 div[role='header'].default {
   @include medium-title;
-  margin-top: $spcr-md;
-  margin-bottom: $spcr-md;
-  padding: $spcr-sm $spcr-md;
 }
 
 h1.main-title {
   @include main-title;
-  margin-top: $spcr-md;
-  margin-bottom: $spcr-md;
-  padding: $spcr-md $spcr-lg;
 }
 
 h2.sub-title {
   @include sub-title;
-  margin-top: $spcr-md;
-  margin-bottom: $spcr-md;
-  padding: $spcr-md $spcr-lg;
 }
 
 h3.medium-title {
   @include medium-title;
-  margin-top: $spcr-sm;
-  margin-bottom: $spcr-sm;
-  padding: $spcr-sm;
 }
 
 h4.medium-sub-title {
   @include medium-sub-title;
-  margin-top: $spcr-sm;
-  margin-bottom: $spcr-sm;
-  padding: $spcr-sm $spcr-md;
 }
 
 h5.small-title {
   @include small-title;
-  margin-top: $spcr-xsm;
-  margin-bottom: $spcr-xsm;
-  padding: $spcr-sm $spcr-sm;
 }
 
 h6.small-sub-title {
   @include small-sub-title;
-  margin-top: $spcr-xsm;
-  margin-bottom: $spcr-xsm;
-  padding: $spcr-sm $spcr-sm;
 }

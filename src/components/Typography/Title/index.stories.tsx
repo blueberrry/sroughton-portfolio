@@ -48,13 +48,13 @@ type Story = StoryObj<typeof Title>;
 export const Main: Story = {
   args: {
     type: 'main',
-    text: 'Some p text',
+    text: 'Magna ac Placerat Vestibulum Lectus Mauris Ultrices Eros In',
   },
 };
 
 export const Sub: Story = {
   args: {
     type: 'sub',
-    text: 'Some p text',
+    text: 'Sit Amet Aliquam id Diam Maecenas Ultricies mi Eget',
   },
 };

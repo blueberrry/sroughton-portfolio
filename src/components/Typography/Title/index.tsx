@@ -11,7 +11,6 @@ type Props = {
   centered?: boolean;
 };
 
-// todo: centered
 function Title({ type = 'main', text = '', centered = false, extraClasses = [] }: Props) {
   const { classes } = useClasses({ containerClasses: [], extraClasses: [...extraClasses, centered ? 'centered' : ''] });
 

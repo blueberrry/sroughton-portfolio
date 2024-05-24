@@ -1,5 +1,5 @@
 import React from 'react';
-import { ARTICLE_LIST_JSON } from './index.stories';
+import { ARTICLE_COLLECTION_JSON } from './index.stories';
 import { Article, Section } from '../../../components/Layouts';
 
 import './index.scss';
@@ -9,11 +9,20 @@ type Props = { items: Array<any> };
 // todo: separate concerns
 // todo: performance - how often does it re-render?
 
-function ArticleList({ items = ARTICLE_LIST_JSON }: Props) {
+/**
+ *
+ * ArticleCollection renders 'todays article or main article'
+ * ArticleCollection renders 'article search'
+ * ArticleCollection renders 'article grid' at the bottom    <---- same grid comp as nav, will to make sure comp is flexible
+ *
+ * @returns
+ */
+
+function ArticleList({ items = ARTICLE_COLLECTION_JSON }: Props) {
   // container invisible?
 
   return (
-    <div className='article-list-container'>
+    <div className='article-collection-container'>
       {items.map((item, index) => {
         return (
           <Article
@@ -37,8 +46,7 @@ function ArticleList({ items = ARTICLE_LIST_JSON }: Props) {
                   })}
                 </Section>
               );
-            })
-            }
+            })}
           </Article>
         );
       })}

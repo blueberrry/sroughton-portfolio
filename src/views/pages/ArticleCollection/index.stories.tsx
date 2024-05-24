@@ -2,9 +2,9 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
 
-import ArticleList from './index';
+import ArticleCollection from './index';
 
-export const ARTICLE_LIST_JSON = [
+export const ARTICLE_COLLECTION_JSON = [
   {
     id: '1',
     title: 'Understanding React Hooks',
@@ -121,9 +121,9 @@ export const ARTICLE_LIST_JSON = [
     ],
   },
 ];
-const meta: Meta<typeof ArticleList> = {
+const meta: Meta<typeof ArticleCollection> = {
   title: 'Pages/ArticleList',
-  component: ArticleList,
+  component: ArticleCollection,
   parameters: [],
   argTypes: {},
   decorators: [
@@ -139,7 +139,7 @@ const meta: Meta<typeof ArticleList> = {
 
 export default meta;
 
-type Story = StoryObj<typeof ArticleList>;
+type Story = StoryObj<typeof ArticleCollection>;
 
 export const Standard: Story = {
   args: {},

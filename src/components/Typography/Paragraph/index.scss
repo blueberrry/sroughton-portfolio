@@ -1,7 +1,7 @@
 @import 'src/root.scss';
 
 p.default {
-  margin: $spcr-md $spcr-sm; // todo: should be handled in component
+  @include consistent-spacer($spcr-md, $spcr-sm);
   &.primary-paragraph {
   }
   &.secondary-paragraph {

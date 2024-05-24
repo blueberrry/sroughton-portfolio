@@ -4,7 +4,7 @@ import { Title } from 'src/components/Typography';
 
 import { useClasses } from 'src/hooks/useClasses';
 
-import { CompStyleTypeKeys } from 'src/types/types';
+import { CompStyleTypeKeys, SectionChild } from 'src/types/types';
 
 import { COMPONENT_STYLE_TYPES } from 'src/consts';
 
@@ -14,8 +14,14 @@ type Props = {
   type?: CompStyleTypeKeys;
   title?: string;
   extraClasses?: string[];
-  children?: React.ReactNode;
+  children?: SectionChild | SectionChild[];
 };
+
+/**
+ *
+ * @param
+ * @returns
+ */
 
 function Section({ type = 'primary', title, extraClasses = [''], children }: PropsWithChildren<Props>) {
   const sectionClasses = new Array(`${COMPONENT_STYLE_TYPES[type]}-section`);

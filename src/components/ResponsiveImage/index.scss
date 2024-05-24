@@ -1,0 +1,36 @@
+@import 'src/root.scss';
+
+figure.img-figure-container {
+  max-width: 100%;
+  @include consistent-spacer($spcr-md, $spcr-sm);
+
+  display: table; // Keeps figure width the same as figcaption
+  border: 1px solid red;
+
+  picture.img-picture {
+    max-width: inherit;
+    // source.img-source {
+    //   // max-width: 100%; // Ensures image is responsive
+    //   border-radius: $default-radius;
+    // }
+
+    // Fallback
+    img.img-standard {
+      max-width: 100%; // Ensures image is responsive
+      border-radius: $default-radius;
+    }
+  }
+
+  figcaption.img-caption {
+    font-family: $font-pre;
+
+    display: table-caption; // Keeps figure width the same as figcaption
+    caption-side: bottom; // Placement of table caption at the bottom
+
+    padding: $spcr-sm;
+
+    font-size: $font-sz-sm;
+
+    border: 1px solid blue;
+  }
+}

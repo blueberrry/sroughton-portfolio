@@ -54,7 +54,6 @@ export const StandardSection: Story = {
           mauris a. Non enim praesent elementum facilisis leo vel fringilla est ullamcorper. Amet aliquam id diam
           maecenas ultricies. Augue neque gravida in fermentum et sollicitudin ac orci.
         </Paragraph>
-
         <Paragraph>
           Nullam vehicula ipsum a arcu. Sed viverra tellus in hac habitasse platea dictumst. Est ante in nibh mauris
           cursus. Eget mi proin sed libero. Dictum varius duis at consectetur lorem donec massa sapien. Et malesuada

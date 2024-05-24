@@ -110,6 +110,10 @@ $font-sz-lg: 1.25rem;
   font-size: 1rem;
 }
 
+@mixin text-centered {
+  text-align: center;
+}
+
 div#app-root,
 .parallax-container {
   height: -webkit-fill-available; // todo: janky scroll

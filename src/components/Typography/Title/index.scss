@@ -1,10 +1,12 @@
 @import '../../../root.scss';
 
-// todo: font types main/sub.
-// todo: font not in SB
 // todo: font-color
 
-div[role='header'].default {
+.centered {
+  @include text-centered;
+}
+
+span[role='header'].default {
   @include medium-title;
 }
 

@@ -13,11 +13,9 @@ type Props = {
 
 // todo: centered
 function Title({ type = 'main', text = '', centered = false, extraClasses = [] }: Props) {
-  const { classes } = useClasses({ containerClasses: [], extraClasses });
+  const { classes } = useClasses({ containerClasses: [], extraClasses: [...extraClasses, centered ? 'centered' : ''] });
 
-  switch (
-    type // Remove unnecessary curly braces from switch statement
-  ) {
+  switch (type) {
     case 'main':
       return <h1 className={`main-title ${classes}`}>{text}</h1>;
     case 'sub':
@@ -32,10 +30,10 @@ function Title({ type = 'main', text = '', centered = false, extraClasses = [] }
       return <h6 className={`small-sub-title ${classes}`}>{text}</h6>;
     default: // Default if type undefined
       return (
-        <div role='header' className='default'>
+        <span role='header' className='default'>
           {text}
-        </div>
-      ); // Changed to div for a default case
+        </span>
+      ); // Default renders span
   }
 }
 

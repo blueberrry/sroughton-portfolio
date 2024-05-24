@@ -107,8 +107,6 @@ nav.breadcrumb-container {
         border-bottom: 1px solid var(--text-color);
 
         @include media('<tablet') {
-          // height: 25px;
-          // padding: 1rem 0.75rem 0rem 2rem;
           // todo: change smaller
           height: 20px;
           padding: 3px 10px 0 20px;

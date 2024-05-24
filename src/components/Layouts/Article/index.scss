@@ -1,6 +1,18 @@
 @import '../../../root.scss';
 
 article.default {
+  margin-top: 1rem;
+
+  .article-title {
+    letter-spacing: 0.15em;
+    text-decoration: underline;
+    //    margin-bottom: 1rem;
+  }
+
+  > section.default {
+    margin-top: 1rem;
+  }
+
   &.primary-article {
   }
 

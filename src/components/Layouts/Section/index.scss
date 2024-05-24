@@ -1,15 +1,21 @@
-@import '../../../root.scss';
+@import 'src/root.scss';
 
 section.default {
   border: 1px solid var(--border-color);
 
+  .section-title {
+    letter-spacing: 0.075em;
+    margin-left: 0;
+    padding-left: $spcr-sm;
+  }
+
   &.primary-section {
     border: 0.5rem solid var(--border-color);
-    background-color: var(--neutral-color);
+    background-color: var(--background-primary-color);
   }
 
   &.secondary-section {
     border: 0.5rem solid var(--accent-color);
-    background-color: var(--background-color-secondary);
+    background-color: var(--background-secondary-color);
   }
 }

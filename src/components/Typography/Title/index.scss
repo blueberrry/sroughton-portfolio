@@ -1,38 +1,35 @@
 @import '../../../root.scss';
 
-// todo: font types.
+// todo: font-color
 
-div[role='header'].default {
+.centered {
+  @include text-centered;
+}
+
+span[role='header'].default {
   @include medium-title;
-  padding: $spcr-sm $spcr-md;
 }
 
 h1.main-title {
   @include main-title;
-  padding: $spcr-md $spcr-lg;
 }
 
 h2.sub-title {
   @include sub-title;
-  padding: $spcr-md $spcr-lg;
 }
 
 h3.medium-title {
   @include medium-title;
-  padding: $spcr-md $spcr-md;
 }
 
 h4.medium-sub-title {
   @include medium-sub-title;
-  padding: $spcr-sm $spcr-md;
 }
 
 h5.small-title {
   @include small-title;
-  padding: $spcr-sm $spcr-sm;
 }
 
 h6.small-sub-title {
   @include small-sub-title;
-  padding: $spcr-sm $spcr-sm;
 }

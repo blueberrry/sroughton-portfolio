@@ -1,5 +1,3 @@
-// TODO: Rename to routes/add routing
-
 import React, { useRef } from 'react';
 import { GridContainer } from '../../../components/Grid';
 
@@ -14,20 +12,15 @@ import './index.scss';
  * tap to reveal (animates grid, pulls up next screen)
  */
 
-// todo: add props with children
 export type Props = {
-  goToContent: any; //todo:
   mode: HeaderMode;
   setMode: React.Dispatch<React.SetStateAction<HeaderMode>>; // todo: Header could have generic type
   bgClassName: any;
   activeArea: UseBgClassReturns['activeArea'];
   setActiveArea: UseBgClassReturns['setActiveArea'];
 };
-function NavGrid({ goToContent, mode, setMode, bgClassName, activeArea, setActiveArea }: Props) {
+function NavGrid({ mode, setMode, bgClassName, activeArea, setActiveArea }: Props) {
   const navRef = useRef(null);
-
-  // todo: is there a reason to do this? Might be better to just target ::hover in css
-  // const [hovered, setHovered] = useState<GridLinkProps['presetArea'] | null>(null);
 
   // todo: memoise?
   const configContainerClasses = () => {
@@ -122,7 +115,5 @@ function NavGrid({ goToContent, mode, setMode, bgClassName, activeArea, setActiv
     </>
   );
 }
-
-// render alongside desktop/ route to on mobile
 
 export default NavGrid;

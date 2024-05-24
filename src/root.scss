@@ -1,23 +1,28 @@
-/* TODO: Create root colour vars */
-/* TODO: Create root spacing vars */
-
 @import '../node_modules/include-media/dist/include-media.scss';
 @import './styles/theme/_colors.scss';
 @import './styles/theme/_themes.scss';
 
-// themes control css vars
-// vars apply the correct theme color
-
+/* ~-####-~  Breakpoints  ~-####-~  */
 $breakpoints: (
   phone: 640px,
   tablet: 768px,
   desktop: 1024px,
 ) !default;
 
-* {
-  /****** *********** important ************ ******/
-  line-height: 1rem;
+/* ~-####-~  Spacing  ~-####-~  */
+@mixin even-spacer($margin, $padding) {
+  margin: 0 0 $margin 0;
+  padding: $padding;
+}
 
+$spcr-xsm: 0.35rem; // todo: change to em or ch / add extra spcing vars
+$spcr-sm: 0.65rem;
+$spcr-md: 1rem;
+$spcr-lg: 1.75rem;
+
+/* ~-####-~  Global  ~-####-~  */
+* {
+  line-height: normal;
   font-family:
     'Saira',
     ui-sans-serif,
@@ -31,43 +36,86 @@ $breakpoints: (
     sans-serif;
 }
 
+/* ~-####-~  Typography  ~-####-~  */
+$title-font: 'Vidaloka', Georgia, 'Times New Roman', Arial, Tahoma, 'Courier New', serif;
+
+$main-font: 'Exo', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+
+// normal: 400, 700, italics: 400 700
+$pre-font: 'Space Mono', monospace;
+
+$font-weights: (
+  xsmall: 100,
+  small: 200,
+  body: 400,
+  semibold: 600,
+  bold: 700,
+);
+
+$font-sz-body: 1rem;
+$font-sz-sm: 0.8rem;
+$font-sz-lg: 1.25rem;
+
+@mixin primary-title {
+  font-family: $title-font;
+  color: var(--text-color);
+}
+
+@mixin secondary-title {
+  font-family: $title-font;
+  font-weight: 200;
+  text-decoration: underline;
+  color: var(--text-color);
+}
+// keeping title styles global in case styled needed for elsewhere
+@mixin main-title {
+  @include primary-title;
+  @include even-spacer($spcr-md, $spcr-sm);
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+@mixin sub-title {
+  @include secondary-title;
+  @include even-spacer($spcr-md, $spcr-sm);
+  font-size: 3rem;
+}
+
+@mixin medium-title {
+  @include primary-title;
+  @include even-spacer($spcr-md, $spcr-sm);
+  font-size: 2.25rem;
+  font-weight: 600;
+}
+
+@mixin medium-sub-title {
+  @include secondary-title;
+  @include even-spacer($spcr-sm, $spcr-sm);
+  font-size: 1.5rem;
+}
+
+@mixin small-title {
+  @include primary-title;
+  @include even-spacer($spcr-sm, $spcr-xsm);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+@mixin small-sub-title {
+  @include secondary-title;
+  @include even-spacer($spcr-sm, $spcr-xsm);
+  font-size: 1rem;
+}
+
+@mixin text-centered {
+  text-align: center;
+}
+
 div#app-root,
 .parallax-container {
   height: -webkit-fill-available; // todo: janky scroll
   // prevents whitespace caused by parallax elements
 }
-
-@mixin main-title {
-  padding: 1.25rem 1.75rem;
-}
-
-@mixin sub-title {
-  padding: 1rem 1.5rem;
-}
-
-@mixin medium-title {
-  padding: 0.75rem 1rem;
-}
-
-@mixin medium-sub-title {
-  padding: 0.75rem 1rem;
-}
-
-@mixin small-title {
-  padding: 0.75rem 1rem;
-}
-
-@mixin small-sub-title {
-  padding: 0.75rem 1rem;
-}
-
-$spcr-sm: 0.6rem;
-$spcr-md: 1.25rem;
-$spcr-lg: 3rem;
-
-$font-sz-body: 1rem;
-$font-sz-sm: 0.8rem;
-$font-sz-lg: 1.25rem;
 
 $grid-areas: (
   a: tile_01,

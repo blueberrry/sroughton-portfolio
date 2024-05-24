@@ -19,6 +19,17 @@ const config: StorybookConfig = {
     // `configType` has a value of 'DEVELOPMENT' or 'PRODUCTION'
     // You can change the configuration based on that.
     // 'PRODUCTION' is used when building the static version of storybook.
+    if (config.resolve) {
+      config.resolve.modules = [
+        path.resolve(__dirname, '../src'), // Add 'src' to the module resolution paths
+        'node_modules',
+      ];
+
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        src: path.resolve(__dirname, '../src'), // Add alias for 'src'
+      };
+    }
 
     // Make whatever fine-grained changes you need
     if (config.module) {
@@ -26,7 +37,7 @@ const config: StorybookConfig = {
         config.module?.rules.push({
           test: /\.scss$/,
           use: ['style-loader', 'css-loader', 'sass-loader'],
-          include: path.resolve(__dirname, '../'),
+          include: path.resolve(__dirname, '../src'),
         });
 
         // Return the altered config

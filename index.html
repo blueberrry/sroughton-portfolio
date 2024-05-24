@@ -1,13 +1,30 @@
 <html lang="en-gb">
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
     <link rel="manifest" href="/manifest.json" />
+
+    <!-- ~-###-~  Google Fonts  ~-###-~ -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Saira+Semi+Condensed:wght@100;400;600&family=Saira:ital,wght@0,100;0,400;0,600;1,400&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=Vidaloka&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&family=M+PLUS+Code+Latin:wdth,wght@100..125,100..700&family=Vidaloka&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- ~-###  Stylesheets  ~-###-~ -->
     <link href="./src/styles/modern-normalize.css" rel="stylesheet" />
     <link href="./src/root.scss" rel="stylesheet" />
   </head>
@@ -15,9 +32,8 @@
     <div id="app-root"></div>
   </body>
   <script type="module">
+    // todo: explain why used import
     import './register-service-worker.js';
-
-    // explain why I have to do this
   </script>
   <script type="module" src="./index.js"></script>
 </html>

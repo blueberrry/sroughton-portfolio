@@ -1,4 +1,4 @@
-export const CLASSES = {
+export const COMPONENT_STYLE_TYPES = {
   primary: 'primary',
   secondary: 'secondary',
 };

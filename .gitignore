@@ -85,6 +85,9 @@ web_modules/
 .cache
 .parcel-cache
 
+# Inspirational ideas/samples/mood board/style guide (keeping local for now)
+.inspiration
+
 # Next.js build output
 .next
 out
@@ -132,4 +135,6 @@ dist
 .pnp.*
 
 
+# Storybook log
 *storybook.log
+

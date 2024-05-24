@@ -1,28 +1,30 @@
 import React, { PropsWithChildren } from 'react';
 
+import { Title } from 'src/components/Typography';
+
 import { useClasses } from 'src/hooks/useClasses';
 
-import { Title } from '../Title';
-import { CLASSES } from '../consts';
-import { ClassKeys } from '../types';
+import { CompStyleTypeKeys } from 'src/types/types';
+
+import { COMPONENT_STYLE_TYPES } from 'src/consts';
 
 import './index.scss';
 
 type Props = {
-  type?: ClassKeys;
+  type?: CompStyleTypeKeys;
   title?: string;
   extraClasses?: string[];
   children?: React.ReactNode;
 };
 
-export function Section({ type = 'primary', title, extraClasses = [''], children }: PropsWithChildren<Props>) {
-  const sectionClasses = new Array(`${CLASSES[type]}-section`);
+function Section({ type = 'primary', title, extraClasses = [''], children }: PropsWithChildren<Props>) {
+  const sectionClasses = new Array(`${COMPONENT_STYLE_TYPES[type]}-section`);
 
   const { classes } = useClasses({ containerClasses: sectionClasses, extraClasses });
 
   return (
     <section className={`default ${classes}`}>
-      {title && <Title text={title} type='medium' />}
+      {title && <Title type='medium' text={title} extraClasses={['section-title']} />}
       {children}
     </section>
   );

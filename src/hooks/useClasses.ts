@@ -1,5 +1,5 @@
-import classNames from 'classnames';
 import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 type UseClassesArgs = {
   containerClasses: string[];
@@ -11,6 +11,9 @@ export const useClasses = ({ containerClasses, extraClasses }: UseClassesArgs) =
 
   useEffect(() => {
     let classes: string[] = [];
+    if (!containerClasses && !extraClasses) {
+      return;
+    }
 
     if (containerClasses) {
       classes = [...classes, ...containerClasses];

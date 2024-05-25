@@ -31,8 +31,7 @@ function Section({ type = 'primary', title, tagline, extraClasses = [''], childr
 
   return (
     <section className={`default ${classes}`}>
-      {title && <Title type='medium' text={title} extraClasses={['section-title']} />}
-      {tagline && <Title type='medium-sub' text={tagline} extraClasses={['section-tagline']} centered />}
+      {title && <Title type='medium' text={title} tagline={tagline} extraClasses={['section-title']} />}
       {children}
     </section>
   );

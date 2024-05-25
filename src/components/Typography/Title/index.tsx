@@ -15,7 +15,7 @@ type Props = {
 function Title({ type = 'main', text = '', tagline, centered = false, extraClasses = [] }: Props) {
   const { classes } = useClasses({
     containerClasses: [],
-    extraClasses: [...extraClasses, centered ? 'centered' : '', tagline?.length ? 'with-tagline' : ''],
+    extraClasses: [...extraClasses, centered ? 'centered' : ''],
   });
 
   const configHeaderTag = () => {

@@ -60,12 +60,12 @@ export const Standard: Story = {
     // todo: better way to include children IE dummy text file stored elsewhere?
     children: (
       <>
-        {VARIANT_01_ARTICLE_JSON.sections.map((section: Section_JSON) => {
+        {VARIANT_01_ARTICLE_JSON.sections.map((section: Section_JSON, sIndex) => {
           return (
-            <Section title={section.header}>
-              {section.content.map((cont, index) => {
+            <Section title={section.header} key={`${Math.random().toFixed(2)}-${sIndex}`}>
+              {section.content.map((cont, cIndex) => {
                 return (
-                  <React.Fragment key={`${Math.random().toFixed(2)}-${index}`}>
+                  <React.Fragment key={`${Math.random().toFixed(2)}-${cIndex}`}>
                     {cont.images.before && (
                       <ResponsiveImage src={cont.images.before.href} alt={cont.images.before.alt} />
                     )}

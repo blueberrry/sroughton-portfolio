@@ -80,7 +80,7 @@ export const StandardSection: Story = {
   },
 };
 
-export const WithSubTitle: Story = {
+export const WithTagline: Story = {
   args: {
     type: 'primary',
     title: 'Section Title Number One',

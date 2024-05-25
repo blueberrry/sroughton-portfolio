@@ -3,6 +3,7 @@
 // todo: font-color
 
 header.title {
+  margin-bottom: $spcr-sm;
   color: var(--text-color);
 
   .centered {
@@ -46,5 +47,8 @@ header.title {
     font-size: $font-sz-lg;
     font-weight: 600;
     padding-left: $spcr-md;
+
+    display: inline-block;
+    transform: translateY(-$spcr-md); // moves closer to h tag if tagline rendered beneath it
   }
 }

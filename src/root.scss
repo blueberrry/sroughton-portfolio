@@ -71,60 +71,66 @@ $font-weights: (
   bold: 700,
 );
 
-$font-sz-body: 1rem;
 $font-sz-sm: 0.8rem;
+$font-sz-body: 1rem;
 $font-sz-lg: 1.25rem;
+$font-sz-xl: 1.75rem;
+
+$title-sz-xsm: 1.45rem;
+$title-sz-sm: 1.95rem;
+$title-sz-md: 2.35rem;
+$title-sz-lg: 2.75rem;
+$title-sz-xl: 3.25rem;
+$title-sz-xxl: 4rem;
 
 @mixin primary-title {
   font-family: $font-title;
-  color: var(--text-color);
 }
 
 @mixin secondary-title {
   font-family: $font-title;
   font-weight: 200;
   text-decoration: underline;
-  color: var(--text-color);
 }
 
 // keeping title styles global in case styled needed for elsewhere
 @mixin main-title {
   @include primary-title;
   @include consistent-spacer($spcr-md, $spcr-sm);
-  font-size: 4rem;
+  font-size: $title-sz-xxl;
   font-weight: 700;
 }
 
 @mixin sub-title {
   @include secondary-title;
   @include consistent-spacer($spcr-md, $spcr-sm);
-  font-size: 3rem;
+  font-size: $title-sz-xl;
 }
 
 @mixin medium-title {
   @include primary-title;
   @include consistent-spacer($spcr-md, $spcr-sm);
-  font-size: 2.25rem;
+  font-size: $title-sz-lg;
   font-weight: 600;
 }
 
 @mixin medium-sub-title {
   @include secondary-title;
   @include consistent-spacer($spcr-sm, $spcr-sm);
-  font-size: 1.5rem;
+  font-size: $title-sz-md;
 }
 
 @mixin small-title {
   @include primary-title;
   @include consistent-spacer($spcr-sm, $spcr-xsm);
-  font-size: 1.25rem;
+  font-size: $title-sz-sm;
   font-weight: 500;
 }
 
 @mixin small-sub-title {
   @include secondary-title;
   @include consistent-spacer($spcr-sm, $spcr-xsm);
-  font-size: 1rem;
+  font-size: $title-sz-xsm;
 }
 
 @mixin text-centered {

@@ -13,6 +13,7 @@ import './index.scss';
 type Props = {
   type?: CompStyleTypeKeys;
   title?: string;
+  tagline?: string;
   extraClasses?: string[];
   children?: SectionChild | SectionChild[];
 };
@@ -23,7 +24,7 @@ type Props = {
  * @returns
  */
 
-function Section({ type = 'primary', title, extraClasses = [''], children }: PropsWithChildren<Props>) {
+function Section({ type = 'primary', title, tagline, extraClasses = [''], children }: PropsWithChildren<Props>) {
   const sectionClasses = new Array(`${COMPONENT_STYLE_TYPES[type]}-section`);
 
   const { classes } = useClasses({ containerClasses: sectionClasses, extraClasses });
@@ -31,6 +32,7 @@ function Section({ type = 'primary', title, extraClasses = [''], children }: Pro
   return (
     <section className={`default ${classes}`}>
       {title && <Title type='medium' text={title} extraClasses={['section-title']} />}
+      {tagline && <Title type='medium-sub' text={tagline} extraClasses={['section-tagline']} centered />}
       {children}
     </section>
   );

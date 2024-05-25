@@ -56,7 +56,7 @@ function Paragraph({ type = 'primary', centered = false, extraClasses, children 
   const validateChildren = (children: ReactNode): void => {
     React.Children.forEach(children, (child) => {
       if (!isAllowedChild(child)) {
-        // todo: this is an anti-pattern, consider returning default fragment or something similar
+        // TODO: this is an anti-pattern, consider returning default fragment or something similar
         throw new Error('Invalid child element passed to the Paragraph component');
       }
       return <></>;

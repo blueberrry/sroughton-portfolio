@@ -1,7 +1,7 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { BreadCrumbs } from './index';
+import BreadCrumbs from './index';
 import { MemoryRouter } from 'react-router-dom';
 import { BREADCRUMB_ROOTS } from '../../consts'; // todo: make storybook recognise src/consts
 

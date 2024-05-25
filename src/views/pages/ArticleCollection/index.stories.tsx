@@ -4,12 +4,14 @@ import { MemoryRouter } from 'react-router-dom';
 
 import ArticleCollection from './index';
 
+import { Article_JSON } from 'src/types/types';
+
 // TODO: Assets served from server so will need to configure this
-export const ARTICLE_COLLECTION_JSON = [
+export const ARTICLE_COLLECTION_JSON: Article_JSON[] = [
   {
     id: '1',
     title: 'Understanding React Hooks',
-    subTitle: 'A deep dive into useState and useEffect',
+    tagline: 'A deep dive into useState and useEffect',
     heroImage: { href: '', alt: '' },
     date: +new Date(),
     tags: ['React', 'Hooks', 'JavaScript', 'Web Development'],
@@ -116,7 +118,7 @@ export const ARTICLE_COLLECTION_JSON = [
   {
     id: '2',
     title: 'Vel Pharetra vel Turpis Nunc eget Lorem.',
-    subTitle: 'The latest JavaScript syntax',
+    tagline: 'The latest JavaScript syntax',
     heroImage: { href: '', alt: '' },
     date: +new Date(),
     tags: ['JavaScript', 'Web Development'],
@@ -181,6 +183,7 @@ export const ARTICLE_COLLECTION_JSON = [
     ],
   },
 ];
+
 const meta: Meta<typeof ArticleCollection> = {
   title: 'Pages/ArticleCollection',
   component: ArticleCollection,

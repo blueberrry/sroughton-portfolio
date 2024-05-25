@@ -65,7 +65,7 @@ export type Section_JSON = { header: string; content: SectionContent_JSON[] };
 export type Article_JSON = {
   id: string;
   title: string;
-  subTitle: string;
+  tagline: string;
   heroImage: Image;
   date: Date | number;
   tags: string[];

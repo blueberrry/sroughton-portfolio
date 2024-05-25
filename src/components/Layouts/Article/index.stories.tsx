@@ -2,70 +2,15 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import Article from './index';
-import Section from '../Section/index';
-import { Paragraph } from 'src/components/Typography';
+import { Article, Section, Paragraph, ResponsiveImage } from 'src/components';
 
 import { COMPONENT_STYLE_TYPES } from '../consts';
 
-const VARIANT_01_ARTICLE_JSON = {
-  id: '1',
-  title: 'Understanding React Hooks',
-  subTitle: 'A deep dive into useState and useEffect',
-  heroImage: { href: '', alt: '' },
-  date: +new Date(), // todo: new Date() should be converted in parent
-  tags: ['React', 'Hooks', 'JavaScript', 'Web Development'],
-  sections: [
-    {
-      header: 'Introduction',
-      content: [
-        {
-          paragraph:
-            'React Hooks were introduced in React 16.8 to enable state and side-effect management in functional components.',
-          images: {
-            before: null,
-            after: {
-              href: 'https://example.com/useState1.png',
-              alt: 'useState Hook Example 1',
-            },
-          },
-        },
-      ],
-    },
-    {
-      header: 'Using ur useState Hook',
-      content: [
-        {
-          paragraph: 'The useState hook allows you to add state to functional components.',
-          images: {
-            before: {
-              href: 'https://example.com/useState1.png',
-              alt: 'useState Hook Example 1',
-            },
-            after: {
-              href: 'https://example.com/useState1.png',
-              alt: 'useState Hook Example 1',
-            },
-          },
-        },
-        {
-          paragraph: 'Example usage:',
-          images: {
-            before: {
-              href: 'https://example.com/useState1.png',
-              alt: 'useState Hook Example 1',
-            },
-            after: null,
-          },
-        },
-        {
-          paragraph: '```javascript\nconst [count, setCount] = useState(0);\n```',
-          images: { before: null, after: null },
-        },
-      ],
-    },
-  ],
-};
+import { Article_JSON, SectionContent_JSON, Section_JSON } from 'src/types/types';
+
+import { ARTICLE_COLLECTION_JSON } from 'src/views/pages/ArticleCollection/index.stories';
+
+const VARIANT_01_ARTICLE_JSON = ARTICLE_COLLECTION_JSON[0] as Article_JSON;
 
 const meta: Meta<typeof Article> = {
   title: 'Layouts/Article',
@@ -109,22 +54,24 @@ export const Standard: Story = {
     id: VARIANT_01_ARTICLE_JSON.id,
     type: 'primary',
     title: VARIANT_01_ARTICLE_JSON.title,
-    subTitle: VARIANT_01_ARTICLE_JSON.subTitle,
+    subTitle: VARIANT_01_ARTICLE_JSON.tagline,
     date: VARIANT_01_ARTICLE_JSON.date, // todo: from api
     tags: VARIANT_01_ARTICLE_JSON.tags,
     // todo: better way to include children IE dummy text file stored elsewhere?
     children: (
       <>
-        {VARIANT_01_ARTICLE_JSON.sections.map((section: any) => {
+        {VARIANT_01_ARTICLE_JSON.sections.map((section: Section_JSON) => {
           return (
             <Section title={section.header}>
-              {section.content.map((cont: any) => {
+              {section.content.map((cont, index) => {
                 return (
-                  <>
-                    {cont.images.before && <img src={cont.images.before.href} alt={cont.images.before.alt} />}
+                  <React.Fragment key={`${Math.random().toFixed(2)}-${index}`}>
+                    {cont.images.before && (
+                      <ResponsiveImage src={cont.images.before.href} alt={cont.images.before.alt} />
+                    )}
                     <Paragraph>{cont.paragraph}</Paragraph>
-                    {cont.images.after && <img src={cont.images.after.href} alt={cont.images.after.alt} />}
-                  </>
+                    {cont.images.after && <ResponsiveImage src={cont.images.after.href} alt={cont.images.after.alt} />}
+                  </React.Fragment>
                 );
               })}
             </Section>

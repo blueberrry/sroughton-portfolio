@@ -10,7 +10,7 @@ type Props = {
 import './index.scss';
 
 /**
- *
+ * TODO: Placeholder image if failed to load
  * @param
  * @returns
  */

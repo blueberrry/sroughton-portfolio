@@ -1,7 +1,7 @@
 @import 'src/root.scss';
 
 section.default {
-  border: 1px solid var(--border-color);
+  border: 5px solid var(--border-color);
   border-radius: $default-radius;
   padding: $spcr-sm;
   @include consistent-spacer($spcr-md, $spcr-sm);
@@ -12,7 +12,8 @@ section.default {
   }
 
   &.primary-section {
-    border: 1px solid var(--border-color);
+    border: 5px solid var(--highlight-color);
+
     background-color: var(--background-primary-color);
   }
 

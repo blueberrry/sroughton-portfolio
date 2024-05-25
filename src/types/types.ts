@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import { COMPONENT_STYLE_TYPES, TITLE_STYLE_TYPES } from '../consts';
+import { ContentBlock, Paragraph, ResponsiveImage } from 'src/components';
 
 /**
  * All types to live here other than component prop types which live within
@@ -49,16 +50,25 @@ export type ParagraphChild =
   | ReactElement<'a'>
   | ReactElement<'p'>;
 
-export type SectionChild = ParagraphChild | ReactElement<'img'> | ReactElement<'div'>;
+export type SectionChild =
+  | typeof Paragraph
+  | typeof ResponsiveImage
+  | typeof ContentBlock
+  | ParagraphChild
+  | ReactElement<'img'>
+  | ReactElement<'div'>
+  | null;
 
 export type ArticleChild = SectionChild;
+
+export type ContentBlockTypes = { before: Image | null; after: Image | null };
 
 /**
  *
  * * Response data
  */
 
-export type SectionContent_JSON = { paragraph: string; images: { before: Image | null; after: Image | null } };
+export type SectionContent_JSON = { paragraph: string; images: ContentBlockTypes };
 
 export type Section_JSON = { header: string; content: SectionContent_JSON[] };
 

@@ -27,9 +27,6 @@ type Props = {
  */
 
 function Article({ id, type = 'primary', title, date, tags, extraClasses = [''], children }: PropsWithChildren<Props>) {
-  console.log('🚀 ~ Article ~ tags:', tags);
-  console.log('🚀 ~ Article ~ date:', date);
-  console.log('🚀 ~ Article ~ id:', id);
   const articleClasses = new Array(`${COMPONENT_STYLE_TYPES[type]}-article`);
 
   const { classes } = useClasses({ containerClasses: articleClasses, extraClasses });

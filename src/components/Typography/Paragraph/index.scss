@@ -1,6 +1,7 @@
 @import 'src/root.scss';
 
 p.default {
+  max-width: $max-w-copy;
   @include consistent-spacer($spcr-md, $spcr-sm);
   &.primary-paragraph {
   }

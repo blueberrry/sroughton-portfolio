@@ -1,7 +1,7 @@
 import React from 'react';
 import { ARTICLE_COLLECTION_JSON } from './index.stories';
 
-import { Article, Section, Paragraph } from 'src/components';
+import { Article, Section, ContentBlock } from 'src/components';
 
 import { Article_JSON } from 'src/types/types';
 
@@ -15,6 +15,9 @@ type Props = { articles: Article_JSON[] };
 // todo: sub-title not showing
 // todo: convert date before passing to Article
 // todo: before/after images
+
+// TODO: zebra view
+// section list, content list
 
 /**
  *
@@ -45,14 +48,15 @@ function ArticleCollection({ articles = ARTICLE_COLLECTION_JSON }: Props) {
               console.log('🚀 ~ {item.sections.map ~ key:', sectionKey);
               return (
                 <Section title={section.header} key={sectionKey}>
-                  {section.content.map((cont, pIndex) => {
-                    const paragraphyKey = `${Math.random().toFixed(2)}-${pIndex}`;
+                  {section.content.map((cont, cIndex) => {
+                    const contentItemKey = `${Math.random().toFixed(2)}-${cIndex}`;
+
                     return (
-                      <React.Fragment key={paragraphyKey}>
-                        {cont.images.before && <img src={cont.images.before.href} alt={cont.images.before.alt} />}
-                        <Paragraph>{cont.paragraph}</Paragraph>
-                        {cont.images.after && <img src={cont.images.after.href} alt={cont.images.after.alt} />}
-                      </React.Fragment>
+                      <ContentBlock
+                        images={cont.images}
+                        paragraph={cont.paragraph}
+                        key={`${contentItemKey}-${cIndex}`}
+                      />
                     );
                   })}
                 </Section>

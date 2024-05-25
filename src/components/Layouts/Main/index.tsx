@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import { BreadCrumbs } from 'src/components/Breadcrumbs';
+import { BreadCrumbs } from 'src/components';
 import { Title } from 'src/components/Typography';
 
 import { useClasses } from 'src/hooks/useClasses';

@@ -19,6 +19,8 @@ export type BgStates = 'bg' | 'img' | 'grad' | 'dark-bg' | 'secondary-img' | 'co
 
 export type CompStyleTypeKeys = keyof typeof COMPONENT_STYLE_TYPES;
 
+export type HeaderSwitcherMode = 'full' | 'toTitle' | 'title' | null;
+
 /**
  *
  * * Routing

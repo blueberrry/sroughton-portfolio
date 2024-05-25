@@ -1,18 +1,11 @@
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { ItemAuto } from 'src/components/Grid';
+import { ItemAuto } from 'src/components';
+
+import { HeaderSwitcherMode } from 'src/types/types';
+import { CSS_TRANSITION_DELAYS } from 'src/consts';
 
 import './index.scss';
-import { Mode as HeaderMode } from '../../../App';
-
-const CSS_TRANSITION_DELAYS = {
-  a: '250ms',
-  b: '500ms',
-  c: '750ms',
-  d: '1000ms',
-  e: '1250ms',
-  f: '1500ms',
-};
 
 export type Props = {
   linkTo: '/' | 'home' | 'projects' | 'page-3' | 'page-4' | 'page-5' | 'page-6';
@@ -20,7 +13,7 @@ export type Props = {
   setTheme: React.Dispatch<React.SetStateAction<Props['presetArea']>>;
   onClick: (e: MouseEvent<HTMLAnchorElement>, aArea: Props['presetArea']) => void;
   isActive: boolean;
-  mode: HeaderMode;
+  mode: HeaderSwitcherMode;
 };
 
 function GridLink({ linkTo, presetArea, setTheme, onClick, isActive, mode }: Props) {

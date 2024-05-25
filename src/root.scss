@@ -86,6 +86,7 @@ $font-sz-lg: 1.25rem;
   text-decoration: underline;
   color: var(--text-color);
 }
+
 // keeping title styles global in case styled needed for elsewhere
 @mixin main-title {
   @include primary-title;

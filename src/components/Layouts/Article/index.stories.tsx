@@ -4,6 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Article from './index';
 import Section from '../Section/index';
+import { Paragraph } from 'src/components/Typography';
 
 import { COMPONENT_STYLE_TYPES } from '../consts';
 
@@ -12,7 +13,7 @@ const VARIANT_01_ARTICLE_JSON = {
   title: 'Understanding React Hooks',
   subTitle: 'A deep dive into useState and useEffect',
   heroImage: { href: '', alt: '' },
-  date: '121212', // todo: new Date() should be converted in parent
+  date: +new Date(), // todo: new Date() should be converted in parent
   tags: ['React', 'Hooks', 'JavaScript', 'Web Development'],
   sections: [
     {
@@ -121,7 +122,7 @@ export const Standard: Story = {
                 return (
                   <>
                     {cont.images.before && <img src={cont.images.before.href} alt={cont.images.before.alt} />}
-                    <p>{cont.paragraph}</p>
+                    <Paragraph>{cont.paragraph}</Paragraph>
                     {cont.images.after && <img src={cont.images.after.href} alt={cont.images.after.alt} />}
                   </>
                 );

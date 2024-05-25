@@ -11,7 +11,7 @@ export const ARTICLE_COLLECTION_JSON = [
     title: 'Understanding React Hooks',
     subTitle: 'A deep dive into useState and useEffect',
     heroImage: { href: '', alt: '' },
-    date: 1716311335392,
+    date: +new Date(),
     tags: ['React', 'Hooks', 'JavaScript', 'Web Development'],
     sections: [
       {
@@ -118,7 +118,7 @@ export const ARTICLE_COLLECTION_JSON = [
     title: 'Vel Pharetra vel Turpis Nunc eget Lorem.',
     subTitle: 'The latest JavaScript syntax',
     heroImage: { href: '', alt: '' },
-    date: 1716311339999,
+    date: +new Date(),
     tags: ['JavaScript', 'Web Development'],
     sections: [
       {

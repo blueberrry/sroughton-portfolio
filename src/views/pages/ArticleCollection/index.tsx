@@ -1,10 +1,11 @@
 import React from 'react';
 import { ARTICLE_COLLECTION_JSON } from './index.stories';
-import { Article, Section } from 'src/components/Layouts';
-import { Paragraph } from 'src/components/Typography';
+
+import { Article, Section, Paragraph } from 'src/components';
+
+import { Article_JSON } from 'src/types/types';
 
 import './index.scss';
-import { Article_JSON } from 'src/types/types';
 
 type Props = { articles: Article_JSON[] };
 

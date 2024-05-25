@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Section } from 'src/components/Layouts';
+import { Section } from 'src/components';
 
 import './index.scss';
 

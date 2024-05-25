@@ -1,7 +1,7 @@
-@import '../../../root.scss';
+@import 'src/root.scss';
 
 article.default {
-  margin-top: 1rem;
+  margin-top: $spcr-md;
 
   .article-title {
     letter-spacing: 0.15em;

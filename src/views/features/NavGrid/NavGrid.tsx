@@ -1,10 +1,12 @@
 import React, { useRef } from 'react';
-import { GridContainer } from '../../../components/Grid';
-
 import classNames from 'classnames';
-import GridLink, { Props as GridLinkProps } from './GridLink';
-import { Mode as HeaderMode } from 'src/App';
+
+import { GridContainer } from 'src/components';
+
 import { Returns as UseBgClassReturns } from 'src/hooks/useBgClass';
+
+import GridLink, { Props as GridLinkProps } from './GridLink';
+import { HeaderSwitcherMode } from 'src/types/types';
 
 import './index.scss';
 /**
@@ -13,8 +15,8 @@ import './index.scss';
  */
 
 export type Props = {
-  mode: HeaderMode;
-  setMode: React.Dispatch<React.SetStateAction<HeaderMode>>; // todo: Header could have generic type
+  mode: HeaderSwitcherMode;
+  setMode: React.Dispatch<React.SetStateAction<HeaderSwitcherMode>>; // todo: Header could have generic type
   bgClassName: any;
   activeArea: UseBgClassReturns['activeArea'];
   setActiveArea: UseBgClassReturns['setActiveArea'];

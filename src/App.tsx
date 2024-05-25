@@ -2,25 +2,21 @@ import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Route, createBrowserRouter, createRoutesFromElements, RouterProvider, Outlet } from 'react-router-dom';
 import { CSSTransition } from 'react-transition-group';
 import { Parallax, ParallaxBanner, ParallaxBannerLayer, ParallaxProvider } from 'react-scroll-parallax';
+
 import ThemeProvider, { ThemeContext } from './context/ThemeContext';
+
+import { HeaderSwitcher, Main } from './components';
 
 import Home from 'src/views/pages/Home';
 import Projects from 'src/views/pages/Projects';
 
-import { Main } from './components/Layouts';
-import HeaderSwitcher from './components/HeaderSwitcher';
 import { useBgClass } from './hooks/useBgClass';
-import { BgStates } from './types/types';
+import { BgStates, HeaderSwitcherMode } from './types/types';
 
 import './root.scss';
 
-// todo: 🎉🚮 STORYBOOOOOOOOOOK
-// todo: document with comments
-// todo: all page content should be main footer so create single component that does this and pass style
-//       then just render child comps
+// TODO: Create footer
 export type TranslateFuncArgs = 'up' | 'down';
-
-export type Mode = 'full' | 'toTitle' | 'title' | null;
 
 export function App() {
   const { theme, changeTheme } = useContext(ThemeContext);
@@ -37,7 +33,7 @@ export function App() {
 
   const [transitionMainUp, setMainTransitionUp] = useState<boolean>(false);
 
-  const [headerMode, setHeaderMode] = useState<Mode>('full');
+  const [headerMode, setHeaderMode] = useState<HeaderSwitcherMode>('full');
 
   const bgStates = ['bg', 'img', 'grad'];
   const initial = bgStates[0] as BgStates;

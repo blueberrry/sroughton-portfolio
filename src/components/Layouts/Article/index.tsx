@@ -12,7 +12,7 @@ type Props = {
   id?: string;
   type?: CompStyleTypeKeys;
   title?: string;
-  subTitle?: string;
+  tagline?: string;
   date?: Date | number; //todo Date type
   tags?: string[]; // todo: relative links?
   extraClasses?: string[];
@@ -26,14 +26,23 @@ type Props = {
  * @returns
  */
 
-function Article({ id, type = 'primary', title, date, tags, extraClasses = [''], children }: PropsWithChildren<Props>) {
+function Article({
+  id,
+  type = 'primary',
+  title,
+  tagline,
+  date,
+  tags,
+  extraClasses = [''],
+  children,
+}: PropsWithChildren<Props>) {
   const articleClasses = new Array(`${COMPONENT_STYLE_TYPES[type]}-article`);
 
   const { classes } = useClasses({ containerClasses: articleClasses, extraClasses });
 
   return (
     <article className={`default ${classes}`}>
-      {title && <Title text={title} type='sub' extraClasses={['article-title']} />}
+      {title && <Title text={title} tagline={tagline} type='sub' extraClasses={['article-title']} />}
       {children}
     </article>
   );

@@ -1,7 +1,5 @@
 @import 'src/root.scss';
 
-
-
 div.content-item-container {
   display: flex;
   flex-direction: column;
@@ -10,7 +8,7 @@ div.content-item-container {
 
   // max-width: $max-w-page;
 
-  @include media('>desktop') {
-    flex-direction: row;
-  }
+  // @include media('>desktop') {
+  //   flex-direction: row;
+  // }
 }

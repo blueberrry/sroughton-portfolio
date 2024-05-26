@@ -40,7 +40,7 @@ function ArticleCollection({ articles = ARTICLE_COLLECTION_JSON }: Props) {
             key={`${item.id}-${aIndex}`}
             type='primary'
             title={item.title}
-            subTitle={item.tagline}
+            tagline={item.tagline}
             date={item.date}
             tags={item.tags}>
             {item.sections.map((section, sIndex) => {
@@ -48,14 +48,16 @@ function ArticleCollection({ articles = ARTICLE_COLLECTION_JSON }: Props) {
               console.log('🚀 ~ {item.sections.map ~ key:', sectionKey);
               return (
                 <Section title={section.header} key={sectionKey}>
-                  {section.content.map((cont, cIndex) => {
-                    const contentItemKey = `${Math.random().toFixed(2)}-${cIndex}`;
-
+                  {section.paragraphs.map((paragraph, pIndex) => {
+                    const contentItemKey = `${Math.random().toFixed(2)}-${pIndex}`;
+                    const thisPragraphsImage = section.images.find((s) => s.id === paragraph.id);
                     return (
                       <ContentBlock
-                        images={cont.images}
-                        paragraph={cont.paragraph}
-                        key={`${contentItemKey}-${cIndex}`}
+                        //  images={['']}
+                        id={paragraph.id}
+                        paragraph={paragraph.text}
+                        image={thisPragraphsImage}
+                        key={`${contentItemKey}-${pIndex}`}
                       />
                     );
                   })}

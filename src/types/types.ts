@@ -61,16 +61,16 @@ export type SectionChild =
 
 export type ArticleChild = SectionChild;
 
-export type ContentBlockTypes = { before: Image | null; after: Image | null };
-
 /**
  *
  * * Response data
  */
 
-export type SectionContent_JSON = { paragraph: string; images: ContentBlockTypes };
+export type Paragraph_JSON = { id: string; text: string };
 
-export type Section_JSON = { header: string; content: SectionContent_JSON[] };
+export type Image_JSON = { id: string; href: string; alt: string; caption?: string; srcSet?: string[] | null };
+
+export type Section_JSON = { id: string; header: string; paragraphs: Paragraph_JSON[]; images: Image_JSON[] };
 
 export type Article_JSON = {
   id: string;

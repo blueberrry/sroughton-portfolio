@@ -54,7 +54,7 @@ export const Standard: Story = {
     id: VARIANT_01_ARTICLE_JSON.id,
     type: 'primary',
     title: VARIANT_01_ARTICLE_JSON.title,
-    subTitle: VARIANT_01_ARTICLE_JSON.tagline,
+    tagline: VARIANT_01_ARTICLE_JSON.tagline,
     date: VARIANT_01_ARTICLE_JSON.date, // todo: from api
     tags: VARIANT_01_ARTICLE_JSON.tags,
     // todo: better way to include children IE dummy text file stored elsewhere?

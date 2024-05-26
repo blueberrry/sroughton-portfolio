@@ -2,25 +2,44 @@
 @import './styles/theme/_colors.scss';
 @import './styles/theme/_themes.scss';
 
-/* ~-####-~  Breakpoints  ~-####-~  */
+/**
+ * 
+ * * Breakpoints 
+ */
 $breakpoints: (
   phone: 640px,
   tablet: 768px,
   desktop: 1024px,
 ) !default;
 
-/* ~-####-~  Spacing  ~-####-~  */
-@mixin even-spacer($margin, $padding) {
-  margin: 0 0 $margin 0;
-  padding: $padding;
-}
+/**
+ * 
+ * * Dimensions
+ */
+
+$max-w-copy: 55rem;
+$max-w-page: 60rem;
+
+/**
+ * 
+ * * Spacing 
+ */
 
 $spcr-xsm: 0.35rem; // todo: change to em or ch / add extra spcing vars
 $spcr-sm: 0.65rem;
 $spcr-md: 1rem;
 $spcr-lg: 1.75rem;
 
-/* ~-####-~  Global  ~-####-~  */
+// Keeps consistency in spacing components vertically
+@mixin consistent-spacer($margin-b, $padding) {
+  margin-bottom: $margin-b;
+  padding: $padding;
+}
+
+/**
+ * 
+ * * Global 
+ */
 * {
   line-height: normal;
   font-family:
@@ -36,13 +55,21 @@ $spcr-lg: 1.75rem;
     sans-serif;
 }
 
-/* ~-####-~  Typography  ~-####-~  */
-$title-font: 'Vidaloka', Georgia, 'Times New Roman', Arial, Tahoma, 'Courier New', serif;
+/**
+ * 
+ * * Themes
+ */
+$themes: ('default', 'dark', 'tropical', 'mystic', 'night', 'purple-hills');
 
-$main-font: 'Exo', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+/**
+ * 
+ * * Typography 
+ */
+$font-title: 'Vidaloka', Georgia, 'Times New Roman', Arial, Tahoma, 'Courier New', serif;
 
-// normal: 400, 700, italics: 400 700
-$pre-font: 'Space Mono', monospace;
+$font-main: 'Exo', Arial, 'Helvetica Neue', Helvetica, sans-serif;
+
+$font-pre: 'Space Mono', monospace; // normal: 400, 700, italics: 400 700
 
 $font-weights: (
   xsmall: 100,
@@ -52,71 +79,83 @@ $font-weights: (
   bold: 700,
 );
 
-$font-sz-body: 1rem;
 $font-sz-sm: 0.8rem;
+$font-sz-body: 1rem;
 $font-sz-lg: 1.25rem;
+$font-sz-xl: 1.75rem;
+
+$title-sz-xsm: 1.45rem;
+$title-sz-sm: 1.95rem;
+$title-sz-md: 2.35rem;
+$title-sz-lg: 2.75rem;
+$title-sz-xl: 3.25rem;
+$title-sz-xxl: 4rem;
 
 @mixin primary-title {
-  font-family: $title-font;
-  color: var(--text-color);
+  font-family: $font-title;
 }
 
 @mixin secondary-title {
-  font-family: $title-font;
+  font-family: $font-title;
   font-weight: 200;
   text-decoration: underline;
-  color: var(--text-color);
 }
+
 // keeping title styles global in case styled needed for elsewhere
 @mixin main-title {
   @include primary-title;
-  @include even-spacer($spcr-md, $spcr-sm);
-  font-size: 4rem;
+  @include consistent-spacer($spcr-md, $spcr-sm);
+  font-size: $title-sz-xxl;
   font-weight: 700;
 }
 
 @mixin sub-title {
   @include secondary-title;
-  @include even-spacer($spcr-md, $spcr-sm);
-  font-size: 3rem;
+  @include consistent-spacer($spcr-md, $spcr-sm);
+  font-size: $title-sz-xl;
 }
 
 @mixin medium-title {
   @include primary-title;
-  @include even-spacer($spcr-md, $spcr-sm);
-  font-size: 2.25rem;
+  @include consistent-spacer($spcr-md, $spcr-sm);
+  font-size: $title-sz-lg;
   font-weight: 600;
 }
 
 @mixin medium-sub-title {
   @include secondary-title;
-  @include even-spacer($spcr-sm, $spcr-sm);
-  font-size: 1.5rem;
+  @include consistent-spacer($spcr-sm, $spcr-sm);
+  font-size: $title-sz-md;
 }
 
 @mixin small-title {
   @include primary-title;
-  @include even-spacer($spcr-sm, $spcr-xsm);
-  font-size: 1.25rem;
+  @include consistent-spacer($spcr-sm, $spcr-xsm);
+  font-size: $title-sz-sm;
   font-weight: 500;
 }
 
 @mixin small-sub-title {
   @include secondary-title;
-  @include even-spacer($spcr-sm, $spcr-xsm);
-  font-size: 1rem;
+  @include consistent-spacer($spcr-sm, $spcr-xsm);
+  font-size: $title-sz-xsm;
 }
 
 @mixin text-centered {
   text-align: center;
 }
 
-div#app-root,
-.parallax-container {
-  height: -webkit-fill-available; // todo: janky scroll
-  // prevents whitespace caused by parallax elements
-}
+/**
+ *
+ * * Shadows and effects
+ */
+$top-shadow: 0 0 20px #333; // todo: refine
+$default-radius: 5px;
 
+/**
+ *
+ * * Grid/area values
+ */
 $grid-areas: (
   a: tile_01,
   b: tile_02,
@@ -126,9 +165,6 @@ $grid-areas: (
   f: tile_06,
 );
 
-$themes: ('default', 'dark', 'tropical', 'mystic', 'night', 'purple-hills');
-
-// maps named areas (a, b, c, ..) to colors names (primary, secondary..).
 $area-themes: (
   a: primary,
   b: secondary,
@@ -136,7 +172,7 @@ $area-themes: (
   d: neutral,
   e: background-primary,
   f: background-secondary,
-);
+); // maps named areas (a, b, c, ..) to colors names (primary, secondary..).
 
 $img-theme: (
   a: '~src/assets/original.jpg',
@@ -177,44 +213,17 @@ $img-theme: (
 
 @mixin bg-col($area, $val) {
   &.bg-#{$area} {
-    //  @extend .bg-color-#{$val};
-
-    // background-color: #{$val};
-
     background-color: var(--#{$val}-color);
   }
-}
-
-.pseudo-code-lol {
-  /*pseudo code
-  1 add prop that is background color
-  2 add prop that is bg-gradient
-  3 add prop that is background image repeat (small svg images) OR <pre> 🏡🌇 🏡🌇 🏡🌇 🏡🌇 🏡🌇 🏡🌇 </ pre>
-  4 three fade out !selected || !hovered
-  */
 }
 
 @include media('>tablet', '<950px') {
 }
 
-// todo: following classes are temp only
-// .bg-color-primary {
-//   background-color: $default-primary;
-// }
-
-// .bg-color-secondary {
-//   background-color: $default-secondary;
-// }
-
-// .bg-color-tertiary {
-//   background-color: $default-tertiary;
-// }
-
-// .bg-color-info {
-//   background-color: $default-shade-a1;
-// }
-
-$top-shadow: 0 0 20px #333; // todo: refine
+/**
+ *
+ * * Transitions and animations
+ */
 
 @mixin defaultTransition {
   transition: all 0.6s ease-in; // default fallback transition
@@ -254,9 +263,19 @@ div.main-container-exit-active {
   transition: transform #{$animation-duration}ms;
 }
 
+/**
+ *
+ * * Temporary
+ */
 .temp-form {
   margin: 0 auto;
   max-width: 42rem;
   display: flex;
   justify-content: space-around;
+}
+
+div#app-root,
+.parallax-container {
+  height: -webkit-fill-available; // todo: janky scroll
+  // prevents whitespace caused by parallax elements
 }

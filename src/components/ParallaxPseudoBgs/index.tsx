@@ -9,6 +9,12 @@ import './index.scss';
  * * might be limiting by restricting the props this way but will keep for now
  */
 
+type Props = {
+  headerSection: () => React.JSX.Element;
+  mainSection: () => React.JSX.Element;
+  footerSection?: () => React.JSX.Element;
+};
+
 // todo: outer may be unnecessary
 
 export function ParallaxScroller({
@@ -39,9 +45,3 @@ export function ParallaxScroller({
 }
 
 export default ParallaxScroller;
-
-type Props = {
-  headerSection: () => React.JSX.Element;
-  mainSection: () => React.JSX.Element;
-  footerSection?: () => React.JSX.Element;
-};

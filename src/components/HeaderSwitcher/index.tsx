@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { SwitchTransition, CSSTransition } from 'react-transition-group';
 import { useLocation } from 'react-router-dom';
 import { NavGrid } from 'src/views/features/NavGrid';
@@ -7,8 +7,9 @@ import { TranslateFuncArgs } from 'src/App';
 
 import './index.scss';
 
+// TODO: Story
+
 export type Props = {
-  scrollToContent?: any;
   bgClassName: any;
   activeArea: UseThemeReturns['activeArea'];
   setActiveArea: UseThemeReturns['setActiveArea'];
@@ -18,16 +19,7 @@ export type Props = {
   setMode: any;
 };
 
-function HeaderSwitcher({
-  scrollToContent = () => {},
-  bgClassName,
-  activeArea,
-  setActiveArea,
-  transitionMain,
-  bgType,
-  mode,
-  setMode,
-}: Props) {
+function HeaderSwitcher({ bgClassName, activeArea, setActiveArea, transitionMain, bgType, mode, setMode }: Props) {
   const navRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLDivElement>(null);
 
@@ -85,7 +77,6 @@ function HeaderSwitcher({
               {mode === 'full' || mode === 'toTitle' ? (
                 <NavGrid
                   bgClassName={bgClassName}
-                  goToContent={scrollToContent}
                   mode={mode}
                   setMode={setMode}
                   activeArea={activeArea}

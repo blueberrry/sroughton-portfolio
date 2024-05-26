@@ -2,34 +2,53 @@
 
 // todo: font-color
 
-.centered {
-  @include text-centered;
-}
+header.title {
+  margin-bottom: $spcr-sm;
+  color: var(--text-color);
 
-span[role='header'].default {
-  @include medium-title;
-}
+  .centered {
+    @include text-centered;
+  }
 
-h1.main-title {
-  @include main-title;
-}
+  span[role='header'].default {
+    @include medium-title;
+  }
 
-h2.sub-title {
-  @include sub-title;
-}
+  h1.main-title {
+    @include main-title;
+  }
 
-h3.medium-title {
-  @include medium-title;
-}
+  h2.sub-title {
+    @include sub-title;
+  }
 
-h4.medium-sub-title {
-  @include medium-sub-title;
-}
+  h3.medium-title {
+    @include medium-title;
+  }
 
-h5.small-title {
-  @include small-title;
-}
+  h4.medium-sub-title {
+    @include medium-sub-title;
+  }
 
-h6.small-sub-title {
-  @include small-sub-title;
+  h5.small-title {
+    @include small-title;
+  }
+
+  h6.small-sub-title {
+    @include small-sub-title;
+  }
+
+  span.tagline {
+    font-family: $font-pre;
+    text-decoration: underline solid;
+    text-decoration-color: var(--info-color);
+    text-underline-offset: 0.35em;
+    text-decoration-thickness: 0.1em;
+    font-size: $font-sz-lg;
+    font-weight: 600;
+    padding-left: $spcr-md;
+
+    display: inline-block;
+    transform: translateY(-$spcr-md); // moves closer to h tag if tagline rendered beneath it
+  }
 }

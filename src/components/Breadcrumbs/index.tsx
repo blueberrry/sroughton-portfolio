@@ -23,7 +23,7 @@ const BreadCrumbIcon = ({ name }: { name: string }) => {
 };
 // todo: test click action in story
 // todo: Icons (home/projects etc)
-export function BreadCrumbs({ root = null, pathnames }: Props) {
+function BreadCrumbs({ root = null, pathnames }: Props) {
   if (!root && pathnames.length < 1) {
     // component must have at least two routes?
     // nah get rid, should be able to handle one route only
@@ -62,3 +62,5 @@ export function BreadCrumbs({ root = null, pathnames }: Props) {
     </nav>
   );
 }
+
+export default BreadCrumbs;

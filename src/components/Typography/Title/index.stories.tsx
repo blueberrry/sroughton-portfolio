@@ -58,3 +58,11 @@ export const Sub: Story = {
     text: 'Sit Amet Aliquam id Diam Maecenas Ultricies mi Eget',
   },
 };
+
+export const WithTagline: Story = {
+  args: {
+    type: 'main',
+    text: 'Sit Amet Aliquam id Diam Maecenas Ultricies mi Eget',
+    tagline: 'A tagline description for expanded info',
+  },
+};

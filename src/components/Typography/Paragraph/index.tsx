@@ -1,20 +1,18 @@
-import React, { PropsWithChildren, ReactElement, ReactNode, useEffect, useState } from 'react';
+import React, { PropsWithChildren, ReactNode, useEffect, useState } from 'react';
 import { useClasses } from 'src/hooks/useClasses';
 import { COMPONENT_STYLE_TYPES } from 'src/consts';
-import { CompStyleTypeKeys } from 'src/types/types';
+import { CompStyleTypeKeys, ParagraphChild } from 'src/types/types';
 
 import './index.scss';
-
-// Define the allowed types for the children
-type AllowedChild = string | ReactElement<HTMLElement> | ReactElement<'span'> | ReactElement<'a'> | ReactElement<'p'>;
 
 type Props = {
   type?: CompStyleTypeKeys;
   centered?: boolean;
   extraClasses?: string[];
-  children: AllowedChild | AllowedChild[];
+  children: ParagraphChild | ParagraphChild[];
 };
 
+// todo: implement in other components that have defined child types
 const isAllowedChild = (node: ReactNode): boolean => {
   // Ensure all children are one of the allowed types
 
@@ -58,7 +56,7 @@ function Paragraph({ type = 'primary', centered = false, extraClasses, children 
   const validateChildren = (children: ReactNode): void => {
     React.Children.forEach(children, (child) => {
       if (!isAllowedChild(child)) {
-        // todo: this is an anti-pattern, consider returning default fragment or something similar
+        // TODO: this is an anti-pattern, consider returning default fragment or something similar
         throw new Error('Invalid child element passed to the Paragraph component');
       }
       return <></>;

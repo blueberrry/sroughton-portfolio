@@ -2,8 +2,7 @@ import React, { PropsWithChildren } from 'react';
 import { BreadCrumbs } from 'src/components';
 import { Title } from 'src/components/Typography';
 
-import { useClasses } from 'src/hooks/useClasses';
-import { useBgClass } from 'src/hooks/useBgClass';
+import { useClasses, useBgClass } from 'src/hooks';
 
 import { CompStyleTypeKeys } from '../../../types/types';
 import { AreaNames } from 'src/types/types';

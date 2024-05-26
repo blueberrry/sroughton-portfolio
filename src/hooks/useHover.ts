@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { MouseEvent } from 'react';
 
-export default function useHover<T extends HTMLElement>(): Returns<T> {
+function useHover<T extends HTMLElement>(): Returns<T> {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = (e: MouseEvent<T>) => {
@@ -28,3 +28,5 @@ type Returns<T extends HTMLElement> = {
     onMouseLeave: (e: MouseEvent<T>) => void;
   };
 };
+
+export default useHover;

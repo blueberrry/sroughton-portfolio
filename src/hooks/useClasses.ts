@@ -6,7 +6,7 @@ type UseClassesArgs = {
   extraClasses: string[];
 };
 
-export const useClasses = ({ containerClasses, extraClasses }: UseClassesArgs) => {
+const useClasses = ({ containerClasses, extraClasses }: UseClassesArgs) => {
   const [classString, setClassString] = useState<null | string>(null);
 
   useEffect(() => {
@@ -35,3 +35,5 @@ export const useClasses = ({ containerClasses, extraClasses }: UseClassesArgs) =
 
   return { classes: classString ?? '' };
 };
+
+export default useClasses;

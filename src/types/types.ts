@@ -36,7 +36,7 @@ export type AppRoutes = 'home' | 'projects' | 'page-3' | 'page-4' | 'page-5' | '
 
 export type TitleStyleTypes = (typeof TITLE_STYLE_TYPES)[number];
 
-export type Image = { href: string; alt: string };
+export type Image = { href: string; alt: string; srcSet?: [''] };
 
 /**
  *

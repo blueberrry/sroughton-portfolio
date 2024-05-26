@@ -1,0 +1,38 @@
+@import 'src/root.scss';
+
+div.lg-viewport-content-container {
+  display: flex;
+  flex-direction: row;
+
+  min-height: 100vh;
+
+  > .paragraphs-container {
+    //  flex: 1 1 50%;
+    width: 50%; // TODO: might use golden ratio instead
+  }
+
+  > .current-image-container {
+    //    flex: 1 1 50%;
+
+    @include media('>phone') {
+      // TODO: either css should handle and comp deals with both rendering or switch using JS
+      width: 50%;
+      position: fixed;
+      background-color: black;
+      color: white !important;
+      margin-left: 50% !important;
+      min-height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    //position: fixed;
+  }
+
+  // max-width: $max-w-page;
+
+  // @include media('>desktop') {
+  //   flex-direction: row;
+  // }
+}

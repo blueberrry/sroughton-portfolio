@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import classNames from 'classnames';
-import useHover from 'src/hooks/useHover';
+import { useHover } from 'src/hooks';
 import { AreaNames } from 'src/types/types';
 
 export function ItemAuto({ theme = 'a', onClick, onHover, extraClasses, children }: ItemAutoProps) {

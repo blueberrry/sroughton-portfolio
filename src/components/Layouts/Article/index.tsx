@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react';
 
 import { Title } from '../../Typography/index';
-import { useClasses } from '../../../hooks/useClasses';
+import { useClasses } from '../../../hooks';
 
 import { COMPONENT_STYLE_TYPES } from '../consts';
 import { ArticleChild, CompStyleTypeKeys } from '../../../types/types';

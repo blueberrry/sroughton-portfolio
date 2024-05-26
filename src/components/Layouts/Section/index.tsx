@@ -2,7 +2,7 @@ import React, { PropsWithChildren } from 'react';
 
 import { Title } from 'src/components/Typography';
 
-import { useClasses } from 'src/hooks/useClasses';
+import { useClasses } from 'src/hooks';
 
 import { CompStyleTypeKeys, SectionChild } from 'src/types/types';
 

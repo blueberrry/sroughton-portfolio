@@ -18,10 +18,12 @@ type UseThemeArgs = {
 // would be good to configure so that we can only use relevant styled types in component
 // eg - Main only has bg colour and secondary bg colour styled so restrict it to these types
 
-export function useBgClass({ bgType = 'bg', initialValue }: UseThemeArgs): Returns {
+function useBgClass({ bgType = 'bg', initialValue }: UseThemeArgs): Returns {
   const [activeArea, setActiveArea] = useState<AreaNames | null>(initialValue ?? null);
 
   const className = getBgClass(bgType, activeArea);
 
   return { activeArea, setActiveArea, className };
 }
+
+export default useBgClass;

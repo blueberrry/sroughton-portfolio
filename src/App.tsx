@@ -10,7 +10,7 @@ import { HeaderSwitcher, Main } from './components';
 import Home from 'src/views/pages/Home';
 import Projects from 'src/views/pages/Projects';
 
-import { useBgClass } from './hooks/useBgClass';
+import { useBgClass } from './hooks';
 import { BgStates, HeaderSwitcherMode } from './types/types';
 
 import './root.scss';

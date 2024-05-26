@@ -12,7 +12,7 @@ export const ARTICLE_COLLECTION_JSON: Article_JSON[] = [
     id: '1',
     title: 'Understanding React Hooks',
     tagline: 'A deep dive into useState and useEffect',
-    heroImage: { href: '', alt: '' },
+    heroImage: { href: '', alt: '', srcSet: [''] },
     date: +new Date(),
     tags: ['React', 'Hooks', 'JavaScript', 'Web Development'],
     sections: [

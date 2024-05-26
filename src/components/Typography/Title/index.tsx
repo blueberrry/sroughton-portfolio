@@ -1,5 +1,5 @@
 import React from 'react';
-import { useClasses } from 'src/hooks/useClasses';
+import { useClasses } from 'src/hooks';
 import { TitleStyleTypes } from 'src/types/types';
 
 import './index.scss';

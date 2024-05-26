@@ -1,5 +1,5 @@
 import React, { PropsWithChildren, ReactNode, useEffect, useState } from 'react';
-import { useClasses } from 'src/hooks/useClasses';
+import { useClasses } from 'src/hooks';
 import { COMPONENT_STYLE_TYPES } from 'src/consts';
 import { CompStyleTypeKeys, ParagraphChild } from 'src/types/types';
 

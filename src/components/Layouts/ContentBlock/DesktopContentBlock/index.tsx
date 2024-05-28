@@ -21,14 +21,14 @@ type Props = { images?: Image_JSON[]; paragraphs: Paragraph_JSON[] };
  * TODO: Fade new images on scroll of pragraphs (LHS scroll, RHS fixed)
  * TODO: Zigzag pattern
  * TODO: ~~ Other layouts if necessary
- * 
+ *
  * TODO: This is working well, however if this api
  * * sends too many images like 1 per paragraph then the image will be switching too often
  * * could have an image range like show image for paragraph 1 - 6
  * * OR only have one or two images per section
  * * OR scroll RHS area at slower speed to LHS
  * * OR just make sure that data fits the images
- * 
+ *
  * * show img if { a, b, c }  show next image if { c, d, e }  show next img if { g, e }
  *
  *  * for desktop, it would be better if component had all paragraphs[] and all images[] so it can switch
@@ -100,7 +100,7 @@ function DesktopContentBlock({ paragraphs, images }: Props) {
       </div>
 
       <div className='current-image-container'>
-        {/* display current image */} <strong>TEMP TEXT</strong>
+        {/* display current image */} <strong>IMG GOES HERE</strong>
       </div>
       {/* <Paragraph>{paragraphs}</Paragraph>
       {images && <ResponsiveImage src={images.href} alt={images.alt} caption={images.caption} />} */}

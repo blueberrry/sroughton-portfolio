@@ -5,7 +5,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import DesktopContentBlock from './index';
 
 const meta: Meta<typeof DesktopContentBlock> = {
-  title: 'Layouts/ContentBlock/Dekstop',
+  title: 'Layouts/ContentBlock/Desktop',
   component: DesktopContentBlock,
   parameters: [],
   argTypes: {

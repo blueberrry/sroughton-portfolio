@@ -1,7 +1,7 @@
 import BreadCrumbs from './Breadcrumbs';
 import { GridContainer, ItemAuto } from './Grid';
 import HeaderSwitcher from './HeaderSwitcher';
-import { Article, Section, Main, ContentBlock } from './Layouts';
+import { Article, Section, Main, MobileContentBlock, DesktopContentBlock } from './Layouts';
 import ParallaxScroller from './ParallaxPseudoBgs';
 import ResponsiveImage from './ResponsiveImage';
 import { Paragraph, Title } from './Typography';
@@ -14,7 +14,8 @@ export {
   Article,
   Section,
   Main,
-  ContentBlock,
+  MobileContentBlock,
+  DesktopContentBlock,
   ParallaxScroller,
   ResponsiveImage,
   Paragraph,

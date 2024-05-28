@@ -1,7 +1,7 @@
 import React from 'react';
 import { ARTICLE_COLLECTION_JSON } from './index.stories';
 
-import { Article, Section, ContentBlock } from 'src/components';
+import { Article, Section, MobileContentBlock } from 'src/components';
 
 import { Article_JSON } from 'src/types/types';
 
@@ -52,7 +52,7 @@ function ArticleCollection({ articles = ARTICLE_COLLECTION_JSON }: Props) {
                     const contentItemKey = `${Math.random().toFixed(2)}-${pIndex}`;
                     const thisPragraphsImage = section.images.find((s) => s.id === paragraph.id);
                     return (
-                      <ContentBlock
+                      <MobileContentBlock
                         //  images={['']}
                         id={paragraph.id}
                         paragraph={paragraph.text}

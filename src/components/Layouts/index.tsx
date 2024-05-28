@@ -1,6 +1,6 @@
 import Article from './Article';
 import Section from './Section';
 import Main from './Main';
-import MobileContentBlock from './ContentBlock/MobileContentBlock';
+import { MobileContentBlock, DesktopContentBlock } from './ContentBlock';
 
-export { Article, Section, Main, MobileContentBlock as ContentBlock };
+export { Article, Section, Main, MobileContentBlock, DesktopContentBlock };

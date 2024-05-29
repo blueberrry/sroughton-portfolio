@@ -2,6 +2,7 @@ import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { MemoryRouter } from 'react-router-dom';
 
+import { TEST_IMG_SRCS } from 'src/consts';
 import ArticleCollection from './index';
 
 import { Article_JSON } from 'src/types/types';
@@ -12,7 +13,7 @@ export const ARTICLE_COLLECTION_JSON: Article_JSON[] = [
     id: '1',
     title: 'Understanding React Hooks',
     tagline: 'A deep dive into useState and useEffect',
-    heroImage: { href: '', alt: '', srcSet: [''] },
+    heroImage: { src: '', alt: '', srcSet: { mobile: null, tablet: null, desktop: null } },
     date: +new Date(),
     tags: ['React', 'Hooks', 'JavaScript', 'Web Development'],
     sections: [
@@ -44,15 +45,15 @@ export const ARTICLE_COLLECTION_JSON: Article_JSON[] = [
         images: [
           {
             id: '2',
-            href: 'https://i.pinimg.com/564x/26/d0/c7/26d0c7f36b920c83a15e727b82a1dab7.jpg',
+            src: TEST_IMG_SRCS.one,
             alt: '',
-            srcSet: ['', ''],
+            srcSet: { mobile: null, tablet: null, desktop: null },
           },
           {
             id: '4',
-            href: 'https://i.pinimg.com/564x/40/32/8d/40328d8c8e8ddb8da932c25858c72c04.jpg',
+            src: 'https://i.pinimg.com/564x/40/32/8d/40328d8c8e8ddb8da932c25858c72c04.jpg',
             alt: '',
-            srcSet: ['', ''],
+            srcSet: { mobile: null, tablet: null, desktop: null },
           },
         ],
       },
@@ -85,23 +86,23 @@ export const ARTICLE_COLLECTION_JSON: Article_JSON[] = [
         images: [
           {
             id: '1',
-            href: 'https://i.pinimg.com/564x/92/d8/b9/92d8b94aceeaef2b6f7f2fbb4e8eb1c6.jpg',
+            src: TEST_IMG_SRCS.two,
             alt: '',
             caption:
               ' Libero enim sed faucibus turpis in eu mi. Laoreet id donec ultrices tincidunt arcu non sodales. Sed blandit libero volutpat sed cras ornare arcu. Accumsan lacus vel facilisis volutpat est velit.',
-            srcSet: ['', ''],
+            srcSet: { mobile: null, tablet: null, desktop: null },
           },
           {
             id: '2',
-            href: 'https://i.pinimg.com/564x/fd/67/be/fd67be57737f1475a9e4bbabd552ad0c.jpg',
+            src: TEST_IMG_SRCS.three,
             alt: '',
-            srcSet: ['', ''],
+            srcSet: { mobile: null, tablet: null, desktop: null },
           },
           {
             id: '4',
-            href: 'https://i.pinimg.com/564x/ef/68/6f/ef686f67f26c1bacb1dd3b9b1a18e8b7.jpg',
+            src: TEST_IMG_SRCS.four,
             alt: '',
-            srcSet: ['', ''],
+            srcSet: { mobile: null, tablet: null, desktop: null },
           },
         ],
       },

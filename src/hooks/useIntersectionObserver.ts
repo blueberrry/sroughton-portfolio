@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 
 // Define the type for the observer callback
 export interface ObserverEntry extends IntersectionObserverEntry {

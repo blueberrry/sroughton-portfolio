@@ -45,7 +45,7 @@ function ArticleCollection({ articles = ARTICLE_COLLECTION_JSON }: Props) {
             tags={item.tags}>
             {item.sections.map((section, sIndex) => {
               const sectionKey = `${Math.random().toFixed(2)}-${sIndex}`;
-              console.log('🚀 ~ {item.sections.map ~ key:', sectionKey);
+
               return (
                 <Section title={section.header} key={sectionKey}>
                   {section.paragraphs.map((paragraph, pIndex) => {

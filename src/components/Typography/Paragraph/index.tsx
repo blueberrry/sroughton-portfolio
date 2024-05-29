@@ -12,7 +12,7 @@ type Props = {
   children: ParagraphChild | ParagraphChild[];
 };
 
-// todo: implement in other components that have defined child types
+// TODO: implement in other components that have defined child types - could make re-usable function
 const isAllowedChild = (node: ReactNode): boolean => {
   // Ensure all children are one of the allowed types
 
@@ -26,32 +26,37 @@ const isAllowedChild = (node: ReactNode): boolean => {
   return false;
 };
 
-function Paragraph({ type = 'primary', centered = false, extraClasses, children }: PropsWithChildren<Props>) {
-  const [componentClasses, setComponentClasses] = useState(extraClasses ?? []);
+function Paragraph({ type = 'primary', centered = false, extraClasses = [], children }: PropsWithChildren<Props>) {
+  // const [componentClasses, setComponentClasses] = useState(extraClasses ?? []);
 
-  const pClasses = new Array(`${COMPONENT_STYLE_TYPES[type]}-paragraph`);
+  const containerClasses = new Array(`${COMPONENT_STYLE_TYPES[type]}-paragraph`);
 
-  useEffect(() => {
-    if (centered) {
-      setComponentClasses((prev) => (!prev ? ['centered'] : ['centered', ...prev]));
-    }
+  const { classes } = useClasses({
+    containerClasses,
+    extraClasses: [...extraClasses, centered ? 'centered' : ''],
+  });
 
-    return () => {
-      // Optionally clean up state
-    };
-  }, [centered, setComponentClasses]);
+  // useEffect(() => {
+  //   if (centered) {
+  //     setComponentClasses((prev) => (!prev ? ['centered'] : ['centered', ...prev]));
+  //   }
 
-  useEffect(() => {
-    if (extraClasses && extraClasses.length > 0) {
-      setComponentClasses((prev) => (!prev ? extraClasses : [...extraClasses, ...prev]));
-    }
+  //   return () => {
+  //     // Optionally clean up state
+  //   };
+  // }, [centered, setComponentClasses]);
 
-    return () => {
-      // Optionally clean up state
-    };
-  }, [extraClasses, setComponentClasses]);
+  // useEffect(() => {
+  //   if (extraClasses && extraClasses.length > 0) {
+  //     setComponentClasses((prev) => (!prev ? extraClasses : [...extraClasses, ...prev]));
+  //   }
 
-  const { classes } = useClasses({ containerClasses: pClasses, extraClasses: componentClasses });
+  //   return () => {
+  //     // Optionally clean up state
+  //   };
+  // }, [extraClasses, setComponentClasses]);
+
+  // const { classes } = useClasses({ containerClasses: pClasses, extraClasses: componentClasses });
 
   const validateChildren = (children: ReactNode): void => {
     React.Children.forEach(children, (child) => {
@@ -63,7 +68,7 @@ function Paragraph({ type = 'primary', centered = false, extraClasses, children 
     });
   };
 
-  // trying something new here
+  // * trying something different here
   try {
     validateChildren(children);
   } catch (e) {

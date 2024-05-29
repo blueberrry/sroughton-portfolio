@@ -79,17 +79,17 @@ $font-weights: (
   bold: 700,
 );
 
-$font-sz-sm: 0.8rem;
-$font-sz-body: 1rem;
-$font-sz-lg: 1.25rem;
-$font-sz-xl: 1.75rem;
+$font-sz-sm: 0.9rem;
+$font-sz-body: 1.25rem;
+$font-sz-lg: 1.5rem;
+$font-sz-xl: 2rem;
 
-$title-sz-xsm: 1.45rem;
-$title-sz-sm: 1.95rem;
-$title-sz-md: 2.35rem;
-$title-sz-lg: 2.75rem;
-$title-sz-xl: 3.25rem;
-$title-sz-xxl: 4rem;
+$title-sz-xsm: 1.75rem;
+$title-sz-sm: 2.2rem;
+$title-sz-md: 2.5rem;
+$title-sz-lg: 3rem;
+$title-sz-xl: 3.5rem;
+$title-sz-xxl: 4.2rem;
 
 @mixin primary-title {
   font-family: $font-title;

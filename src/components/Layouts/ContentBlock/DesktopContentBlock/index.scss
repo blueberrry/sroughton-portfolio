@@ -30,6 +30,20 @@ div.lg-viewport-content-container {
     //position: fixed;
   }
 
+  &.reversed {
+    flex-direction: row-reverse;
+
+    > .paragraphs-container {
+      //  flex: 1 1 50%;
+      margin-left: 50% !important; // TODO: might use golden ratio instead
+    }
+
+    > .current-image-container {
+      margin-left: 0 !important;
+      transform: translateX(-100%);
+    }
+  }
+
   // max-width: $max-w-page;
 
   // @include media('>desktop') {

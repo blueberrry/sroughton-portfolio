@@ -2,11 +2,11 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Article, Section, Paragraph, ResponsiveImage } from 'src/components';
+import { Article, Section, Paragraph, ResponsiveImage, MobileContentBlock } from 'src/components';
 
 import { COMPONENT_STYLE_TYPES } from '../consts';
 
-import { Article_JSON, SectionContent_JSON, Section_JSON } from 'src/types/types';
+import { Article_JSON, Section_JSON } from 'src/types/types';
 
 import { ARTICLE_COLLECTION_JSON } from 'src/views/pages/ArticleCollection/index.stories';
 
@@ -61,17 +61,21 @@ export const Standard: Story = {
     children: (
       <>
         {VARIANT_01_ARTICLE_JSON.sections.map((section: Section_JSON, sIndex) => {
+          const sectionKey = `${Math.random().toFixed(2)}-${sIndex}`;
+
           return (
-            <Section title={section.header} key={`${Math.random().toFixed(2)}-${sIndex}`}>
-              {section.content.map((cont, cIndex) => {
+            <Section title={section.header} key={sectionKey}>
+              {section.paragraphs.map((paragraph, pIndex) => {
+                const contentItemKey = `${Math.random().toFixed(2)}-${pIndex}`;
+                const thisPragraphsImage = section.images.find((s) => s.id === paragraph.id);
                 return (
-                  <React.Fragment key={`${Math.random().toFixed(2)}-${cIndex}`}>
-                    {cont.images.before && (
-                      <ResponsiveImage src={cont.images.before.href} alt={cont.images.before.alt} />
-                    )}
-                    <Paragraph>{cont.paragraph}</Paragraph>
-                    {cont.images.after && <ResponsiveImage src={cont.images.after.href} alt={cont.images.after.alt} />}
-                  </React.Fragment>
+                  <MobileContentBlock
+                    //  images={['']}
+                    id={paragraph.id}
+                    paragraph={paragraph.text}
+                    image={thisPragraphsImage}
+                    key={`${contentItemKey}-${pIndex}`}
+                  />
                 );
               })}
             </Section>

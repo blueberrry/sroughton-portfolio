@@ -8,36 +8,37 @@ import { Image_JSON, Paragraph_JSON } from 'src/types/types';
 
 import './index.scss';
 
-type Props = { images?: Image_JSON[]; paragraphs: Paragraph_JSON[] };
+type Props = { paragraphs: Paragraph_JSON[]; images?: Image_JSON[]; reversed?: boolean };
 
 /**
- * * Layout options for a chunk of text with images before and/or after
- * @param
- * @returns
+ * * List of paragraphs one one side, fixed images on the other, images change as user scrolls.
+ * @param {Object} props - Component props
+ * @param {Paragraph_JSON[]} props.paragraphs - Array of paragraphs with ids
+ * @param {Image_JSON[]} props.images - Array of image details/srcs with ids
  *
- * TODO: Render respective image beneath on mobile
+ * @returns {JSX.Element}
+ *
+ * TODO: Taller screens will stop this from working if the paragraphs aren't scrolling - especially if usr has portrait tablet or portrait desktop
+ * TODO: switch between mobile/desktop components
  * TODO: Render alongside on desktop/tablet/fold
- * TODO: Fix position on desktop
- * TODO: Fade new images on scroll of pragraphs (LHS scroll, RHS fixed)
- * TODO: Zigzag pattern
- * TODO: ~~ Other layouts if necessary
+ * TODO: FIXME if too many images, it will only flip between the final paragraphs images
+ * TODO: Animate in images
+ * TODO: Zigzag pattern (optionally switch image/text sides)
+ * TODO: Optionally highlight paragraph/test and animate a line to glow up the img border
  *
- * TODO: This is working well, however if this api
+ * * *** A solution could be adding plenty of spacing around the title (for the first section at least)
+ * * *** Also adding code blocks could spread it out a fair bit (unless including them in RHS)
  * * sends too many images like 1 per paragraph then the image will be switching too often
  * * could have an image range like show image for paragraph 1 - 6
  * * OR only have one or two images per section
  * * OR scroll RHS area at slower speed to LHS
  * * OR just make sure that data fits the images
  *
- * * show img if { a, b, c }  show next image if { c, d, e }  show next img if { g, e }
- *
- *  * for desktop, it would be better if component had all paragraphs[] and all images[] so it can switch
- *  * images on the fly
  *
  */
 
-function DesktopContentBlock({ paragraphs, images }: Props) {
-  const [showImageIndex, setShowImageIndex] = useState(null);
+function DesktopContentBlock({ paragraphs, images, reversed = false }: Props) {
+  const [currentImage, setCurrentImage] = useState<Image_JSON | null>(null);
 
   const [visibleIndices, setVisibleIndices] = useState<Set<string | null>>(new Set());
 
@@ -75,10 +76,22 @@ function DesktopContentBlock({ paragraphs, images }: Props) {
 
   useEffect(() => {
     console.log('🚀 ~ DesktopContentBlock ~ visibleIndices:', visibleIndices);
-  }, [visibleIndices]);
+    if (images && images.length > 0) {
+      const imagesIds = images?.map((img) => img.id);
+
+      if (imagesIds && imagesIds.length > 0) {
+        imagesIds.forEach((id) => {
+          if (visibleIndices.has(id)) {
+            const imageToShow = images.find((img) => img.id === id);
+            imageToShow && setCurrentImage(imageToShow);
+          }
+        });
+      }
+    }
+  }, [visibleIndices, images]);
 
   return (
-    <div className='lg-viewport-content-container'>
+    <div className={`lg-viewport-content-container ${reversed ? 'reversed' : ''}`}>
       <div className='paragraphs-container'>
         {paragraphs &&
           paragraphs.map((paragraph, pIndex) => {
@@ -100,10 +113,15 @@ function DesktopContentBlock({ paragraphs, images }: Props) {
       </div>
 
       <div className='current-image-container'>
-        {/* display current image */} <strong>IMG GOES HERE</strong>
+        {currentImage && (
+          <ResponsiveImage
+            src={currentImage?.src}
+            alt={currentImage?.alt}
+            caption={currentImage?.caption}
+            sourceSet={currentImage?.srcSet}
+          />
+        )}
       </div>
-      {/* <Paragraph>{paragraphs}</Paragraph>
-      {images && <ResponsiveImage src={images.href} alt={images.alt} caption={images.caption} />} */}
     </div>
   );
 }

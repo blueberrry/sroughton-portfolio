@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { COMPONENT_STYLE_TYPES, TITLE_STYLE_TYPES } from '../consts';
-import { ContentBlock, Paragraph, ResponsiveImage } from 'src/components';
+import { MobileContentBlock, DesktopContentBlock, Paragraph, ResponsiveImage } from 'src/components';
 
 /**
  * All types to live here other than component prop types which live within
@@ -36,7 +36,9 @@ export type AppRoutes = 'home' | 'projects' | 'page-3' | 'page-4' | 'page-5' | '
 
 export type TitleStyleTypes = (typeof TITLE_STYLE_TYPES)[number];
 
-export type Image = { href: string; alt: string; srcSet?: [''] };
+export type ImageSrcSet = { mobile: string | null; tablet: string | null; desktop: string | null };
+
+export type Image = { src: string; alt: string; caption?: string; srcSet?: ImageSrcSet };
 
 /**
  *
@@ -53,7 +55,8 @@ export type ParagraphChild =
 export type SectionChild =
   | typeof Paragraph
   | typeof ResponsiveImage
-  | typeof ContentBlock
+  | typeof MobileContentBlock
+  | typeof DesktopContentBlock
   | ParagraphChild
   | ReactElement<'img'>
   | ReactElement<'div'>
@@ -68,7 +71,7 @@ export type ArticleChild = SectionChild;
 
 export type Paragraph_JSON = { id: string; text: string };
 
-export type Image_JSON = { id: string; href: string; alt: string; caption?: string; srcSet?: string[] | null };
+export type Image_JSON = Image & { id: string };
 
 export type Section_JSON = { id: string; header: string; paragraphs: Paragraph_JSON[]; images: Image_JSON[] };
 

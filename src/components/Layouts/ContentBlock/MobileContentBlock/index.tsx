@@ -29,7 +29,7 @@ function MobileContentBlock({ paragraph, image }: Props) {
   return (
     <div className='content-item-container'>
       <Paragraph>{paragraph}</Paragraph>
-      {image && <ResponsiveImage src={image.href} alt={image.alt} caption={image.caption} />}
+      {image && <ResponsiveImage src={image.src} alt={image.alt} caption={image.caption} sourceSet={image?.srcSet} />}
     </div>
   );
 }

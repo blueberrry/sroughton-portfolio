@@ -1,15 +1,22 @@
 @import 'src/root.scss';
 
 p.default {
+  line-height: 1.75em;
   max-width: $max-w-copy;
+  font-family: $font-main;
+  color: var(--text-color);
+
   @include consistent-spacer($spcr-md, $spcr-sm);
   &.primary-paragraph {
+    font-family: inherit;
+    font-weight: 400;
   }
   &.secondary-paragraph {
+    font-family: $font-pre;
+    font-weight: 400;
+  }
+
+  &.centered {
+    text-align: center;
   }
 }
-
-// todo: font family (do we have two fonts? Is it SB?
-// todo: line-height
-// todo: letter-spacing
-// todo: color

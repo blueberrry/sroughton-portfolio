@@ -491,3 +491,13 @@ article.primary-article {
 }
 
 Section returns: Card style layout, h3, sub-header/h4, children, box-shadow, bg (light/dark)
+
+
+Other things to learn
+JS get and set functions
+JS generator functions
+
+When the page transitions up from the grid-nav,
+could have it so instead of a solid/straight line border
+It is some sort of wavey border (version one)
+Going forward, it could potentially be a parallax scene with multi-layers.

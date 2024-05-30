@@ -105,7 +105,6 @@ function DesktopContentBlock({ paragraphs, images, reversed = false }: Props) {
                 }}
                 data-index={paragraph.id}
                 key={pIndex}>
-                {`Item ${pIndex + 1}`}
                 <Paragraph>{paragraph.text}</Paragraph>
               </div>
             );

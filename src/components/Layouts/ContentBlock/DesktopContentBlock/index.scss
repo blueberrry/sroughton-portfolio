@@ -7,8 +7,14 @@ div.lg-viewport-content-container {
   min-height: 100vh;
 
   > .paragraphs-container {
+    padding-top: 75vh;
     //  flex: 1 1 50%;
     width: 50%; // TODO: might use golden ratio instead
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
   > .current-image-container {
@@ -19,13 +25,18 @@ div.lg-viewport-content-container {
       width: 50%;
       position: fixed;
       background-color: black;
-      color: white !important;
-      margin-left: 50% !important;
+      color: white;
+      //margin-left: 50%;
+      transform: translateX(100%);
       min-height: 100vh;
 
       display: flex;
       justify-content: center;
       align-items: center;
+
+      > figure {
+        max-width: 500px !important;
+      }
     }
     //position: fixed;
   }
@@ -49,4 +60,9 @@ div.lg-viewport-content-container {
   // @include media('>desktop') {
   //   flex-direction: row;
   // }
+}
+
+// TODO FIXME
+.sb-show-main.sb-main-padded {
+  padding: 0 !important;
 }

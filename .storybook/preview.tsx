@@ -11,7 +11,7 @@ type xProps = {
   children?: React.ReactNode;
 };
 
-const StoryWrapper = ({ children }: xProps) => {
+const ThemeSwitcher = ({ children }: xProps) => {
   const { theme, changeTheme } = useContext(ThemeContext);
 
   useEffect(() => {
@@ -63,9 +63,9 @@ const preview: Preview = {
     (Story) => {
       return (
         <ThemeProvider initialTheme={'purple-hills'}>
-          <StoryWrapper>
-            <Story />
-          </StoryWrapper>
+          {/* <ThemeSwitcher> */}
+          <Story />
+          {/* </ThemeSwitcher> */}
         </ThemeProvider>
       );
     },

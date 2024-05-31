@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { COMPONENT_STYLE_TYPES, TITLE_STYLE_TYPES } from '../consts';
+import { BREAKPOINTS_MAX, COMPONENT_STYLE_TYPES, TITLE_STYLE_TYPES } from '../consts';
 import { MobileContentBlock, DesktopContentBlock, Paragraph, ResponsiveImage } from 'src/components';
 
 /**
@@ -64,6 +64,13 @@ export type SectionChild =
 
 export type ArticleChild = SectionChild;
 
+/**
+ *
+ * * Other
+ */
+
+export type DimensionsType = { width: number | null; height: number | null };
+export type BreakpointsTypes = keyof typeof BREAKPOINTS_MAX;
 /**
  *
  * * Response data

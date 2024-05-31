@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
-import { Article, Section, MobileContentBlock } from 'src/components';
+import { Article, Section, MobileContentBlock, DesktopContentBlock } from 'src/components';
 
 import { Article_JSON } from 'src/types/types';
 import { ARTICLE_COLLECTION_JSON } from 'src/consts';
@@ -34,7 +34,11 @@ function ArticleCollection({ articles = ARTICLE_COLLECTION_JSON }: Props) {
   // container invisible?
   /// TODO: May need to move ArticleList to separate component if ArticleCollection contains other markup mentioned above
 
-  const { width, height } = useWindowSize();
+  const {
+    windowSize: { width, height },
+    breakpoint,
+  } = useWindowSize();
+  console.log('🚀 ~ ArticleCollection ~ breakpoint:', breakpoint);
   console.log('🚀 ~ ArticleCollection ~ height:', height);
   console.log('🚀 ~ ArticleCollection ~ width:', width);
 
@@ -52,21 +56,34 @@ function ArticleCollection({ articles = ARTICLE_COLLECTION_JSON }: Props) {
             {item.sections.map((section, sIndex) => {
               const sectionKey = `${Math.random().toFixed(2)}-${sIndex}`;
 
+              if (!breakpoint) {
+                return <Fragment key={sectionKey}></Fragment>;
+              }
+
+              if (breakpoint === 'small' || breakpoint === 'phone') {
+                return (
+                  <Section title={section.header} key={sectionKey}>
+                    {section.paragraphs.map((paragraph, pIndex) => {
+                      const contentItemKey = `${Math.random().toFixed(2)}-${pIndex}`;
+                      const thisPragraphsImage = section.images.find((s) => s.id === paragraph.id);
+
+                      return (
+                        <MobileContentBlock
+                          //  images={['']}
+                          id={paragraph.id}
+                          paragraph={paragraph.text}
+                          image={thisPragraphsImage}
+                          key={`${contentItemKey}-${pIndex}`}
+                        />
+                      );
+                    })}
+                  </Section>
+                );
+              }
+
               return (
                 <Section title={section.header} key={sectionKey}>
-                  {section.paragraphs.map((paragraph, pIndex) => {
-                    const contentItemKey = `${Math.random().toFixed(2)}-${pIndex}`;
-                    const thisPragraphsImage = section.images.find((s) => s.id === paragraph.id);
-                    return (
-                      <MobileContentBlock
-                        //  images={['']}
-                        id={paragraph.id}
-                        paragraph={paragraph.text}
-                        image={thisPragraphsImage}
-                        key={`${contentItemKey}-${pIndex}`}
-                      />
-                    );
-                  })}
+                  <DesktopContentBlock paragraphs={section.paragraphs} images={section.images} />
                 </Section>
               );
             })}

@@ -1,10 +1,13 @@
 @import 'src/root.scss';
 
 div.lg-viewport-content-container {
+  min-height: 100vh;
+
+  position: relative;
+
+  height: auto;
   display: flex;
   flex-direction: row;
-
-  min-height: 100vh;
 
   > .paragraphs-container {
     //padding-top: 75vh;
@@ -23,12 +26,14 @@ div.lg-viewport-content-container {
     @include media('>phone') {
       // TODO: either css should handle and comp deals with both rendering or switch using JS
       width: 50%;
+      min-height: 100vh;
+
       position: fixed;
+      top: 0;
+      transform: translateX(100%);
+
       background-color: black;
       color: white;
-      //margin-left: 50%;
-      transform: translateX(100%);
-      min-height: 100vh;
 
       display: flex;
       justify-content: center;

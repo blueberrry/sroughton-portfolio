@@ -27,6 +27,8 @@ const TEST_IMG_SRCS = {
   six: 'https://i.pinimg.com/564x/f3/36/21/f3362127c95bff9ee2a5c8629e22b2e8.jpg',
 };
 
+export const BREAKPOINTS_MAX = { small: 0, phone: 640, tablet: 768, desktop: 1024 };
+
 export const ARTICLE_COLLECTION_JSON: Article_JSON[] = [
   {
     id: '1',

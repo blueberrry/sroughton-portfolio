@@ -9,11 +9,13 @@ import { HeaderSwitcher, Main } from './components';
 
 import Home from 'src/views/pages/Home';
 import Projects from 'src/views/pages/Projects';
+import ArticleCollection from 'src/views/pages/ArticleCollection';
 
 import { useBgClass } from './hooks';
 import { BgStates, HeaderSwitcherMode } from './types/types';
 
 import './root.scss';
+import { ARTICLE_COLLECTION_JSON } from 'src/consts';
 
 // TODO: Create footer
 export type TranslateFuncArgs = 'up' | 'down';
@@ -142,7 +144,7 @@ function AppRoutes() {
       <Route path='/' element={<App />}>
         <Route path='home' element={<Home />} />
         <Route path='projects' element={<Projects />} />
-        <Route path='page-3' element={<Projects />} />
+        <Route path='articles' element={<ArticleCollection articles={ARTICLE_COLLECTION_JSON} />} />
         <Route path='page-4' element={<Projects />} />
         <Route path='page-5' element={<Projects />} />
         <Route path='page-6' element={<Projects />} />

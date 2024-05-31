@@ -81,7 +81,7 @@ function NavGrid({ mode, setMode, bgClassName, activeArea, setActiveArea }: Prop
             mode={mode}
           />
           <GridLink
-            linkTo='page-3'
+            linkTo='articles'
             presetArea='c'
             setTheme={setActiveArea}
             onClick={handleClick}

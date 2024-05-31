@@ -53,12 +53,6 @@ function HeaderSwitcher({ bgClassName, activeArea, setActiveArea, transitionMain
     }
   }, [activeArea, setActiveArea]);
 
-  // useEffect(() => {
-  //   if (hoveredTheme) {
-  //     setTheme(getThemeClass(bgType, hoveredTheme));
-  //   }
-  // }, [hoveredTheme, setCurrentThemeClassName]);
-
   return (
     <>
       {mode === 'title' && <button onClick={reverse}>Menu</button>}

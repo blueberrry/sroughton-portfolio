@@ -2,14 +2,14 @@ import React, { MouseEvent, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ItemAuto } from 'src/components';
 
-import { HeaderSwitcherMode } from 'src/types/types';
+import { AppRoutes, AreaNames, HeaderSwitcherMode } from 'src/types/types';
 import { CSS_TRANSITION_DELAYS } from 'src/consts';
 
 import './index.scss';
 
 export type Props = {
-  linkTo: '/' | 'home' | 'projects' | 'page-3' | 'page-4' | 'page-5' | 'page-6';
-  presetArea: 'a' | 'b' | 'c' | 'd' | 'e' | 'f'; // preset areas defined in GridContainer
+  linkTo: AppRoutes;
+  presetArea: AreaNames; // preset areas defined in GridContainer
   setTheme: React.Dispatch<React.SetStateAction<Props['presetArea']>>;
   onClick: (e: MouseEvent<HTMLAnchorElement>, aArea: Props['presetArea']) => void;
   isActive: boolean;

@@ -1,11 +1,12 @@
 import React from 'react';
-import { ARTICLE_COLLECTION_JSON } from './index.stories';
 
 import { Article, Section, MobileContentBlock } from 'src/components';
 
 import { Article_JSON } from 'src/types/types';
+import { ARTICLE_COLLECTION_JSON } from 'src/consts';
 
 import './index.scss';
+import { useWindowSize } from 'src/hooks';
 
 type Props = { articles: Article_JSON[] };
 
@@ -32,6 +33,11 @@ type Props = { articles: Article_JSON[] };
 function ArticleCollection({ articles = ARTICLE_COLLECTION_JSON }: Props) {
   // container invisible?
   /// TODO: May need to move ArticleList to separate component if ArticleCollection contains other markup mentioned above
+
+  const { width, height } = useWindowSize();
+  console.log('🚀 ~ ArticleCollection ~ height:', height);
+  console.log('🚀 ~ ArticleCollection ~ width:', width);
+
   return (
     <div className='article-collection-container' role='feed'>
       {articles.map((item, aIndex) => {

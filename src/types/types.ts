@@ -27,7 +27,7 @@ export type HeaderSwitcherMode = 'full' | 'toTitle' | 'title' | null;
  * * Routing
  */
 
-export type AppRoutes = 'home' | 'projects' | 'page-3' | 'page-4' | 'page-5' | 'page-6'; // todo: implement
+export type AppRoutes = '/' | 'home' | 'projects' | 'articles' | 'page-4' | 'page-5' | 'page-6';
 
 /**
  *
@@ -84,3 +84,5 @@ export type Article_JSON = {
   tags: string[];
   sections: Section_JSON[];
 };
+
+export type MaxLength3Array<T> = [T, T?, T?];

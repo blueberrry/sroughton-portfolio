@@ -89,7 +89,7 @@ nav.breadcrumb-container {
       display: inline-table;
       text-wrap: nowrap;
 
-      transition: opacity 0.3 ease-in;
+      transition: opacity 0.3s ease-in;
       // selects the previous li anchor tag
       &:has(+ li:hover) > a:after {
         opacity: 0 !important;

@@ -63,9 +63,9 @@ const preview: Preview = {
     (Story) => {
       return (
         <ThemeProvider initialTheme={'purple-hills'}>
-          {/* <ThemeSwitcher> */}
-          <Story />
-          {/* </ThemeSwitcher> */}
+          <ThemeSwitcher>
+            <Story />
+          </ThemeSwitcher>
         </ThemeProvider>
       );
     },

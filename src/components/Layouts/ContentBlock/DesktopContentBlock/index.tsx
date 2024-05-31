@@ -59,8 +59,8 @@ function DesktopContentBlock({ paragraphs, images, reversed = false }: Props) {
 
   const { observe, unobserve } = useIntersectionObserver(handleIntersect, {
     root: null, // use the viewport as the root
-    rootMargin: '0px',
-    threshold: 0.1, // consider the element visible if at least 10% of it is visible
+    rootMargin: '-50% 0% 50% 0%',
+    threshold: 0.5, // consider the element visible if at least 10% of it is visible
   });
 
   useEffect(() => {

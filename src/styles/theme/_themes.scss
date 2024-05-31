@@ -1,4 +1,4 @@
-@import './colors';
+@import './_colors.scss';
 
 html[data-theme='default'] {
   --primary-color: #{$default-primary};
